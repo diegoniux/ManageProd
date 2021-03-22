@@ -186,3 +186,4 @@ FakesAssemblies/
 # otros
 *.nuget.props
 project.lock.json
+.vs/
