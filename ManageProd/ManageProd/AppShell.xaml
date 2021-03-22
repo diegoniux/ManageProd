@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       x:Class="ManageProd.AppShell"
+       xmlns:views="clr-namespace:ManageProd.Views"
+       xmlns:controls="clr-namespace:ManageProd.Controls"
+       BackgroundColor="#0080FF"
+       ForegroundColor="White"
+       TitleColor="White"
+       DisabledColor="#B4FFFFFF"
+       UnselectedColor="#95FFFFFF"
+       FlyoutBackgroundImage="background_login.png"
+       FlyoutBackgroundImageAspect="AspectFill"
+       FlyoutHeaderBehavior="CollapseOnScroll">
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid VerticalOptions="EndAndExpand" ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       TextColor="White"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding Icon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       TextColor="White"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader></controls:FlyoutHeader>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter></controls:FlyoutFooter>
+    </Shell.FlyoutFooter>
+
+
+
+    <!-- Login and Registration Page -->
+    <ShellContent Route="login"
+                  ContentTemplate="{DataTemplate views:LoginPage}">
+    </ShellContent>
+
+    <FlyoutItem Route="main"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Route="gestion"
+                      Title="Gestión de Productos y precios"
+                      Icon="settings.png"
+                      ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent Route="venta"
+                      Title="Salida de Producto"
+                      Icon="truck.png"
+                      ContentTemplate="{DataTemplate views:HomePage}" />
+        <ShellContent Route="compra"
+                      Title="Entrada de Producto"
+                      Icon="cart.png"
+                      ContentTemplate="{DataTemplate views:HomePage}" />
+    </FlyoutItem>
+
+    <MenuItem Text="Cerrar Sesión"
+              Command="{Binding ExecuteLogout}"
+              IconImageSource="exit.png"/>
+
+
+
+</Shell>

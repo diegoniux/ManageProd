@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ManageProd.Controls.FlyoutHeader">
+    <StackLayout>
+        <Image
+            Aspect="AspectFit" 
+            Source="user_menu.png" 
+            Margin="10,20,10,0"
+            />
+        <Label Text="{Binding Usuario.Name}" 
+               TextColor="White" 
+               FontAttributes="Bold" 
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="20"/>
+    </StackLayout>
+</ContentView>
