@@ -222,10 +222,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\exit.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\exit.imageset\exit.png" />
-    <ImageAsset Include="Assets.xcassets\exit.imageset\exit-1.png" />
-    <ImageAsset Include="Assets.xcassets\exit.imageset\exit-2.png" />
+    <ImageAsset Include="Assets.xcassets\exit.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\exit.imageset\exit.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\exit.imageset\exit-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\exit.imageset\exit-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
