@@ -75,16 +75,16 @@ namespace ManageProd.ViewModels
                 User.User = usuario.Usuario;
                 User.Name = usuario.Nombre;
 
-                AppShell.Usuario = User;
+                
 
                 App.IsUserLoggedIn = true;
-
-                await _navigationService.NavigateTo("//main");
+                App.UserLogin = User;
+                Application.Current.MainPage = new AppShell();
+            
             }
             catch (Exception ex)
             {
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
-                // await App.Current.MainPage.DisplayAlert("Aviso", ex.Message, "Ok");
             }
         }
 

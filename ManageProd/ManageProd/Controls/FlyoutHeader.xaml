@@ -8,7 +8,7 @@
             Source="user_menu.png" 
             Margin="10,20,10,0"
             />
-        <Label Text="{Binding Usuario.Name}" 
+        <Label Text="{Binding UserLogedIn.Name}" 
                TextColor="White" 
                FontAttributes="Bold" 
                HorizontalTextAlignment="Center"

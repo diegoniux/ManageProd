@@ -15,12 +15,21 @@ namespace ManageProd
     public partial class App : Application
     {
         public static bool IsUserLoggedIn { get; set; }
+        public static UserModel UserLogin { get; set; }
+
         public App()
         {
             InitializeDi();
             InitializeComponent();
 
-            MainPage = new AppShell();
+            if (IsUserLoggedIn)
+            {
+                MainPage = new AppShell();
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
         }
 
         private void InitializeDi()

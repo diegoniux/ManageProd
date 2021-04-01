@@ -245,10 +245,7 @@
       <Version>10.0.1</Version>
     </PackageReference>
     <PackageReference Include="Acr.UserDialogs">
-      <Version>7.1.0.481</Version>
-    </PackageReference>
-    <PackageReference Include="UXDivers.GorillaPlayer.SDK">
-      <Version>1.5.5</Version>
+      <Version>7.1.0.483</Version>
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.7.335</Version>
