@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ManageProd.Views.ComprasPage">
+    <ContentPage.Content>
+        <RelativeLayout Padding="0">
+            <!-- Titulo de la página-->            
+            <StackLayout Margin="20,10,0,0"
+                         Orientation="Horizontal">
+                <Image Source="camion_title_page.png"></Image>
+                <Label Text="Entrada de producto al almacén"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="Title"/>
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

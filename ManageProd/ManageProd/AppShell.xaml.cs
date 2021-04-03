@@ -27,6 +27,7 @@ namespace ManageProd
 
             Routing.RegisterRoute("main/login", typeof(LoginPage));
             BindingContext = this;
+            _header.BindingContext = this;
 
             CheckLogin();
 
@@ -46,7 +47,7 @@ namespace ManageProd
             }
             else
             {
-                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                await Shell.Current.GoToAsync("main/login");
             }
         }
     }

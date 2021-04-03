@@ -15,6 +15,7 @@ namespace ManageProd.Controls
         public FlyoutFooter()
         {
             InitializeComponent();
+
         }
     }
 }
