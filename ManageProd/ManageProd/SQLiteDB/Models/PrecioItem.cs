@@ -9,9 +9,7 @@ namespace ManageProd.SQLiteDB.Models
     {
         [PrimaryKey, AutoIncrement]
         public int IdPrecio { get; set; }
-
         public decimal Precio { get; set; }
-
         public decimal Descuento { get; set; }
     }
 }

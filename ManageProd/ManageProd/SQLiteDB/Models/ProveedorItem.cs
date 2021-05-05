@@ -9,13 +9,10 @@ namespace ManageProd.SQLiteDB.Models
     {
         [PrimaryKey, AutoIncrement]
         public int IdProveedor { get; set; }
-        
-        public string Nombre { get; set; }
-
+        public string Proveedor { get; set; }
         public string Telefono { get; set; }
-
-        public string CorreoElectronico { get; set; }
-
-        public string NotasProveedor { get; set; }       
+        public string Mail { get; set; }
+        public string NotasProveedor { get; set; }     
     }
 }
+    
