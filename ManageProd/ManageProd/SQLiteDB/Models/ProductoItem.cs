@@ -15,5 +15,7 @@ namespace ManageProd.SQLiteDB.Models
         public decimal PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
 
+        public decimal Tara { get; set; }
+
     }
 }

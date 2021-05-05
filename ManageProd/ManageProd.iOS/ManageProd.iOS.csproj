@@ -222,22 +222,54 @@
     <ImageAsset Include="Assets.xcassets\exit.imageset\exit-2.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\user_menu.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\user_menu.imageset\user_menu.png" />
-    <ImageAsset Include="Assets.xcassets\user_menu.imageset\user_menu-1.png" />
-    <ImageAsset Include="Assets.xcassets\user_menu.imageset\user_menu-2.png" />
-    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\config_title_page.png" />
-    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\config_title_page-1.png" />
-    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\config_title_page-2.png" />
-    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\camioneta_title_page.png" />
-    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\camioneta_title_page-1.png" />
-    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\camioneta_title_page-2.png" />
-    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page.png" />
-    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page-1.png" />
-    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page-2.png" />
+    <ImageAsset Include="Assets.xcassets\user_menu.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\user_menu.imageset\user_menu.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\user_menu.imageset\user_menu-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\user_menu.imageset\user_menu-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\config_title_page.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\config_title_page-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\config_title_page.imageset\config_title_page-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\camioneta_title_page.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\camioneta_title_page-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camioneta_title_page.imageset\camioneta_title_page-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
