@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using SQLiteNetExtensions;
 using SQLiteNetExtensions.Attributes;
 
 namespace ManageProd.SQLiteDB.Models
 {
+    [Table("ProductoItem")]
     public class ProductoItem
     {
         [PrimaryKey, AutoIncrement]

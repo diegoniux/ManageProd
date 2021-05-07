@@ -44,5 +44,10 @@ namespace ManageProd.SQLiteDB.Data
         {
             return Database.DeleteAsync(item);
         }
+
+        public Task<int> DeleteAllProveedoresAsync()
+        {
+            return Database.ExecuteAsync("DELETE FROM [ProveedorItem]");
+        }
     }
 }

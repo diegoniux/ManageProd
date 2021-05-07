@@ -2,19 +2,32 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using SQLiteNetExtensions;
+using SQLiteNetExtensions.Attributes;
 
 namespace ManageProd.SQLiteDB.Models
 {
-    class OrdenVentaItem
+    [Table("OrdenVentaItem")]
+    public class OrdenVentaItem
     {
-        [PrimaryKey, AutoIncrement] //foranea
-        public int IdOrdenCompra { get; set; }
+        public OrdenVentaItem()
+        {
+            this.IdOrdenVenta = 0;
+            this.IdCliente = 0;
+            this.FechaVenta = DateTime.Now;
+            this.MontoTotal = 0;
+        }
 
-        [PrimaryKey, AutoIncrement] //foranea
+        [PrimaryKey, AutoIncrement, Column("IdOrdenCompra")]
+        public int IdOrdenVenta { get; set; }
+
+        [ForeignKey(typeof(ClienteItem)), Column("IdCliente")]
         public int IdCliente { get; set; }
 
-        public DateTime Fecha { get; set; }
+        [Column("Fecha")]
+        public DateTime FechaVenta { get; set; }
 
+        [Column("MontoTotal")]
         public decimal MontoTotal { get; set; }
 
     }
