@@ -14,6 +14,20 @@
                        HorizontalOptions="CenterAndExpand"
                        FontSize="Title"/>
             </StackLayout>
+            <StackLayout
+                Orientation="Vertical"
+                Margin="0,100,0,0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                Padding="10">
+                <Button
+                    Clicked="Button_Clicked"
+                    Text="Importar archivo"
+                    HorizontalOptions="Fill"
+                    BackgroundColor="Blue"
+                    TextColor="White"></Button>
+                <Label x:Name="lblArchivo"></Label>
+            </StackLayout>
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

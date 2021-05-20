@@ -57,16 +57,19 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="ReactiveUI.XamForms">
-      <Version>13.2.2</Version>
+      <Version>13.3.2</Version>
     </PackageReference>
     <PackageReference Include="Splat">
-      <Version>10.0.1</Version>
+      <Version>11.1.1</Version>
     </PackageReference>
     <PackageReference Include="Acr.UserDialogs">
-      <Version>7.1.0.483</Version>
+      <Version>7.1.0.514</Version>
     </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.7.335</Version>
+    </PackageReference>
+    <PackageReference Include="CsvHelper">
+      <Version>27.0.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
