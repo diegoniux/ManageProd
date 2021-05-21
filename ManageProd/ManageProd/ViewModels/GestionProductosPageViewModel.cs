@@ -17,18 +17,19 @@ using System.Collections.ObjectModel;
 
 namespace ManageProd.ViewModels
 {
-    public class GestionProductosPageViewModel: BaseViewModel
+    public class GestionProductosPageViewModel: NotificationObject
     {
         public ObservableCollection<LayoutModel> ListProduct { get; set; }
         public bool HayInfo { get; set; }
+        public bool IsBusy { get; set; }
         public ICommand LoadData { get; set; }
         public ICommand SaveData { get; set; }
 
-        private IRoutingService _navigationService; 
 
-        public GestionProductosPageViewModel(IRoutingService navigationService = null)
+        public GestionProductosPageViewModel()
         {
-            _navigationService = navigationService ?? Locator.Current.GetService<IRoutingService>();
+            ListProduct = new ObservableCollection<LayoutModel>();
+            HayInfo = false;
             LoadData = new Command(async () => await LoadInfo());
             SaveData = new Command(async() => await UserDialogs.Instance.AlertAsync("Guardado !!", "Aviso", "Ok"));
         }

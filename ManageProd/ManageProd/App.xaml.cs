@@ -21,7 +21,6 @@ namespace ManageProd
 
         public App()
         {
-            InitializeDi();
             InitializeComponent();
 
             if (IsUserLoggedIn)
@@ -32,19 +31,6 @@ namespace ManageProd
             {
                 MainPage = new LoginPage();
             }
-        }
-
-        private void InitializeDi()
-        {
-            // Services
-            Locator.CurrentMutable.RegisterLazySingleton<IRoutingService>(() => new ShellRoutingService());
-            // Locator.CurrentMutable.RegisterLazySingleton<IIdentityService>(() => new IdentityServiceStub());
-
-            // ViewModels
-            // Locator.CurrentMutable.Register(() => new LoadingViewModel());
-            Locator.CurrentMutable.Register(() => new LoginPageViewModel() { User = new Models.UserModel() });
-            Locator.CurrentMutable.Register(() => new GestionProductosPageViewModel() {ListProduct = new ObservableCollection<LayoutModel>(), HayInfo = false });
-            // Locator.CurrentMutable.Register(() => new RegistrationViewModel());
         }
 
         protected override async void OnStart()

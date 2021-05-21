@@ -13,18 +13,20 @@ using System.Threading.Tasks;
 
 namespace ManageProd.ViewModels
 {
-    public class LoginPageViewModel : BaseViewModel
+    public class LoginPageViewModel : NotificationObject
     {
+        public bool IsBusy { get; set; }
         public UserModel User { get; set; }
         public ICommand ExecuteLogin { get; set; }
         public ICommand ExecuteLoadRememberUser { get; set; }
 
 
-        private IRoutingService _navigationService;
+        //private IRoutingService _navigationService;
 
-        public LoginPageViewModel(IRoutingService navigationService = null)
+        //IRoutingService navigationService = null
+        public LoginPageViewModel()
         {
-            _navigationService = navigationService ?? Locator.Current.GetService<IRoutingService>();
+            //_navigationService = navigationService ?? Locator.Current.GetService<IRoutingService>();
             ExecuteLogin = new Command(async () => await LoginAsync());
             ExecuteLoadRememberUser = new Command(async () => await LoadRememberUserAsync());
 

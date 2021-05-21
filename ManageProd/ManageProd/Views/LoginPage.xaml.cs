@@ -14,12 +14,13 @@ namespace ManageProd.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        internal LoginPageViewModel ViewModel { get; set; } = Locator.Current.GetService<LoginPageViewModel>();
+        public LoginPageViewModel ViewModel { get; set; }
 
         public LoginPage()
         {
             InitializeComponent();
 
+            ViewModel = new LoginPageViewModel();
             BindingContext = ViewModel;
         }
 

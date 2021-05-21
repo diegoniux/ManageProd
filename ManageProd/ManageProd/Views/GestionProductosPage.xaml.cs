@@ -13,11 +13,13 @@ namespace ManageProd.Views
 {
     public partial class GestionProductosPage : ContentPage
     {
-        internal GestionProductosPageViewModel ViewModel { get; set; } = Locator.Current.GetService<GestionProductosPageViewModel>();
+        //internal GestionProductosPageViewModel ViewModel { get; set; } = Locator.Current.GetService<GestionProductosPageViewModel>();
+        public GestionProductosPageViewModel ViewModel { get; set; }
 
         public GestionProductosPage()
         {
             InitializeComponent();
+            ViewModel = new GestionProductosPageViewModel();
             BindingContext = ViewModel;
         }
 
