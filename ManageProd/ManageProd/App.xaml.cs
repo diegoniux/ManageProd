@@ -7,6 +7,8 @@ using ManageProd.ViewModels;
 using ManageProd.Views;
 using Splat;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -41,6 +43,7 @@ namespace ManageProd
             // ViewModels
             // Locator.CurrentMutable.Register(() => new LoadingViewModel());
             Locator.CurrentMutable.Register(() => new LoginPageViewModel() { User = new Models.UserModel() });
+            Locator.CurrentMutable.Register(() => new GestionProductosPageViewModel() {ListProduct = new ObservableCollection<LayoutModel>(), HayInfo = false });
             // Locator.CurrentMutable.Register(() => new RegistrationViewModel());
         }
 

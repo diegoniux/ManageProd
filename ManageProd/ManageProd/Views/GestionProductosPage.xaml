@@ -3,30 +3,201 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ManageProd.Views.GestionProductosPage">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <RelativeLayout Padding="0">
-            <!-- Titulo de la página-->            
-            <StackLayout Margin="20,10,0,0"
-                         Orientation="Horizontal">
-                <Image Source="config_title_page.png"></Image>
-                <Label Text="Gestión de productos y precios"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="Title"/>
-            </StackLayout>
             <StackLayout
-                Orientation="Vertical"
-                Margin="0,100,0,0"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill"
-                Padding="10">
-                <Button
-                    Clicked="Button_Clicked"
-                    Text="Importar archivo"
-                    HorizontalOptions="Fill"
-                    BackgroundColor="Blue"
-                    TextColor="White"></Button>
-                <Label x:Name="lblArchivo"></Label>
+                Margin="0" 
+                Padding="0" 
+                Orientation="Vertical" 
+                VerticalOptions="FillAndExpand" 
+                Spacing="0"
+                RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid Margin="20" 
+                      Padding="0" 
+                      ColumnSpacing="0" 
+                      RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                        <Image Source="config_title_page.png"
+                               Grid.Row="0"
+                               Grid.Column="0">
+                        </Image>
+                        <Label Text="Gestión de productos y precios"
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="StartAndExpand"
+                               HorizontalTextAlignment="Start"
+                               FontSize="Title"
+                               Grid.Column="1"
+                               Grid.Row="0"/>
+
+                        <Button
+                            Command="{Binding LoadData}"
+                            Text="Importar archivo"
+                            BackgroundColor="#2877D5"
+                            TextColor="White"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                        </Button>
+
+                        <!--DATOS-->
+                        <CollectionView 
+                            x:Name="CollecionView"
+                            IsVisible="{Binding HayInfo}"
+                            ItemsSource="{Binding ListProduct}"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="2"
+                            Margin="0"
+                            SelectionMode="Single"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="Gray">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
+                                    Orientation="Vertical"
+                                    VerticalItemSpacing="1"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        Margin="1"
+                                        ColumnSpacing="0"
+                                        RowSpacing="0"
+                                        BackgroundColor="#FFFFFF">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <!--IdProducto-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <!--Producto-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <!--ProveedorId-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <!--Proveedor-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <!--Precio Compra-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <!--Precio Venta-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <!--Tara-->
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <!--DATOS-->
+                                        <Label
+                                            Text="{Binding IdProducto}"
+                                            Grid.Column="0"
+                                            FontSize="10"
+                                            Margin="5,0,0,0"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding Producto}"
+                                            Grid.Column="1"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding ProveedorId}"
+                                            Grid.Column="2"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding Proveedor}"
+                                            Grid.Column="3"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding PrecioCompra}"
+                                            Grid.Column="4"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding PrecioVenta}"
+                                            Grid.Column="5"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding Tara}"
+                                            Grid.Column="6"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#353535"
+                                            FontFamily="Helvetica">
+                                        </Label>
+                                        <!--TERMINA DATOS-->
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!--TERMINA DATOS-->
+                        <Button
+                            Command="{Binding SaveData}"
+                            IsVisible="{Binding HayInfo}"
+                            Text="Guardar información"
+                            BackgroundColor="#2877D5"
+                            TextColor="White"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="3"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                        </Button>
+                    </Grid>
             </StackLayout>
         </RelativeLayout>
     </ContentPage.Content>
