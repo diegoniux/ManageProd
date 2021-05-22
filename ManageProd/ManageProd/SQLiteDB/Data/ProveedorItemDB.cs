@@ -10,9 +10,9 @@ namespace ManageProd.SQLiteDB.Data
     {
         static SQLiteAsyncConnection Database;
 
-        public static readonly AsyncLazy<ProveedorItem> Instance = new AsyncLazy<ProveedorItem>(async () =>
+        public static readonly AsyncLazy<ProveedorItemDB> Instance = new AsyncLazy<ProveedorItemDB>(async () =>
         {
-            var instance = new ProveedorItem();
+            var instance = new ProveedorItemDB();
             CreateTableResult result = await Database.CreateTableAsync<ProveedorItem>();
             return instance;
         });
@@ -38,6 +38,11 @@ namespace ManageProd.SQLiteDB.Data
                 return Database.UpdateAsync(item);           
             else            
                 return Database.InsertAsync(item);           
+        }
+
+        public Task<int> InsertProveedoresAsync(ProveedorItem item)
+        {
+            return Database.InsertAsync(item);
         }
 
         public Task<int> DeleteProveedoresAsync(ProveedorItem item)

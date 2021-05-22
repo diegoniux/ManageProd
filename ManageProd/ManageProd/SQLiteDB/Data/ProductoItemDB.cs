@@ -54,6 +54,11 @@ namespace ManageProd.SQLiteDB.Data
             }
         }
 
+        public Task<int> InsertProductsAsync(ProductoItem request)
+        {
+            return Database.InsertAsync(request);
+        }
+
         public Task<int> DeleteProductAsync(ProductoItem request)
         {
             return Database.DeleteAsync(request);

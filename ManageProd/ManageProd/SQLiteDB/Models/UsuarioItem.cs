@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using SQLite;
+﻿using SQLite;
 
 namespace ManageProd.SQLiteDB.Models
 {
@@ -16,7 +14,7 @@ namespace ManageProd.SQLiteDB.Models
             this.Remember = false;
         }
 
-        [PrimaryKey, AutoIncrement, Column("IdUsuario")]
+        [PrimaryKey, Column("IdUsuario")]
         public int IdUsuario { get; set; }
 
         [Column("Usuario")]

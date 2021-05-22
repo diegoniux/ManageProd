@@ -31,7 +31,7 @@ namespace ManageProd.ViewModels
             ListProduct = new ObservableCollection<LayoutModel>();
             HayInfo = false;
             LoadData = new Command(async () => await LoadInfo());
-            SaveData = new Command(async() => await UserDialogs.Instance.AlertAsync("Guardado !!", "Aviso", "Ok"));
+            SaveData = new Command(async() => await SaveInfo());
         }
 
         private async Task LoadInfo()
@@ -90,6 +90,78 @@ namespace ManageProd.ViewModels
             catch (Exception ex)
             {
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
+        }
+
+        private async Task SaveInfo()
+        {
+            try
+            {
+                IsBusy = true;
+                if (ListProduct.Count == 0)
+                {
+                    throw new Exception("No hay información para guardar, favor de revisar.");
+                }
+
+                ProveedorItemDB proveedorDB = await ProveedorItemDB.Instance;
+                ProductoItemDB productoDB = await ProductoItemDB.Instance;
+
+                //Eliminamos la información de productos u proveedores
+                await productoDB.DeleteAllProductsAsync();
+                await proveedorDB.DeleteAllProveedoresAsync();
+
+
+                //////////////////////////////////
+                // Guaradar información en SQLite//
+                /////////////////////////////////
+                foreach (var item in ListProduct)
+                {
+                    //Proveedores
+                    ProveedorItem proveedorItem = new ProveedorItem()
+                    {
+                        IdProveedor = int.Parse(item.ProveedorId),
+                        Proveedor = item.Proveedor,
+                        Mail = "",
+                        NotasProveedor = "",
+                        Telefono = ""
+                    };
+
+                    ProveedorItem proveedor = await proveedorDB.GetProveedoresAsync(proveedorItem.IdProveedor);
+                    if (proveedor == null)
+                    {
+                        await proveedorDB.InsertProveedoresAsync(proveedorItem);
+                    }
+
+                    //Productos
+                    decimal.TryParse(item.PrecioCompra, out decimal precioCompra);
+                    decimal.TryParse(item.PrecioVenta, out decimal precioVenta);
+                    decimal.TryParse(item.Tara, out decimal tara);
+
+                    ProductoItem productoItem = new ProductoItem()
+                    {
+                        IdProducto = int.Parse(item.IdProducto),
+                        IdProveedor = int.Parse(item.ProveedorId),
+                        Producto = item.Producto,
+                        PrecioCompra = precioVenta,
+                        PrecioVenta = precioVenta,
+                        Tara = tara
+                    };
+
+                    await productoDB.InsertProductsAsync(productoItem);
+                    
+                }
+                await UserDialogs.Instance.AlertAsync("Información guardada con éxito", "Aviso", "Ok");
+
+                List<ProductoItem> productos = await productoDB.GetProductsAsync();
+                List<ProveedorItem> proveedores = await proveedorDB.GetProveedoresAsync();
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 

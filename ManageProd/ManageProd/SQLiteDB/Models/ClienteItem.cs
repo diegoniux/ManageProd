@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
 
 namespace ManageProd.SQLiteDB.Models
 {
     [Table("ClienteItem")]
     public class ClienteItem
     {
-        [PrimaryKey, AutoIncrement, Column("IdCliente")]
+        [PrimaryKey, Column("IdCliente")]
         public int IdCliente { get; set; }
 
         [Column("Nombre")]

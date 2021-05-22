@@ -21,12 +21,8 @@ namespace ManageProd.ViewModels
         public ICommand ExecuteLoadRememberUser { get; set; }
 
 
-        //private IRoutingService _navigationService;
-
-        //IRoutingService navigationService = null
         public LoginPageViewModel()
         {
-            //_navigationService = navigationService ?? Locator.Current.GetService<IRoutingService>();
             ExecuteLogin = new Command(async () => await LoginAsync());
             ExecuteLoadRememberUser = new Command(async () => await LoadRememberUserAsync());
 
