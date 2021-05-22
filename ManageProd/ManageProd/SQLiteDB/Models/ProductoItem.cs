@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
@@ -10,13 +10,22 @@ namespace ManageProd.SQLiteDB.Models
     [Table("ProductoItem")]
     public class ProductoItem
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, Column("IdProducto")]
         public int IdProducto { get; set; }
+
+        [ForeignKey(typeof(ProveedorItem)), Column("IdProveedor")]
         public int IdProveedor { get; set; }
+
+        [Column("Producto")]
         public string Producto { get; set; }
+
+        [Column("PrecioCompra")]
         public decimal PrecioCompra { get; set; }
+
+        [Column("PrecioVenta")]
         public decimal PrecioVenta { get; set; }
 
+        [Column("Tara")]
         public decimal Tara { get; set; }
 
     }
