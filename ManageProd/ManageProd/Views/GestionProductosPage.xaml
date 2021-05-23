@@ -38,6 +38,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
                     </Grid.RowDefinitions>
@@ -46,158 +47,293 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                        <Image Source="config_title_page.png"
-                               Grid.Row="0"
-                               Grid.Column="0">
-                        </Image>
-                        <Label Text="Gestión de productos y precios"
-                               VerticalOptions="CenterAndExpand" 
-                               HorizontalOptions="StartAndExpand"
-                               HorizontalTextAlignment="Start"
-                               FontSize="Title"
-                               Grid.Column="1"
-                               Grid.Row="0"/>
+                    <Image Source="config_title_page.png"
+                            Grid.Row="0"
+                            Grid.Column="0">
+                    </Image>
+                    <Label Text="Gestión de productos y precios"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="StartAndExpand"
+                            HorizontalTextAlignment="Start"
+                            FontSize="Title"
+                            Grid.Column="1"
+                            Grid.Row="0"/>
+
+                    <Button
+                        Command="{Binding LoadData}"
+                        IsVisible="{Binding HayDatos}"
+                        Text="Importar archivo"
+                        BackgroundColor="#2877D5"
+                        TextColor="White"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </Button>
+
+                    <!--HEADER-->
+                    <Grid
+                        Margin="1"
+                        ColumnSpacing="0"
+                        RowSpacing="0"
+                        BackgroundColor="#9AC5F9"
+                        IsVisible="{Binding HayInfo}"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <!--IdProducto-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--Producto-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--ProveedorId-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--Proveedor-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--Precio Compra-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--Precio Venta-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--Tara-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Text="IdProduccto"
+                            Grid.Column="0"
+                            FontSize="10"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Producto"
+                            Grid.Column="1"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="IdProveedor"
+                            Grid.Column="2"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            TextColor="#353535"
+                            FontAttributes="Bold"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Proveedor"
+                            Grid.Column="3"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Precio Compra"
+                            Grid.Column="4"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Precio Venta"
+                            Grid.Column="5"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Tara"
+                            Grid.Column="6"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+                    </Grid>
+
+                    <!--DATOS-->
+                    <CollectionView 
+                        x:Name="CollecionView"
+                        IsVisible="{Binding HayInfo}"
+                        ItemsSource="{Binding ListProduct}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        Margin="0"
+                        SelectionMode="Single"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="Gray">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                                Orientation="Vertical"
+                                VerticalItemSpacing="1"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Margin="1"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    BackgroundColor="#FFFFFF">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <!--IdProducto-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--Producto-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--ProveedorId-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--Proveedor-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--Precio Compra-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--Precio Venta-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--Tara-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <!--DATOS-->
+                                    <Label
+                                        Text="{Binding IdProducto}"
+                                        Grid.Column="0"
+                                        FontSize="10"
+                                        Margin="5,0,0,0"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Producto}"
+                                        Grid.Column="1"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding ProveedorId}"
+                                        Grid.Column="2"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Proveedor}"
+                                        Grid.Column="3"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding PrecioCompra}"
+                                        Grid.Column="4"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding PrecioVenta}"
+                                        Grid.Column="5"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Tara}"
+                                        Grid.Column="6"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <!--TERMINA DATOS-->
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--TERMINA DATOS-->
+
+                    <Grid
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
                         <Button
-                            Command="{Binding LoadData}"
-                            Text="Importar archivo"
-                            BackgroundColor="#2877D5"
-                            TextColor="White"
+                            Command="{Binding Cancel}"
+                            IsVisible="{Binding HayInfo}"
+                            Text="Cancelar"
+                            BackgroundColor="#FFF"
+                            TextColor="Black"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="1"
+                            Grid.Row="0"
+                            BorderColor="Black"
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                         </Button>
-
-                        <!--DATOS-->
-                        <CollectionView 
-                            x:Name="CollecionView"
-                            IsVisible="{Binding HayInfo}"
-                            ItemsSource="{Binding ListProduct}"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="2"
-                            Margin="0"
-                            SelectionMode="Single"
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Gray">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout 
-                                    Orientation="Vertical"
-                                    VerticalItemSpacing="1"></GridItemsLayout>
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid
-                                        Margin="1"
-                                        ColumnSpacing="0"
-                                        RowSpacing="0"
-                                        BackgroundColor="#FFFFFF">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <!--IdProducto-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <!--Producto-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <!--ProveedorId-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <!--Proveedor-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <!--Precio Compra-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <!--Precio Venta-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <!--Tara-->
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <!--DATOS-->
-                                        <Label
-                                            Text="{Binding IdProducto}"
-                                            Grid.Column="0"
-                                            FontSize="10"
-                                            Margin="5,0,0,0"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <Label
-                                            Text="{Binding Producto}"
-                                            Grid.Column="1"
-                                            FontSize="10"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <Label
-                                            Text="{Binding ProveedorId}"
-                                            Grid.Column="2"
-                                            FontSize="10"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <Label
-                                            Text="{Binding Proveedor}"
-                                            Grid.Column="3"
-                                            FontSize="10"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <Label
-                                            Text="{Binding PrecioCompra}"
-                                            Grid.Column="4"
-                                            FontSize="10"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <Label
-                                            Text="{Binding PrecioVenta}"
-                                            Grid.Column="5"
-                                            FontSize="10"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <Label
-                                            Text="{Binding Tara}"
-                                            Grid.Column="6"
-                                            FontSize="10"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            TextColor="#353535"
-                                            FontFamily="Helvetica">
-                                        </Label>
-                                        <!--TERMINA DATOS-->
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                        <!--TERMINA DATOS-->
                         <Button
                             Command="{Binding SaveData}"
                             IsVisible="{Binding HayInfo}"
                             Text="Guardar información"
                             BackgroundColor="#2877D5"
                             TextColor="White"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="3"
+                            Grid.Column="1"
+                            Grid.Row="0"
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                         </Button>
                     </Grid>
+
+
+
+
+
+                </Grid>
             </StackLayout>
         </RelativeLayout>
     </ContentPage.Content>

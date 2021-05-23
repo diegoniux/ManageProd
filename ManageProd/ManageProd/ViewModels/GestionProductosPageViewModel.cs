@@ -1,11 +1,7 @@
 ﻿using ManageProd.Models;
-using ManageProd.Services.Routing;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Splat;
 using Acr.UserDialogs;
 using ManageProd.SQLiteDB.Data;
 using ManageProd.SQLiteDB.Models;
@@ -14,6 +10,8 @@ using Xamarin.Essentials;
 using CsvHelper;
 using System.Globalization;
 using System.Collections.ObjectModel;
+using CsvHelper.Configuration;
+using System.Text;
 
 namespace ManageProd.ViewModels
 {
@@ -24,6 +22,7 @@ namespace ManageProd.ViewModels
         public bool IsBusy { get; set; }
         public ICommand LoadData { get; set; }
         public ICommand SaveData { get; set; }
+        public ICommand Cancel { get; set; }
 
 
         public GestionProductosPageViewModel()
@@ -32,6 +31,7 @@ namespace ManageProd.ViewModels
             HayInfo = false;
             LoadData = new Command(async () => await LoadInfo());
             SaveData = new Command(async() => await SaveInfo());
+            Cancel = new Command(async () => await CancelInfo());
         }
 
         private async Task LoadInfo()
@@ -45,40 +45,44 @@ namespace ManageProd.ViewModels
                     if (file.FileName.EndsWith("csv", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await file.OpenReadAsync();
-                        using (var reader = new System.IO.StreamReader(stream))
+                        using (var reader = new System.IO.StreamReader(stream, Encoding.GetEncoding("utf-8")))
                         {
                             if (reader != null)
                             {
                                 using (var csvReader = new CsvReader(reader, CultureInfo.CurrentCulture))
                                 {
-                                    // leemos el primer registro, que contiene el encabezado
-                                    if (!csvReader.Read())
+                                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                                     {
-                                        return;
-                                    }
-
-                                    // leemos el resto de los registros que contrendrá la información
-                                    while (csvReader.Read())
-                                    {
-                                        if (csvReader.GetField<string>(0) != string.Empty)
+                                        // leemos el primer registro, que contiene el encabezado
+                                        if (!csvReader.Read())
                                         {
-                                            ListProduct.Add(new LayoutModel
-                                            {
-                                                IdProducto = csvReader.GetField<string>(0),
-                                                Producto = csvReader.GetField<string>(1),
-                                                ProveedorId = csvReader.GetField<string>(2),
-                                                Proveedor = csvReader.GetField<string>(3),
-                                                PrecioCompra = csvReader.GetField<string>(4),
-                                                PrecioVenta = csvReader.GetField<string>(5),
-                                                Tara = csvReader.GetField<string>(6)
-                                            });
+                                            return;
                                         }
 
+                                        // leemos el resto de los registros que contrendrá la información
+                                        while (csvReader.Read())
+                                        {
+                                            if (csvReader.GetField<string>(0) != string.Empty)
+                                            {
+                                                ListProduct.Add(new LayoutModel
+                                                {
+                                                    IdProducto = csvReader.GetField<string>(0),
+                                                    Producto = csvReader.GetField<string>(1),
+                                                    ProveedorId = csvReader.GetField<string>(2),
+                                                    Proveedor = csvReader.GetField<string>(3),
+                                                    PrecioCompra = csvReader.GetField<string>(4),
+                                                    PrecioVenta = csvReader.GetField<string>(5),
+                                                    Tara = csvReader.GetField<string>(6)
+                                                });
+                                            }
+
+                                        }
+                                        HayInfo = ListProduct.Count > 0;
                                     }
-                                    HayInfo = ListProduct.Count > 0;
                                 }
                             }
                         }
+                        
                     }
                     else
                     {
@@ -103,57 +107,74 @@ namespace ManageProd.ViewModels
                     throw new Exception("No hay información para guardar, favor de revisar.");
                 }
 
-                ProveedorItemDB proveedorDB = await ProveedorItemDB.Instance;
-                ProductoItemDB productoDB = await ProductoItemDB.Instance;
-
-                //Eliminamos la información de productos u proveedores
-                await productoDB.DeleteAllProductsAsync();
-                await proveedorDB.DeleteAllProveedoresAsync();
-
-
-                //////////////////////////////////
-                // Guaradar información en SQLite//
-                /////////////////////////////////
-                foreach (var item in ListProduct)
+                var confirmaConf = new ConfirmConfig()
                 {
-                    //Proveedores
-                    ProveedorItem proveedorItem = new ProveedorItem()
-                    {
-                        IdProveedor = int.Parse(item.ProveedorId),
-                        Proveedor = item.Proveedor,
-                        Mail = "",
-                        NotasProveedor = "",
-                        Telefono = ""
-                    };
+                    Title = "Guardar Información",
+                    Message = "¿Deseas guardar la información?",
+                    OkText = "Si",
+                    CancelText = "No"
+                };
 
-                    ProveedorItem proveedor = await proveedorDB.GetProveedoresAsync(proveedorItem.IdProveedor);
-                    if (proveedor == null)
-                    {
-                        await proveedorDB.InsertProveedoresAsync(proveedorItem);
-                    }
-
-                    //Productos
-                    decimal.TryParse(item.PrecioCompra, out decimal precioCompra);
-                    decimal.TryParse(item.PrecioVenta, out decimal precioVenta);
-                    decimal.TryParse(item.Tara, out decimal tara);
-
-                    ProductoItem productoItem = new ProductoItem()
-                    {
-                        IdProducto = int.Parse(item.IdProducto),
-                        IdProveedor = int.Parse(item.ProveedorId),
-                        Producto = item.Producto,
-                        PrecioCompra = precioVenta,
-                        PrecioVenta = precioVenta,
-                        Tara = tara
-                    };
-
-                    await productoDB.InsertProductsAsync(productoItem);
-                    
+                bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
+                if (!resp)
+                {
+                    return;
                 }
-                await UserDialogs.Instance.AlertAsync("Información guardada con éxito", "Aviso", "Ok");
 
-                List<ProductoItem> productos = await productoDB.GetProductsAsync();
-                List<ProveedorItem> proveedores = await proveedorDB.GetProveedoresAsync();
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    ProveedorItemDB proveedorDB = await ProveedorItemDB.Instance;
+                    ProductoItemDB productoDB = await ProductoItemDB.Instance;
+
+                    //Eliminamos la información de productos u proveedores
+                    await productoDB.DeleteAllProductsAsync();
+                    await proveedorDB.DeleteAllProveedoresAsync();
+
+
+                    //////////////////////////////////
+                    // Guaradar información en SQLite//
+                    /////////////////////////////////
+                    foreach (var item in ListProduct)
+                    {
+                        //Proveedores
+                        ProveedorItem proveedorItem = new ProveedorItem()
+                        {
+                            IdProveedor = int.Parse(item.ProveedorId),
+                            Proveedor = item.Proveedor,
+                            Mail = "",
+                            NotasProveedor = "",
+                            Telefono = ""
+                        };
+
+                        ProveedorItem proveedor = await proveedorDB.GetProveedoresAsync(proveedorItem.IdProveedor);
+                        if (proveedor == null)
+                        {
+                            await proveedorDB.InsertProveedoresAsync(proveedorItem);
+                        }
+
+                        //Productos
+                        decimal.TryParse(item.PrecioCompra, out decimal precioCompra);
+                        decimal.TryParse(item.PrecioVenta, out decimal precioVenta);
+                        decimal.TryParse(item.Tara, out decimal tara);
+
+                        ProductoItem productoItem = new ProductoItem()
+                        {
+                            IdProducto = int.Parse(item.IdProducto),
+                            IdProveedor = int.Parse(item.ProveedorId),
+                            Producto = item.Producto,
+                            PrecioCompra = precioVenta,
+                            PrecioVenta = precioVenta,
+                            Tara = tara
+                        };
+
+                        await productoDB.InsertProductsAsync(productoItem);
+                        HayInfo = false;
+
+                    }
+                    await UserDialogs.Instance.AlertAsync("Información guardada con éxito", "Aviso", "Ok");
+
+                    ListProduct = new ObservableCollection<LayoutModel>();
+                }
             }
             catch (Exception ex)
             {
@@ -163,6 +184,12 @@ namespace ManageProd.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private async Task CancelInfo()
+        {
+            ListProduct = new ObservableCollection<LayoutModel>();
+            HayInfo = false;
         }
 
     }
