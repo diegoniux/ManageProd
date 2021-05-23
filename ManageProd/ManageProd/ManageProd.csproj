@@ -42,6 +42,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Templates\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Routing\" />
   </ItemGroup>
