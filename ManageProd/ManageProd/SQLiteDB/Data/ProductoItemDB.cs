@@ -32,9 +32,9 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<ProductoItem>().Where(i => i.IdProducto == request.IdProducto).FirstOrDefaultAsync();           
         }
 
-        public Task<List<ProductoItem>> GetProductsIdProveedorAsync(ProductoItem request)
+        public Task<List<ProductoItem>> GetProductsIdProveedorAsync(int IdProveedor)
         {
-            return Database.QueryAsync<ProductoItem>("SELECT * FROM [ProductoItem] WHERE [IdProveedor] = " + request.IdProveedor);
+            return Database.QueryAsync<ProductoItem>("SELECT * FROM [ProductoItem] WHERE [IdProveedor] = " + IdProveedor);
         }
 
         public Task<List<ProductoItem>> GetProductsIdsAsync(ProductoItem request)

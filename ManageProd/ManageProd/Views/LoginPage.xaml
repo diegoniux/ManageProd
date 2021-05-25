@@ -140,8 +140,6 @@
                                 Placeholder="Ingresa tu contraseña"
                                 IsPassword="True"
                                 PlaceholderColor="#C4C4C4"
-                                TextColor="#275D38"
-                                BackgroundColor="#FFFFFF"
                                 HorizontalOptions="FillAndExpand">
                             </renderers:EntryIcon>
 

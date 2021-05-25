@@ -32,9 +32,9 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<OrdenCompraItem>().Where(i => i.IdOrdenCompra == request.IdOrdenCompra).FirstOrDefaultAsync();
         }       
 
-        public Task<List<OrdenCompraItem>> GetOrdenComprasIdsAsync(OrdenCompraItem request)
+        public Task<OrdenCompraItem> GetOrdenCompraIdsAsync(int IdOrdenCompra)
         {
-            return Database.QueryAsync<OrdenCompraItem>("SELECT * FROM [OrdenCompraItem] WHERE [IdOrdenCompra] = " + request.IdOrdenCompra + " AND [IdProveedor] = " + request.IdProveedor);
+            return Database.Table<OrdenCompraItem>().Where(i => i.IdOrdenCompra == IdOrdenCompra).FirstOrDefaultAsync();
         }
 
         public Task<List<OrdenCompraItem>> GetOrdenComprasIdProveedorAsync(OrdenCompraItem request)
@@ -54,7 +54,7 @@ namespace ManageProd.SQLiteDB.Data
             }
         }
 
-        public Task<int> DeleteOrdenComprasAsync(OrdenCompraItem request)
+        public Task<int> DeleteOrdenComprasAsync(DetalleCompraItem request)
         {
             return Database.DeleteAsync(request);
         }

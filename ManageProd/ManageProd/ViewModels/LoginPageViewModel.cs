@@ -24,6 +24,7 @@ namespace ManageProd.ViewModels
         public LoginPageViewModel()
         {
             User = new UserModel();
+            IsBusy = false;
             ExecuteLogin = new Command(async () => await LoginAsync());
             ExecuteLoadRememberUser = new Command(async () => await LoadRememberUserAsync());
 

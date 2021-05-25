@@ -27,21 +27,22 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<DetalleCompraItem>().ToListAsync();
         }
 
-        public Task<DetalleCompraItem> GetDetalleCompraIdIdAsync(DetalleCompraItem request)
+        public Task<List<DetalleCompraItem>> GetDetalleCompraIdOrdenCompraAsync(int IdOrdenCompra)
         {
-            return Database.Table<DetalleCompraItem>().Where(i => i.IdDetalleCompra == request.IdDetalleCompra).FirstOrDefaultAsync();
+            return Database.QueryAsync<DetalleCompraItem>(
+                "SELECT * FROM [DetalleCompraItem] WHERE [IdOrdenCompra] = " + IdOrdenCompra);
         }
 
         public Task<List<DetalleCompraItem>> GetDetalleVentaIdDetalleVentaCompraAsync(DetalleCompraItem request)
         {
             return Database.QueryAsync<DetalleCompraItem>(
-                "SELECT * FROM [DetalleVentaItem] WHERE [IdDetalleVenta] = " + request.IdDetalleCompra + " AND [IdOrdenCompra] = " + request.IdOrdenCompra);
+                "SELECT * FROM [DetalleCompraItem] WHERE [IdDetalleVenta] = " + request.IdDetalleCompra + " AND [IdOrdenCompra] = " + request.IdOrdenCompra);
         }
 
         public Task<List<DetalleCompraItem>> GetDetalleCompraALLIdsAsync(DetalleCompraItem request)
         {
             return Database.QueryAsync<DetalleCompraItem>(
-                "SELECT * FROM [DetalleVentaItem] WHERE [IdDetalleVenta] = " + request.IdDetalleCompra + " AND [IdOrdenCompra] = " + request.IdOrdenCompra
+                "SELECT * FROM [DetalleCompraItem] WHERE [IdDetalleVenta] = " + request.IdDetalleCompra + " AND [IdOrdenCompra] = " + request.IdOrdenCompra
                  + " AND [IdProducto] = " + request.IdProducto);
         }
 

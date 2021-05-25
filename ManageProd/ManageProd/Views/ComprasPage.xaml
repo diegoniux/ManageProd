@@ -1,18 +1,862 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:renderers="clr-namespace:ManageProd.Renderers"
+    Title="Gestión de Compras"
+    Visual="Material"
     x:Class="ManageProd.Views.ComprasPage">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <RelativeLayout Padding="0">
-            <!-- Titulo de la página-->            
-            <StackLayout Margin="20,10,0,0"
-                         Orientation="Horizontal">
-                <Image Source="camion_title_page.png"></Image>
-                <Label Text="Entrada de producto al almacén"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="CenterAndExpand"
-                       FontSize="Title"/>
+            <StackLayout
+                Margin="0" 
+                Padding="0" 
+                Orientation="Vertical" 
+                VerticalOptions="FillAndExpand" 
+                Spacing="0"
+                RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid Margin="20" 
+                      Padding="0" 
+                      ColumnSpacing="0" 
+                      RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height=".22*"></RowDefinition>
+                        <RowDefinition Height=".80*"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="camion_title_page.png"
+                            Grid.Row="0"
+                            Grid.Column="0">
+                    </Image>
+                    <Label Text="Orden de Compra"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="StartAndExpand"
+                            HorizontalTextAlignment="Start"
+                            FontSize="Title"
+                           Margin="10,0"
+                            Grid.Column="1"
+                            Grid.Row="0"/>
+
+                    <!--ORDEN-->
+                    <Grid
+                        Margin="1,10,1,1"
+                        ColumnSpacing="0"
+                        RowSpacing="0"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="#FFF">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".6*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label
+                            Text="Folio"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontSize="Medium"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+
+                        <Frame
+                            Padding="0"
+                            CornerRadius="26"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,5,0,5"
+                            HasShadow="False"
+                            BackgroundColor="#9AC5F9">
+                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                <renderers:EntryIcon
+                                    Text="{Binding Order.IdOrdenCompra, Mode=TwoWay}"
+                                    Keyboard="Numeric"
+                                    MaxLength="5"
+                                    CornerRadius="5"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    Margin="1"
+                                    IsEnabled="False">
+                                </renderers:EntryIcon>
+                            </StackLayout>
+                        </Frame>
+
+                        <Label
+                            Text="Proveedor"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            FontSize="Medium"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+                        <Frame
+                            Padding="0"
+                            CornerRadius="26"
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="3"
+                            Margin="0,5,0,5"
+                            HasShadow="False"
+                            BackgroundColor="#9AC5F9">
+                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                <Picker
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    Title="Selecciona un Proveedor"
+                                    ItemsSource="{Binding ListProveedores}"
+                                    SelectedIndex="{Binding Order.IdProveedor, Mode=TwoWay}"
+                                    ItemDisplayBinding="{Binding Proveedor}"
+                                    Margin="10,0">
+                                </Picker>
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Label
+                            Text="Fecha"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontSize="Medium"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+                        <Frame
+                            Padding="0"
+                            CornerRadius="26"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            Margin="0,5,0,5"
+                            HasShadow="False"
+                            BackgroundColor="#9AC5F9">
+                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0"
+                                         Margin="10,0">
+                                <DatePicker
+                                    Date="{Binding Order.FechaCompra, Mode=TwoWay}"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    Format="dd/MM/yyyy">
+                                </DatePicker>
+                            </StackLayout>
+                        </Frame>
+
+                        <Label
+                            Text="Monto Total"
+                            Grid.Column="3"
+                            Grid.Row="1"
+                            FontSize="Medium"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+
+                        <Frame
+                            Padding="0"
+                            CornerRadius="26"
+                            Grid.Row="1"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="2"
+                            Margin="0,5,0,5"
+                            HasShadow="False"
+                            BackgroundColor="#9AC5F9">
+                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0"
+                                         Margin="10,0">
+                                <renderers:EntryIcon
+                                    Text="{Binding Order.MontoTotal, Mode=TwoWay}"
+                                    Keyboard="Numeric"
+                                    MaxLength="10"
+                                    CornerRadius="5"
+                                    FontAttributes="Bold"
+                                    FontSize="30"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    Margin="1"
+                                    IsReadOnly="True">
+                                    <renderers:EntryIcon.Behaviors>
+                                        <renderers:NumericValidationBehavior />
+                                    </renderers:EntryIcon.Behaviors>
+                                </renderers:EntryIcon>
+                            </StackLayout>
+                        </Frame>
+
+                        <Label
+                            Text="Notas"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            FontSize="Medium"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+                        <Frame
+                            Padding="0"
+                            CornerRadius="26"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="4"
+                            Margin="0,5,0,5"
+                            HasShadow="False"
+                            BackgroundColor="#9AC5F9">
+                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                <renderers:EntryIcon
+                                    Text="{Binding Order.Notas, Mode=TwoWay}"
+                                    Keyboard="Text"
+                                    MaxLength="300"
+                                    CornerRadius="5"
+                                    FontAttributes="None"
+                                    FontSize="Medium"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center"
+                                    Margin="1">
+                                </renderers:EntryIcon>
+                            </StackLayout>
+                        </Frame>
+
+                        <Button
+                            Text="Guardar"
+                            Grid.Row="2"
+                            Grid.Column="5"
+                            Command="{Binding SaveOrder}"
+                            BackgroundColor="#2877D5"
+                            Margin="5"
+                            TextColor="#FFF">
+                        </Button>
+
+                    </Grid>
+                    <!--DETALLE DE LA ORDEN-->
+                    <Grid
+                        Margin="1,10,1,1"
+                        ColumnSpacing="0"
+                        RowSpacing="0"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFF">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height=".30*"></RowDefinition>
+                            <RowDefinition Height=".70*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Text="DETALLE DE LA COMPRA"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            BackgroundColor="#2877D5"
+                            TextColor="#FFF"
+                            FontSize="Large"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontAttributes="Bold"
+                            FontFamily="Helvetica">
+                        </Label>
+
+                        <!--CAPTURA DE DETALLE-->
+                        <Grid
+                            Margin="1,10,1,1"
+                            ColumnSpacing="0"
+                            RowSpacing="0"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BackgroundColor="#FFF"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width=".9*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width=".6*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width=".8*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label
+                                Text="Producto"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontFamily="Helvetica">
+                            </Label>
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="26"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="5"
+                                Margin="0,5,0,5"
+                                HasShadow="False"
+                                BackgroundColor="#9AC5F9">
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                    <Picker
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+                                        Title="Selecciona un Poducto"
+                                        ItemsSource="{Binding ListProductos}"
+                                        SelectedIndex="{Binding DetalleSelected.IdProducto, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Producto}"
+                                        Margin="10,0">
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label
+                                Text="Cantidad"
+                                Grid.Column="6"
+                                Grid.Row="0"
+                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontFamily="Helvetica">
+                            </Label>
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="26"
+                                Grid.Row="0"
+                                Grid.Column="7"
+                                Margin="0,5,0,5"
+                                HasShadow="False"
+                                BackgroundColor="#9AC5F9">
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                    <renderers:EntryIcon
+                                        Text="{Binding DetalleSelected.Cantidad, Mode=TwoWay}"
+                                        Keyboard="Numeric"
+                                        MaxLength="5"
+                                        CornerRadius="5"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        Margin="1">
+                                    </renderers:EntryIcon>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label
+                                Text="Peso Bruto"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontFamily="Helvetica">
+                            </Label>
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="26"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="0,5,0,5"
+                                HasShadow="False"
+                                BackgroundColor="#9AC5F9">
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0"
+                                             Margin="10,0">
+                                    <renderers:EntryIcon
+                                        Text="{Binding DetalleSelected.PesoBruto, Mode=TwoWay}"
+                                        Keyboard="Numeric"
+                                        MaxLength="4"
+                                        CornerRadius="5"
+                                        FontAttributes="None"
+                                        FontSize="Medium"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        Margin="1">
+                                    </renderers:EntryIcon>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label
+                                Text="Peso Neto"
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontFamily="Helvetica">
+                            </Label>
+
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="26"
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Margin="0,5,0,5"
+                                HasShadow="False"
+                                BackgroundColor="#9AC5F9">
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0"
+                                             Margin="10,0">
+                                    <renderers:EntryIcon
+                                        Text="{Binding DetatalleSelected.PesoNeto, Mode=TwoWay}"
+                                        Keyboard="Numeric"
+                                        MaxLength="4"
+                                        CornerRadius="5"
+                                        FontAttributes="None"
+                                        FontSize="Medium"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        Margin="1">
+                                        <renderers:EntryIcon.Behaviors>
+                                            <renderers:NumericValidationBehavior />
+                                        </renderers:EntryIcon.Behaviors>
+                                    </renderers:EntryIcon>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label
+                                Text="Precio"
+                                Grid.Column="4"
+                                Grid.Row="1"
+                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontFamily="Helvetica">
+                            </Label>
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="26"
+                                Grid.Row="1"
+                                Grid.Column="5"
+                                Margin="0,5,0,5"
+                                HasShadow="False"
+                                BackgroundColor="#9AC5F9">
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                    <renderers:EntryIcon
+                                        Text="{Binding DetalleSelected.PrecioCompra, Mode=TwoWay}"
+                                        Keyboard="Numeric"
+                                        MaxLength="7"
+                                        CornerRadius="5"
+                                        FontAttributes="None"
+                                        FontSize="Medium"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center"
+                                        Margin="1">
+                                    </renderers:EntryIcon>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label
+                                Text="Importe"
+                                Grid.Column="6"
+                                Grid.Row="1"
+                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontFamily="Helvetica">
+                            </Label>
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="26"
+                                Grid.Row="1"
+                                Grid.Column="7"
+                                Margin="0,5,0,5"
+                                HasShadow="False"
+                                BackgroundColor="#9AC5F9">
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                    <renderers:EntryIcon
+                                        Text="{Binding DetalleSelected.Importe, Mode=TwoWay}"
+                                        Keyboard="Numeric"
+                                        MaxLength="7"
+                                        CornerRadius="5"
+                                        FontAttributes="None"
+                                        FontSize="Medium"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        VerticalTextAlignment="Center"
+                                        Margin="1">
+                                    </renderers:EntryIcon>
+                                </StackLayout>
+                            </Frame>
+
+                            <!--<Button
+                                Text="Guardar"
+                                Grid.Row="2"
+                                Grid.Column="5"
+                                Command="{Binding SaveOrder}"
+                                BackgroundColor="#2877D5"
+                                Margin="5"
+                                TextColor="#FFF">
+                            </Button>-->
+
+                        </Grid>
+
+
+                    </Grid>
+
+
+
+                    <!--HEADER-->
+                    <!--<Grid
+                        Margin="1"
+                        ColumnSpacing="0"
+                        RowSpacing="0"
+                        BackgroundColor="#9AC5F9"
+                        IsVisible="{Binding HayInfo}"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            IdProducto
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            Producto
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            ProveedorId
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            Proveedor
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            Precio Compra
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            Precio Venta
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            Tara
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Text="IdProduccto"
+                            Grid.Column="0"
+                            FontSize="10"
+                            Margin="5,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Producto"
+                            Grid.Column="1"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="IdProveedor"
+                            Grid.Column="2"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            TextColor="#353535"
+                            FontAttributes="Bold"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Proveedor"
+                            Grid.Column="3"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Precio Compra"
+                            Grid.Column="4"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Precio Venta"
+                            Grid.Column="5"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+                        <Label
+                            Text="Tara"
+                            Grid.Column="6"
+                            FontSize="10"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            FontFamily="Helvetica">
+                        </Label>
+
+                    </Grid>-->
+
+                    <!--DATOS-->
+                    <!--<CollectionView 
+                        x:Name="CollecionView"
+                        IsVisible="{Binding HayInfo}"
+                        ItemsSource="{Binding ListProduct}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        Margin="0"
+                        SelectionMode="Single"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="Gray">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout 
+                                Orientation="Vertical"
+                                VerticalItemSpacing="1"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Margin="1"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0"
+                                    BackgroundColor="#FFFFFF">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        IdProducto
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        Producto
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        ProveedorId
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        Proveedor
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        Precio Compra
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        Precio Venta
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        Tara
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    DATOS
+                                    <Label
+                                        Text="{Binding IdProducto}"
+                                        Grid.Column="0"
+                                        FontSize="10"
+                                        Margin="5,0,0,0"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Producto}"
+                                        Grid.Column="1"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding ProveedorId}"
+                                        Grid.Column="2"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Proveedor}"
+                                        Grid.Column="3"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding PrecioCompra}"
+                                        Grid.Column="4"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding PrecioVenta}"
+                                        Grid.Column="5"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Tara}"
+                                        Grid.Column="6"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#353535"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    TERMINA DATOS
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>-->
+                    <!--TERMINA DATOS-->
+
+                    <!--<Grid
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Command="{Binding Cancel}"
+                            IsVisible="{Binding HayInfo}"
+                            Text="Cancelar"
+                            BackgroundColor="#FFF"
+                            TextColor="Black"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            BorderColor="Black"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                        </Button>
+                        <Button
+                            Command="{Binding SaveData}"
+                            IsVisible="{Binding HayInfo}"
+                            Text="Guardar información"
+                            BackgroundColor="#2877D5"
+                            TextColor="White"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                        </Button>
+                    </Grid>-->
+                </Grid>
             </StackLayout>
         </RelativeLayout>
     </ContentPage.Content>
