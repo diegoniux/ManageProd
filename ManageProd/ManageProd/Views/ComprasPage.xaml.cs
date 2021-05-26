@@ -15,5 +15,18 @@ namespace ManageProd.Views
             ViewModel = new ComprasPageViewModel();
             BindingContext = ViewModel;
         }
+
+        void Picker_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+            //try
+            //{
+            //    ViewModel.DetalleSelected.Precio = 100;
+            //    BindingContext = ViewModel;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
+        }
     }
 }

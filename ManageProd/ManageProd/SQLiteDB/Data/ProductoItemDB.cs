@@ -27,9 +27,9 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<ProductoItem>().ToListAsync();
         }
 
-        public Task<ProductoItem> GetProductsIdAsync(ProductoItem request)
+        public Task<ProductoItem> GetProductsIdAsync(int IdProducto)
         {
-            return Database.Table<ProductoItem>().Where(i => i.IdProducto == request.IdProducto).FirstOrDefaultAsync();           
+            return Database.Table<ProductoItem>().Where(i => i.IdProducto == IdProducto).FirstOrDefaultAsync();           
         }
 
         public Task<List<ProductoItem>> GetProductsIdProveedorAsync(int IdProveedor)

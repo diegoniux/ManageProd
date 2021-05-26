@@ -30,6 +30,9 @@ namespace ManageProd.SQLiteDB.Models
         [ForeignKey(typeof(ProductoItem)), Column("IdProducto")]
         public int IdProducto { get; set; }
 
+        [Column("Producto")]
+        public string Producto { get; set; }
+
         [Column("Cantidad")]
         public decimal Cantidad { get; set; }
 

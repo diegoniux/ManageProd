@@ -16,7 +16,7 @@ namespace ManageProd.SQLiteDB.Models
             this.IdProveedor = 0;
             this.FechaCompra = DateTime.Now;
             this.Notas = string.Empty;
-            this.MontoTotal = string.Empty;
+            this.MontoTotal = "0";
         }
 
         [PrimaryKey, AutoIncrement, Column("IdOrdenCompra")]

@@ -15,11 +15,17 @@ namespace ManageProd.ViewModels
     public class ComprasPageViewModel: NotificationObject
     {
         public bool IsBusy { get; set; }
+        public bool HayOrden { get; set; }
         public OrdenCompraItem Order { get; set; }
         public ObservableCollection<DetalleCompraItem> ListDetail { get; set; }
         public ObservableCollection<ProveedorItem> ListProveedores { get; set; }
         public ObservableCollection<ProductoItem> ListProduct { get; set; }
         public DetalleCompraItem DetalleSelected { get; set; }
+
+        public ProveedorItem ProveedorSelected { get; set; }
+
+        // Personalizamos la propiedad psra que asigne el precio al propducto
+        public ProductoItem ProductoSelected { get; set; }
 
         public ICommand SaveOrder { get; set; }
         public ICommand AddProduct { get; set; }
@@ -29,11 +35,14 @@ namespace ManageProd.ViewModels
         public ComprasPageViewModel()
         {
             IsBusy = false;
+            HayOrden = false;
             Order = new OrdenCompraItem();
             ListDetail = new ObservableCollection<DetalleCompraItem>();
             ListProveedores = new ObservableCollection<ProveedorItem>();
             ListProduct = new ObservableCollection<ProductoItem>();
             DetalleSelected = new DetalleCompraItem();
+            ProductoSelected = new ProductoItem();
+            ProveedorSelected = new ProveedorItem();
 
             SaveOrder = new Command(async () => await Save());
             AddProduct = new Command(async () => await Add());
@@ -61,13 +70,16 @@ namespace ManageProd.ViewModels
                     return;
                 }
 
-                if (DetalleSelected?.IdDetalleCompra != 0)
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    DetalleCompraItemDB OrderDB = await DetalleCompraItemDB.Instance;
-                    await OrderDB.DeleteDetalleCompraAsync(DetalleSelected);
-                    await LoadOrderDetail(); 
+
+                    if (DetalleSelected?.IdDetalleCompra != 0)
+                    {
+                        DetalleCompraItemDB OrderDB = await DetalleCompraItemDB.Instance;
+                        await OrderDB.DeleteDetalleCompraAsync(DetalleSelected);
+                        await LoadOrderDetail();
+                    }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -93,11 +105,17 @@ namespace ManageProd.ViewModels
                     return;
                 }
 
-                if (DetalleSelected != null)
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    DetalleCompraItemDB OrderDB = await DetalleCompraItemDB.Instance;
-                    await OrderDB.SaveDetalleCompraAsync(DetalleSelected);
-                    await LoadOrderDetail();
+
+                    if (DetalleSelected != null)
+                    {
+                        DetalleSelected.IdProducto = ProductoSelected.IdProducto;
+                        DetalleSelected.Producto = ProductoSelected.Producto;
+                        DetalleCompraItemDB OrderDB = await DetalleCompraItemDB.Instance;
+                        await OrderDB.SaveDetalleCompraAsync(DetalleSelected);
+                        await LoadOrderDetail();
+                    }
                 }
             }
             catch (Exception ex)
@@ -124,13 +142,18 @@ namespace ManageProd.ViewModels
                     return;
                 }
 
-                if (Order != null)
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
-                    await OrderDB.SaveOrdenVentaAsync(Order);
-                    Order = await OrderDB.GetOrdenCompraIdsAsync(Order.IdOrdenCompra);
-                    await LoadProductsProveedor();
-                    await UserDialogs.Instance.AlertAsync("Orden de Compra regitrada correctamente.", "Aviso", "Ok");
+                    if (Order != null)
+                    {
+                        Order.IdProveedor = ProveedorSelected.IdProveedor;
+                        OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
+                        await OrderDB.SaveOrdenVentaAsync(Order);
+                        Order = await OrderDB.GetOrdenCompraIdsAsync(Order.IdOrdenCompra);
+                        await LoadProductsProveedor();
+                        HayOrden = true;
+                        await UserDialogs.Instance.AlertAsync("Orden de Compra regitrada correctamente.", "Aviso", "Ok");
+                    }
                 }
             }
             catch (Exception ex)

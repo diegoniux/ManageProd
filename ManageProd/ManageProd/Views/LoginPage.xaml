@@ -113,7 +113,8 @@
                                 PlaceholderColor="#C4C4C4"
                                 TextColor="#275D38"
                                 BackgroundColor="#FFFFFF" 
-                                HorizontalOptions="FillAndExpand">
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,0,-10">
                             </renderers:EntryIcon>
                         </StackLayout>
                     </Frame>
@@ -140,7 +141,8 @@
                                 Placeholder="Ingresa tu contraseña"
                                 IsPassword="True"
                                 PlaceholderColor="#C4C4C4"
-                                HorizontalOptions="FillAndExpand">
+                                HorizontalOptions="FillAndExpand"
+                                Margin="0,0,0,-10">
                             </renderers:EntryIcon>
 
                             <Image 
