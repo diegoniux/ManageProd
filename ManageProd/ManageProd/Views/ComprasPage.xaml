@@ -40,10 +40,10 @@
                       RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height=".22*"></RowDefinition>
-                        <RowDefinition Height=".30*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height=".60*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"></ColumnDefinition>
@@ -223,8 +223,8 @@
                             <StackLayout Orientation="Horizontal" Padding="0" Spacing="0"
                                          Margin="10,0">
                                 <renderers:EntryIcon
+                                    x:Name="Monto"
                                     Text="{Binding Order.MontoTotal, Mode=TwoWay}"
-                                    Keyboard="Numeric"
                                     MaxLength="10"
                                     CornerRadius="5"
                                     FontAttributes="Bold"
@@ -235,9 +235,6 @@
                                     VerticalTextAlignment="Center"
                                     Margin="0,0,0,-6"
                                     IsReadOnly="True">
-                                    <renderers:EntryIcon.Behaviors>
-                                        <renderers:NumericValidationBehavior />
-                                    </renderers:EntryIcon.Behaviors>
                                 </renderers:EntryIcon>
                             </StackLayout>
                         </Frame>
@@ -290,7 +287,6 @@
                             Margin="5"
                             TextColor="#FFF">
                         </Button>
-
                     </Grid>
                     <!--DETALLE DE LA ORDEN-->
                     <Grid
@@ -306,8 +302,7 @@
                         BackgroundColor="#FFF">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"></RowDefinition>
-                            <RowDefinition Height=".30*"></RowDefinition>
-                            <RowDefinition Height=".80*"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -342,7 +337,6 @@
                                 <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="50"></RowDefinition>
                                 <RowDefinition Height="50"></RowDefinition>
-                                <RowDefinition Height="40"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -415,6 +409,7 @@
                                 BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <renderers:EntryIcon
+                                        x:Name="Cantidad"
                                         Text="{Binding DetalleSelected.Cantidad, Mode=TwoWay}"
                                         Keyboard="Numeric"
                                         MaxLength="5"
@@ -425,7 +420,8 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6">
+                                        Margin="0,0,0,-6"
+                                        TextChanged="TextChanged">
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>
@@ -453,6 +449,7 @@
                                 BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <renderers:EntryIcon
+                                        x:Name="PesoBruto"
                                         Text="{Binding DetalleSelected.PesoBruto}"
                                         Keyboard="Numeric"
                                         MaxLength="5"
@@ -463,7 +460,8 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6">
+                                        Margin="0,0,0,-6"
+                                        TextChanged="TextChanged">
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>
@@ -492,7 +490,8 @@
                                 BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <renderers:EntryIcon
-                                        Text="{Binding DetatalleSelected.PesoNeto, Mode=TwoWay}"
+                                        Text="{Binding DetalleSelected.PesoNeto}"
+                                        x:Name="PesoNeto"
                                         Keyboard="Numeric"
                                         MaxLength="4"
                                         CornerRadius="5"
@@ -502,7 +501,8 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6">
+                                        Margin="0,0,0,-6"
+                                        TextChanged="TextChanged">
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>
@@ -533,7 +533,8 @@
                                 BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <renderers:EntryIcon
-                                        Text="{Binding DetalleSelected.PrecioCompra, Mode=TwoWay}"
+                                        x:Name="Precio"
+                                        Text="{Binding DetalleSelected.Precio, Mode=TwoWay}"
                                         Keyboard="Numeric"
                                         MaxLength="7"
                                         CornerRadius="5"
@@ -543,7 +544,8 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6">
+                                        Margin="0,0,0,-6"
+                                        TextChanged="TextChanged">
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>
@@ -571,6 +573,7 @@
                                 BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <renderers:EntryIcon
+                                        x:Name="Importe"
                                         Text="{Binding DetalleSelected.Importe, Mode=TwoWay}"
                                         Keyboard="Numeric"
                                         MaxLength="7"
@@ -581,7 +584,8 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6">
+                                        Margin="0,0,0,-6"
+                                        IsReadOnly="True">
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>

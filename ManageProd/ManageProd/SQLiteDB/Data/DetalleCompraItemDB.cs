@@ -58,6 +58,12 @@ namespace ManageProd.SQLiteDB.Data
             }
         }
 
+        public Task<Decimal> GetSumaImporteAsync(int IdOrdenCompra)
+        {
+           return Database.ExecuteScalarAsync<Decimal>(
+                "SELECT SUM(Importe) FROM [DetalleCompraItem] WHERE [IdOrdenCompra] = " + IdOrdenCompra);
+        }
+
         public Task<int> DeleteDetalleCompraAsync(DetalleCompraItem request)
         {
             return Database.DeleteAsync(request);

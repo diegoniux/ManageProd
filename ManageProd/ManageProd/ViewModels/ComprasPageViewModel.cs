@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using ManageProd.SQLiteDB.Data;
 using ManageProd.SQLiteDB.Models;
-using ReactiveUI;
+using ManageProd.Views;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace ManageProd.ViewModels
@@ -50,6 +54,16 @@ namespace ManageProd.ViewModels
 
             LoadCatalogs();
 
+            MessagingCenter.Subscribe<ComprasPage, ProductoItem>(this, "productoChanged", (sender, arg) =>
+            {
+                var producto = arg;
+                var detalle = DetalleSelected;
+                detalle.IdProducto = producto.IdProducto;
+                detalle.Producto = producto.Producto;
+
+                DetalleSelected = detalle;
+            });
+
         }
 
         private async Task Delete()
@@ -78,6 +92,7 @@ namespace ManageProd.ViewModels
                         DetalleCompraItemDB OrderDB = await DetalleCompraItemDB.Instance;
                         await OrderDB.DeleteDetalleCompraAsync(DetalleSelected);
                         await LoadOrderDetail();
+                        await ActualizarMontoTotal();
                     }
                 }
             }
@@ -110,17 +125,39 @@ namespace ManageProd.ViewModels
 
                     if (DetalleSelected != null)
                     {
-                        DetalleSelected.IdProducto = ProductoSelected.IdProducto;
-                        DetalleSelected.Producto = ProductoSelected.Producto;
-                        DetalleCompraItemDB OrderDB = await DetalleCompraItemDB.Instance;
-                        await OrderDB.SaveDetalleCompraAsync(DetalleSelected);
+                        DetalleSelected.IdOrdenCompra = Order.IdOrdenCompra;
+                        DetalleCompraItemDB DetalleDB = await DetalleCompraItemDB.Instance;
+                        await DetalleDB.SaveDetalleCompraAsync(DetalleSelected);
                         await LoadOrderDetail();
+                        await ActualizarMontoTotal();
+                        DetalleSelected = new DetalleCompraItem();
                     }
                 }
             }
             catch (Exception ex)
             {
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
+        }
+
+        private async Task<bool> ActualizarMontoTotal()
+        {
+            try
+            {
+                DetalleCompraItemDB DetalleDB = await DetalleCompraItemDB.Instance;
+                var MontoTotal = await DetalleDB.GetSumaImporteAsync(Order.IdOrdenCompra);
+                Order.MontoTotal = MontoTotal.ToString("$0,0.00");
+                OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
+                await OrderDB.SaveOrdenVentaAsync(Order);
+
+                MessagingCenter.Send<ComprasPageViewModel, OrdenCompraItem>(this, "MontoChanged", Order);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+                return false;
             }
         }
 
@@ -152,7 +189,6 @@ namespace ManageProd.ViewModels
                         Order = await OrderDB.GetOrdenCompraIdsAsync(Order.IdOrdenCompra);
                         await LoadProductsProveedor();
                         HayOrden = true;
-                        await UserDialogs.Instance.AlertAsync("Orden de Compra regitrada correctamente.", "Aviso", "Ok");
                     }
                 }
             }

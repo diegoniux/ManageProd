@@ -20,6 +20,7 @@ namespace ManageProd.SQLiteDB.Models
             this.PesoNeto = 0;
             this.Precio = 0;
             this.Importe = 0;
+            this.Producto = "";
         }
 
         [PrimaryKey, AutoIncrement, Column("IdDetalleCompra")]
