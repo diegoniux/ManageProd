@@ -45,5 +45,6 @@
     <Folder Include="Templates\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Routing\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>

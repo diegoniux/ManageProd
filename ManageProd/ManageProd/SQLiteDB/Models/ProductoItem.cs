@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ManageProd.ViewModels;
 using SQLite;
 using SQLiteNetExtensions;
 using SQLiteNetExtensions.Attributes;
@@ -8,7 +9,7 @@ using SQLiteNetExtensions.Attributes;
 namespace ManageProd.SQLiteDB.Models
 {
     [Table("ProductoItem")]
-    public class ProductoItem
+    public class ProductoItem: NotificationObject
     {
         [PrimaryKey, Column("IdProducto")]
         public int IdProducto { get; set; }

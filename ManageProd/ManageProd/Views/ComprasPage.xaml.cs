@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Acr.UserDialogs;
 using ManageProd.Renderers;
 using ManageProd.SQLiteDB.Models;
 using ManageProd.ViewModels;
-using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace ManageProd.Views
@@ -33,8 +31,8 @@ namespace ManageProd.Views
             {
                 var picker = sender as Picker;
                 ProductoItem producto = picker.SelectedItem as ProductoItem;
-                this.Precio.Text = "150";
-                MessagingCenter.Send<ComprasPage, ProductoItem>(this, "productoChanged" , producto);
+                this.Precio.Text = producto.PrecioCompra.ToString();
+                MessagingCenter.Send<ComprasPage, ProductoItem>(this, "productoChanged", producto);
             }
             catch (Exception ex)
             {
@@ -54,15 +52,22 @@ namespace ManageProd.Views
                     return;
                 }
 
-                int.TryParse(Cantidad.Text, out var cantidad);
-                int.TryParse(PesoBruto.Text, out var pesoBruto);
-                int.TryParse(PesoNeto.Text, out var pesoNeto);
-                int.TryParse(Precio.Text, out var precio);
+                decimal.TryParse(Cantidad.Text, out var cantidad);
+                decimal.TryParse(PesoBruto.Text, out var pesoBruto);
+                decimal.TryParse(Precio.Text, out var precio);
 
-                var importe = cantidad * pesoNeto * precio;
+                var tara = ViewModel.ProductoSelected.Tara;
+                var pesoNeto = pesoBruto;
+
+                if (tara != 0)
+                {
+                    pesoNeto = pesoBruto - (cantidad * tara);
+                }
+
+                PesoNeto.Text = pesoNeto.ToString();
+
+                var importe = pesoNeto * precio;
                 Importe.Text = importe.ToString();
-
-
 
             }
             catch (Exception ex)

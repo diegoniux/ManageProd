@@ -20,6 +20,7 @@ namespace ManageProd.ViewModels
     {
         public bool IsBusy { get; set; }
         public bool HayOrden { get; set; }
+        public bool IsSelected { get; set; }
         public OrdenCompraItem Order { get; set; }
         public ObservableCollection<DetalleCompraItem> ListDetail { get; set; }
         public ObservableCollection<ProveedorItem> ListProveedores { get; set; }
@@ -34,12 +35,16 @@ namespace ManageProd.ViewModels
         public ICommand SaveOrder { get; set; }
         public ICommand AddProduct { get; set; }
         public ICommand DeleteProduct { get; set; }
+        public ICommand ProductoSelectionChanged { get; set; }
+        public ICommand NewProduct { get; set; }
 
 
         public ComprasPageViewModel()
         {
             IsBusy = false;
             HayOrden = false;
+            IsSelected = false;
+
             Order = new OrdenCompraItem();
             ListDetail = new ObservableCollection<DetalleCompraItem>();
             ListProveedores = new ObservableCollection<ProveedorItem>();
@@ -51,6 +56,8 @@ namespace ManageProd.ViewModels
             SaveOrder = new Command(async () => await Save());
             AddProduct = new Command(async () => await Add());
             DeleteProduct = new Command(async () => await Delete());
+            ProductoSelectionChanged = new Command(async () => await SelectChanged());
+            NewProduct = new Command(async () =>  await NewProd());
 
             LoadCatalogs();
 
@@ -60,10 +67,47 @@ namespace ManageProd.ViewModels
                 var detalle = DetalleSelected;
                 detalle.IdProducto = producto.IdProducto;
                 detalle.Producto = producto.Producto;
+                detalle.Precio = producto.PrecioCompra;
 
                 DetalleSelected = detalle;
             });
 
+        }
+
+        private async Task NewProd()
+        {
+            try
+            {
+                IsSelected = false;
+
+                DetalleSelected = new DetalleCompraItem();
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
+        }
+
+        private async Task SelectChanged()
+        {
+            try
+            {
+                IsSelected = DetalleSelected?.IdDetalleCompra != 0;
+
+                if (!IsSelected)
+                {
+                    return;
+                }
+
+                var idProducto = DetalleSelected.IdProducto;
+
+                var item = ListProduct.ToList().Find(x => x.IdProducto == idProducto);
+                ProductoSelected = item;
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
         }
 
         private async Task Delete()

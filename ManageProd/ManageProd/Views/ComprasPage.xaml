@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:renderers="clr-namespace:ManageProd.Renderers"
     Title="Gestión de Compras"
-    Visual="Material"
     x:Class="ManageProd.Views.ComprasPage">
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -374,11 +373,12 @@
                                 BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <Picker
+                                        x:Name="pickerProducto"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalOptions="FillAndExpand"
                                         Title="Selecciona un Poducto"
                                         ItemsSource="{Binding ListProduct}"
-                                        SelectedItem="{Binding ProductoSelected}"
+                                        SelectedItem="{Binding ProductoSelected, Mode=TwoWay}"
                                         ItemDisplayBinding="{Binding Producto}"
                                         SelectedIndexChanged="Picker_SelectedIndexChanged"
                                         Margin="10,0,0,-6">
@@ -502,7 +502,8 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-6"
-                                        TextChanged="TextChanged">
+                                        TextChanged="TextChanged"
+                                        IsReadOnly="true">
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>
@@ -600,6 +601,17 @@
                                 Spacing="5">
 
                                 <Button
+                                    Text="Nuevo"
+                                    Grid.Row="2"
+                                    Grid.Column="5"
+                                    Command="{Binding NewProduct}"
+                                    BackgroundColor="#2877D5"
+                                    Margin="5"
+                                    TextColor="#FFF"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsEnabled="{Binding IsSelected}">
+                                </Button>
+                                <Button
                                     Text="Eliminar"
                                     Grid.Row="2"
                                     Grid.Column="5"
@@ -607,7 +619,8 @@
                                     BackgroundColor="#FF1D25"
                                     Margin="5"
                                     TextColor="#FFF"
-                                    HorizontalOptions="FillAndExpand">
+                                    HorizontalOptions="FillAndExpand"
+                                    IsEnabled="{Binding IsSelected}">
                                 </Button>
                                 <Button
                                     Text="Agregar"
@@ -717,6 +730,8 @@
                         x:Name="CollecionView"
                         IsVisible="{Binding HayOrden, Mode=TwoWay}"
                         ItemsSource="{Binding ListDetail}"
+                        SelectedItem="{Binding DetalleSelected}"
+                        SelectionChangedCommand="{Binding ProductoSelectionChanged}"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Grid.Row="4"
@@ -793,7 +808,7 @@
                                         FontFamily="Helvetica">
                                     </Label>
                                     <Label
-                                        Text="{Binding PercioCompra}"
+                                        Text="{Binding Precio}"
                                         Grid.Column="4"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
