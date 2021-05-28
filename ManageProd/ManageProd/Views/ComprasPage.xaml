@@ -422,6 +422,9 @@
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-6"
                                         TextChanged="TextChanged">
+                                        <renderers:EntryIcon.Behaviors>
+                                            <renderers:NumericValidationBehavior />
+                                        </renderers:EntryIcon.Behaviors>
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>
@@ -452,7 +455,6 @@
                                         x:Name="PesoBruto"
                                         Text="{Binding DetalleSelected.PesoBruto}"
                                         Keyboard="Numeric"
-                                        MaxLength="5"
                                         CornerRadius="5"
                                         FontAttributes="None"
                                         FontSize="20"
@@ -462,6 +464,9 @@
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-6"
                                         TextChanged="TextChanged">
+                                        <renderers:EntryIcon.Behaviors>
+                                            <renderers:LengthValidateBehavior MaxLength="7"/>
+                                        </renderers:EntryIcon.Behaviors>
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>
@@ -502,10 +507,9 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-6"
-                                        TextChanged="TextChanged"
                                         IsReadOnly="true">
                                         <renderers:EntryIcon.Behaviors>
-                                            <renderers:NumericValidationBehavior />
+                                            <renderers:LengthValidateBehavior MaxLength="7"/>
                                         </renderers:EntryIcon.Behaviors>
                                     </renderers:EntryIcon>
                                 </StackLayout>
@@ -546,7 +550,7 @@
                                         HorizontalTextAlignment="center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-6"
-                                        TextChanged="TextChanged">
+                                        IsReadOnly="True">
                                     </renderers:EntryIcon>
                                 </StackLayout>
                             </Frame>
@@ -592,9 +596,9 @@
                             </Frame>
 
                             <StackLayout
-                                Grid.Column="5"
+                                Grid.Column="4"
                                 Grid.Row="2"
-                                Grid.ColumnSpan="3"
+                                Grid.ColumnSpan="4"
                                 VerticalOptions="FillAndExpand"
                                 HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal"
@@ -602,19 +606,15 @@
 
                                 <Button
                                     Text="Nuevo"
-                                    Grid.Row="2"
-                                    Grid.Column="5"
                                     Command="{Binding NewProduct}"
-                                    BackgroundColor="#2877D5"
+                                    BackgroundColor="#FFF"
                                     Margin="5"
-                                    TextColor="#FFF"
+                                    TextColor="#000"
                                     HorizontalOptions="FillAndExpand"
                                     IsEnabled="{Binding IsSelected}">
                                 </Button>
                                 <Button
                                     Text="Eliminar"
-                                    Grid.Row="2"
-                                    Grid.Column="5"
                                     Command="{Binding DeleteProduct}"
                                     BackgroundColor="#FF1D25"
                                     Margin="5"
@@ -624,8 +624,6 @@
                                 </Button>
                                 <Button
                                     Text="Agregar"
-                                    Grid.Row="2"
-                                    Grid.Column="5"
                                     Command="{Binding AddProduct}"
                                     BackgroundColor="#2DAD26"
                                     Margin="5"
@@ -808,7 +806,7 @@
                                         FontFamily="Helvetica">
                                     </Label>
                                     <Label
-                                        Text="{Binding Precio}"
+                                        Text="{Binding Precio, StringFormat='{0:C2}'}"
                                         Grid.Column="4"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
@@ -817,7 +815,7 @@
                                         FontFamily="Helvetica">
                                     </Label>
                                     <Label
-                                        Text="{Binding Importe}"
+                                        Text="{Binding Importe, StringFormat='{0:C2}'}"
                                         Grid.Column="5"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"

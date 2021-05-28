@@ -56,12 +56,22 @@ namespace ManageProd.Views
                 decimal.TryParse(PesoBruto.Text, out var pesoBruto);
                 decimal.TryParse(Precio.Text, out var precio);
 
+                if (ViewModel.ProductoSelected == null)
+                {
+                    return;
+                }
+
                 var tara = ViewModel.ProductoSelected.Tara;
                 var pesoNeto = pesoBruto;
 
                 if (tara != 0)
                 {
                     pesoNeto = pesoBruto - (cantidad * tara);
+                }
+
+                if (pesoNeto < 0)
+                {
+                    return;
                 }
 
                 PesoNeto.Text = pesoNeto.ToString();
@@ -74,7 +84,7 @@ namespace ManageProd.Views
             {
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
             }
-            
+
 
         }
     }

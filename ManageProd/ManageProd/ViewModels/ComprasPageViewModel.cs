@@ -29,7 +29,7 @@ namespace ManageProd.ViewModels
 
         public ProveedorItem ProveedorSelected { get; set; }
 
-        // Personalizamos la propiedad psra que asigne el precio al propducto
+        // Personalizamos la propiedad para que asigne el precio al propducto
         public ProductoItem ProductoSelected { get; set; }
 
         public ICommand SaveOrder { get; set; }
@@ -81,6 +81,7 @@ namespace ManageProd.ViewModels
                 IsSelected = false;
 
                 DetalleSelected = new DetalleCompraItem();
+                ProductoSelected = new ProductoItem();
             }
             catch (Exception ex)
             {
@@ -137,6 +138,9 @@ namespace ManageProd.ViewModels
                         await OrderDB.DeleteDetalleCompraAsync(DetalleSelected);
                         await LoadOrderDetail();
                         await ActualizarMontoTotal();
+                        IsSelected = false;
+                        DetalleSelected = new DetalleCompraItem();
+                        ProductoSelected = new ProductoItem();
                     }
                 }
             }
@@ -174,7 +178,9 @@ namespace ManageProd.ViewModels
                         await DetalleDB.SaveDetalleCompraAsync(DetalleSelected);
                         await LoadOrderDetail();
                         await ActualizarMontoTotal();
+                        IsSelected = false;
                         DetalleSelected = new DetalleCompraItem();
+                        ProductoSelected = new ProductoItem();
                     }
                 }
             }
