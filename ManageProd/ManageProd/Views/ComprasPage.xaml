@@ -72,9 +72,9 @@
                         Grid.ColumnSpan="2"
                         BackgroundColor="#FFF">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width=".6*"></ColumnDefinition>
@@ -90,7 +90,7 @@
                             Text="Folio"
                             Grid.Column="0"
                             Grid.Row="0"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Margin="5,0,0,0"
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Start"
@@ -115,7 +115,7 @@
                                     MaxLength="5"
                                     CornerRadius="5"
                                     FontAttributes="Bold"
-                                    FontSize="20"
+                                    FontSize="Small"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Center"
@@ -130,7 +130,7 @@
                             Text="Proveedor"
                             Grid.Column="2"
                             Grid.Row="0"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Margin="5,0,0,0"
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Start"
@@ -156,7 +156,9 @@
                                     ItemsSource="{Binding ListProveedores}"
                                     SelectedItem="{Binding ProveedorSelected}"
                                     ItemDisplayBinding="{Binding Proveedor}"
-                                    Margin="10,0,0,-6">
+                                    Margin="10,0,0,-6"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="Small">
                                 </Picker>
                             </StackLayout>
                         </Frame>
@@ -166,7 +168,7 @@
                             Text="Fecha"
                             Grid.Column="0"
                             Grid.Row="1"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Margin="5,0,0,0"
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Start"
@@ -191,7 +193,8 @@
                                     VerticalOptions="FillAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     Format="dd/MM/yyyy"
-                                    Margin="0,0,0,-6">
+                                    Margin="0,0,0,-6"
+                                    FontSize="Small">
                                 </DatePicker>
                             </StackLayout>
                         </Frame>
@@ -200,7 +203,7 @@
                             Text="Monto Total"
                             Grid.Column="3"
                             Grid.Row="1"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Margin="5,0,0,0"
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Start"
@@ -227,7 +230,7 @@
                                     MaxLength="10"
                                     CornerRadius="5"
                                     FontAttributes="Bold"
-                                    FontSize="Large"
+                                    FontSize="Small"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Center"
@@ -242,7 +245,7 @@
                             Text="Notas"
                             Grid.Column="0"
                             Grid.Row="2"
-                            FontSize="Medium"
+                            FontSize="Small"
                             Margin="5,0,0,0"
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Start"
@@ -260,19 +263,19 @@
                             Margin="0,5,0,5"
                             HasShadow="False"
                             BackgroundColor="#9AC5F9">
-                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                            <StackLayout Orientation="Horizontal" Padding="0" Spacing="0" Margin="10,0">
                                 <renderers:EntryIcon
                                     Text="{Binding Order.Notas, Mode=TwoWay}"
                                     Keyboard="Text"
                                     MaxLength="300"
                                     CornerRadius="5"
                                     FontAttributes="None"
-                                    FontSize="Medium"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Center"
-                                    Margin="0,0,0,-6">
+                                    Margin="0,0,0,-6"
+                                    FontSize="Small">
                                 </renderers:EntryIcon>
                             </StackLayout>
                         </Frame>
@@ -284,7 +287,8 @@
                             Command="{Binding SaveOrder}"
                             BackgroundColor="#2877D5"
                             Margin="5"
-                            TextColor="#FFF">
+                            TextColor="#FFF"
+                            FontSize="Small">
                         </Button>
                     </Grid>
                     <!--DETALLE DE LA ORDEN-->
