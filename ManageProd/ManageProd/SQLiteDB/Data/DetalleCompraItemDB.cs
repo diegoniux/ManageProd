@@ -69,9 +69,9 @@ namespace ManageProd.SQLiteDB.Data
             return Database.DeleteAsync(request);
         }
 
-        public Task<int> DeleteAllDetalleComprasAsync()
+        public Task<int> DeleteAllDetalleComprasAsync(int IdOrdenCompra)
         {
-            return Database.ExecuteAsync("DELETE FROM [DetalleCompraItem]");
+            return Database.ExecuteAsync("DELETE FROM [DetalleCompraItem] WHERE [IdOrdenCompra] = " + IdOrdenCompra);
         }
     }
 }
