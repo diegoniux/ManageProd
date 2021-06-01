@@ -24,7 +24,7 @@ namespace ManageProd.SQLiteDB.Models
         [ForeignKey(typeof(ClienteItem)), Column("IdCliente")]
         public int IdCliente { get; set; }
 
-        [Column("Fecha")]
+        [Column("FechaVenta")]
         public DateTime FechaVenta { get; set; }
 
         [Column("MontoTotal")]

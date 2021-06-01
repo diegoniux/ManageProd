@@ -19,6 +19,7 @@ namespace ManageProd.SQLiteDB.Models
             this.Precio = 0;
             this.Descuento = 0;
             this.Importe = 0;
+            this.PesoNeto = 0;
         }
 
         [PrimaryKey, AutoIncrement, Column("IdDetalleVenta")]
@@ -36,6 +37,9 @@ namespace ManageProd.SQLiteDB.Models
         [Column("Cantidad")]
         public decimal Cantidad { get; set; }
 
+        [Column("PesoNeto")]
+        public decimal PesoNeto { get; set; }
+
         [Column("Precio")]
         public decimal Precio { get; set; }
 
@@ -44,5 +48,11 @@ namespace ManageProd.SQLiteDB.Models
 
         [Column("Importe")]
         public decimal Importe { get; set; }
+
+        [Column("CreditosAnteriores")]
+        public string CreditosAnteriores { get; set; }
+
+        [Column("ExistenciasAnteriores")]
+        public string ExistenciasAnteriores { get; set; }
     }
 }
