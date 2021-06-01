@@ -288,7 +288,7 @@
                             BackgroundColor="#2877D5"
                             Margin="5"
                             TextColor="#FFF"
-                            FontSize="Small">
+                            FontSize="9">
                         </Button>
                     </Grid>
                     <!--DETALLE DE LA ORDEN-->
@@ -319,7 +319,7 @@
                             HorizontalTextAlignment="Center"
                             BackgroundColor="#2877D5"
                             TextColor="#FFF"
-                            FontSize="Large"
+                            FontSize="Small"
                             Grid.Column="0"
                             Grid.Row="0"
                             FontAttributes="Bold"
@@ -337,9 +337,9 @@
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -357,7 +357,7 @@
                                 Text="Producto"
                                 Grid.Column="0"
                                 Grid.Row="0"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -385,7 +385,8 @@
                                         SelectedItem="{Binding ProductoSelected, Mode=TwoWay}"
                                         ItemDisplayBinding="{Binding Producto}"
                                         SelectedIndexChanged="Picker_SelectedIndexChanged"
-                                        Margin="10,0,0,-6">
+                                        Margin="10,0,0,-6"
+                                        FontSize="Small">
                                     </Picker>
                                 </StackLayout>
                             </Frame>
@@ -394,7 +395,7 @@
                                 Text="Cantidad"
                                 Grid.Column="6"
                                 Grid.Row="0"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -419,13 +420,13 @@
                                         MaxLength="5"
                                         CornerRadius="5"
                                         FontAttributes="None"
-                                        FontSize="20"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-6"
-                                        TextChanged="TextChanged">
+                                        TextChanged="TextChanged"
+                                        FontSize="Small">
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>
@@ -437,7 +438,7 @@
                                 Text="Peso Bruto"
                                 Grid.Column="0"
                                 Grid.Row="1"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -461,7 +462,7 @@
                                         Keyboard="Numeric"
                                         CornerRadius="5"
                                         FontAttributes="None"
-                                        FontSize="20"
+                                        FontSize="Small"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
@@ -479,7 +480,7 @@
                                 Text="Peso Neto"
                                 Grid.Column="2"
                                 Grid.Row="1"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -505,7 +506,7 @@
                                         MaxLength="4"
                                         CornerRadius="5"
                                         FontAttributes="None"
-                                        FontSize="Medium"
+                                        FontSize="Small"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
@@ -523,7 +524,7 @@
                                 Text="Precio"
                                 Grid.Column="4"
                                 Grid.Row="1"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -548,7 +549,7 @@
                                         MaxLength="7"
                                         CornerRadius="5"
                                         FontAttributes="None"
-                                        FontSize="Medium"
+                                        FontSize="Small"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="center"
@@ -563,7 +564,7 @@
                                 Text="Importe"
                                 Grid.Column="6"
                                 Grid.Row="1"
-                                FontSize="Medium"
+                                FontSize="Small"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -588,7 +589,7 @@
                                         MaxLength="7"
                                         CornerRadius="5"
                                         FontAttributes="None"
-                                        FontSize="Medium"
+                                        FontSize="Small"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
@@ -615,7 +616,8 @@
                                     Margin="5"
                                     TextColor="#000"
                                     HorizontalOptions="FillAndExpand"
-                                    IsEnabled="{Binding IsSelected}">
+                                    IsEnabled="{Binding IsSelected}"
+                                    FontSize="9">
                                 </Button>
                                 <Button
                                     Text="Eliminar"
@@ -624,7 +626,8 @@
                                     Margin="5"
                                     TextColor="#FFF"
                                     HorizontalOptions="FillAndExpand"
-                                    IsEnabled="{Binding IsSelected}">
+                                    IsEnabled="{Binding IsSelected}"
+                                    FontSize="9">
                                 </Button>
                                 <Button
                                     Text="Agregar"
@@ -632,7 +635,8 @@
                                     BackgroundColor="#2DAD26"
                                     Margin="5"
                                     TextColor="#FFF"
-                                    HorizontalOptions="FillAndExpand">
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="9">
                                 </Button>
                             </StackLayout>
                         </Grid>
