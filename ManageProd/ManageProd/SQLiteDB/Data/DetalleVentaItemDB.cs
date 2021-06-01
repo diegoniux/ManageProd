@@ -32,20 +32,19 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<DetalleVentaItem>().Where(i => i.IdDetalleVenta == request.IdDetalleVenta).FirstOrDefaultAsync();
         }
 
-        public Task<List<DetalleVentaItem>> GetDetalleVentaIdDetalleCompraAsync(DetalleVentaItem request)
+        public Task<List<DetalleVentaItem>> GetDetalleVentaIdAsync(int IdOrdenVenta)
         {
             return Database.QueryAsync<DetalleVentaItem>(
-                "SELECT * FROM [DetalleVentaItem] WHERE [IdDetalleVenta] = " + request.IdDetalleVenta + " AND [IdOrdenCompra] = " + request.IdOrdenCompra);
+                "SELECT * FROM [DetalleVentaItem] WHERE [IdOrdenVenta] = " + IdOrdenVenta);
         }
 
-        public Task<List<DetalleVentaItem>> GetDetalleVentaALLIdsAsync(DetalleVentaItem request)
+        public Task<List<DetalleVentaItem>> GetDetalleVentaALLIdsAsync(int IdDetalleVenta)
         {
             return Database.QueryAsync<DetalleVentaItem>(
-                "SELECT * FROM [DetalleVentaItem] WHERE [IdDetalleVenta] = " + request.IdDetalleVenta + " AND [IdOrdenCompra] = " + request.IdOrdenCompra
-                 + " AND [IdProducto] = " + request.IdProducto);
+                "SELECT * FROM [DetalleVentaItem] WHERE [IdDetalleVenta] = " + IdDetalleVenta);
         }
 
-        public Task<int> SaveOrdenVentaAsync(DetalleVentaItem request)
+        public Task<int> SaveDetalleVentaAsync(DetalleVentaItem request)
         {
             if (request.IdDetalleVenta != 0)
             {
@@ -57,7 +56,13 @@ namespace ManageProd.SQLiteDB.Data
             }
         }
 
-        public Task<int> DeleteOrdenComprasAsync(DetalleVentaItem request)
+        public Task<Decimal> GetSumaImporteAsync(int IdOrdenVenta)
+        {
+            return Database.ExecuteScalarAsync<Decimal>(
+                 "SELECT SUM(Importe) FROM [DetalleVentaItem] WHERE [IdOrdenVenta] = " + IdOrdenVenta);
+        }
+
+        public Task<int> DeleteDetalleVentaAsync(DetalleVentaItem request)
         {
             return Database.DeleteAsync(request);
         }

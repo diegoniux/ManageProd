@@ -32,9 +32,9 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<OrdenVentaItem>().Where(i => i.IdOrdenVenta == request.IdOrdenVenta).FirstOrDefaultAsync();
         }        
 
-        public Task<List<OrdenVentaItem>> GetOrdenVentaIdsAsync(OrdenVentaItem request)
+        public Task<OrdenVentaItem> GetOrdenVentaIdsAsync(int IdOrdenVenta)
         {
-            return Database.QueryAsync<OrdenVentaItem>("SELECT * FROM [OrdenVentaItem] WHERE [IdOrdenVenta] = " + request.IdOrdenVenta + " AND [IdCliente] = " + request.IdCliente);
+            return Database.Table<OrdenVentaItem>().Where(i => i.IdOrdenVenta == IdOrdenVenta).FirstOrDefaultAsync();
         }
 
         public Task<List<OrdenVentaItem>> GetProductsIdClienteAsync(OrdenVentaItem request)
