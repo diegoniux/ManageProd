@@ -13,7 +13,7 @@ namespace ManageProd.SQLiteDB.Models
         public DetalleVentaItem()
         {
             this.IdDetalleVenta = 0;
-            this.IdOrdenCompra = 0;
+            this.IdOrdenVenta = 0;
             this.IdProducto = 0;
             this.Cantidad = 0;
             this.Precio = 0;
@@ -25,8 +25,14 @@ namespace ManageProd.SQLiteDB.Models
         [PrimaryKey, AutoIncrement, Column("IdDetalleVenta")]
         public int IdDetalleVenta { get; set; }
 
-        [ForeignKey(typeof(OrdenCompraItem)), Column("IdOrdenCompra")]
-        public int IdOrdenCompra { get; set; }
+        [ForeignKey(typeof(OrdenVentaItem)), Column("IdOrdenVenta")]
+        public int IdOrdenVenta { get; set; }
+
+        [Column("IdProveedor")]
+        public int IdProveedor { get; set; }
+
+        [Column("Proveedor")]
+        public int Proveedor { get; set; }
 
         [ForeignKey(typeof(ProductoItem)), Column("IdProducto")]
         public int IdProducto { get; set; }

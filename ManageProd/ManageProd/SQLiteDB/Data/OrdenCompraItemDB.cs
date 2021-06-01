@@ -42,7 +42,7 @@ namespace ManageProd.SQLiteDB.Data
             return Database.QueryAsync<OrdenCompraItem>("SELECT * FROM [OrdenCompraItem] WHERE [IdProveedor] = " + request.IdProveedor);
         }
 
-        public Task<int> SaveOrdenVentaAsync(OrdenCompraItem request)
+        public Task<int> SaveOrdenCompraAsync(OrdenCompraItem request)
         {
             if (request.IdOrdenCompra != 0)
             {

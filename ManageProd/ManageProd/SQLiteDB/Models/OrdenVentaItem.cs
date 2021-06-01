@@ -15,7 +15,7 @@ namespace ManageProd.SQLiteDB.Models
             this.IdOrdenVenta = 0;
             this.IdCliente = 0;
             this.FechaVenta = DateTime.Now;
-            this.MontoTotal = 0;
+            this.MontoTotal = "0";
         }
 
         [PrimaryKey, AutoIncrement, Column("IdOrdenCompra")]
@@ -28,7 +28,7 @@ namespace ManageProd.SQLiteDB.Models
         public DateTime FechaVenta { get; set; }
 
         [Column("MontoTotal")]
-        public decimal MontoTotal { get; set; }
+        public string MontoTotal { get; set; }
 
     }
 }

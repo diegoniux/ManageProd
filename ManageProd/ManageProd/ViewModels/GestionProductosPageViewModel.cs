@@ -162,7 +162,7 @@ namespace ManageProd.ViewModels
                             IdProducto = int.Parse(item.IdProducto),
                             IdProveedor = int.Parse(item.ProveedorId),
                             Producto = item.Producto,
-                            PrecioCompra = precioVenta,
+                            PrecioCompra = precioCompra,
                             PrecioVenta = precioVenta,
                             Tara = tara
                         };
