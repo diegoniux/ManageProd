@@ -159,7 +159,7 @@ namespace ManageProd.ViewModels
 
                         ProductoItem productoItem = new ProductoItem()
                         {
-                            IdProducto = int.Parse(item.IdProducto),
+                            IdProducto = 0, // int.Parse(item.IdProducto),
                             IdProveedor = int.Parse(item.ProveedorId),
                             Producto = item.Producto,
                             PrecioCompra = precioCompra,

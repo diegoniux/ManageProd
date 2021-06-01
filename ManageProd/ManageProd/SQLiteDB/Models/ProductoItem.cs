@@ -11,7 +11,7 @@ namespace ManageProd.SQLiteDB.Models
     [Table("ProductoItem")]
     public class ProductoItem: NotificationObject
     {
-        [PrimaryKey, Column("IdProducto")]
+        [PrimaryKey, AutoIncrement, Column("IdProducto")]
         public int IdProducto { get; set; }
 
         [ForeignKey(typeof(ProveedorItem)), Column("IdProveedor")]

@@ -194,7 +194,7 @@
                                     HorizontalTextAlignment="Center"
                                     ItemsSource="{Binding ListClientes}"
                                     SelectedItem="{Binding ClienteSelected}"
-                                    ItemDisplayBinding="{Binding Cliente}"
+                                    ItemDisplayBinding="{Binding Nombre}"
                                     Margin="10,0,0,-8"
                                     VerticalTextAlignment="Center"
                                     FontSize="12">

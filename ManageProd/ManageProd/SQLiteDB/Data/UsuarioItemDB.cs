@@ -27,9 +27,10 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<UsuarioItem>().ToListAsync();
         }
 
-        public Task<UsuarioItem> LoginUserdAsync(UsuarioItem user)
+        public async Task<UsuarioItem> LoginUserdAsync(UsuarioItem user)
         {
-            return Database.Table<UsuarioItem>().Where(i => i.Usuario == user.Usuario && i.Password == user.Password).FirstOrDefaultAsync();
+            UsuarioItem res = await Database.Table<UsuarioItem>().Where(i => i.Usuario == user.Usuario && i.Password == user.Password).FirstOrDefaultAsync();
+            return res;
             //return Database.QueryAsync<UsuarioItem>("SELECT * FROM [UsuarioItem] WHERE [Password] = 0");
         }
 
@@ -59,6 +60,11 @@ namespace ManageProd.SQLiteDB.Data
         public Task<int> DeleteUserAsync(UsuarioItem item)
         {
             return Database.DeleteAsync(item);
+        }
+
+        public Task<int> DeleteAllUserAsync()
+        {
+            return Database.ExecuteAsync("DELETE FROM [UsuarioItem]");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ManageProd.SQLiteDB.Models
             this.Remember = false;
         }
 
-        [PrimaryKey, Column("IdUsuario")]
+        [PrimaryKey, AutoIncrement, Column("IdUsuario")]
         public int IdUsuario { get; set; }
 
         [Column("Usuario")]

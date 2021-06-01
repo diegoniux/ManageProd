@@ -20,7 +20,7 @@ namespace ManageProd.SQLiteDB.Models
             this.NotasProveedor = string.Empty;
         }
 
-        [PrimaryKey, Column("IdProveedor")]
+        [PrimaryKey, AutoIncrement, Column("IdProveedor")]
         public int IdProveedor { get; set; }
 
         [Column("Proveedor")]

@@ -49,6 +49,7 @@ namespace ManageProd.ViewModels
             DetalleSelected = new DetalleVentaItem();
             ProductoSelected = new ProductoItem();
             ProveedorSelected = new ProveedorItem();
+            ClienteSelected = new ClienteItem();
 
             SaveOrder = new Command(async () => await Save());
             AddProduct = new Command(async () => await Add());

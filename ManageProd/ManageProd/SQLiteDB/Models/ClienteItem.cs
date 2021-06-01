@@ -5,7 +5,7 @@ namespace ManageProd.SQLiteDB.Models
     [Table("ClienteItem")]
     public class ClienteItem
     {
-        [PrimaryKey, Column("IdCliente")]
+        [PrimaryKey, AutoIncrement, Column("IdCliente")]
         public int IdCliente { get; set; }
 
         [Column("Nombre")]
