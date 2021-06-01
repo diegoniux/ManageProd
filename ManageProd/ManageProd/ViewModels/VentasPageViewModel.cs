@@ -69,12 +69,15 @@ namespace ManageProd.ViewModels
                 DetalleSelected = detalle;
             });
 
-            MessagingCenter.Subscribe<VentasPage, ProveedorItem>(this, "proveedorChanged", (sender, arg) =>
+            MessagingCenter.Subscribe<VentasPage, ProveedorItem>(this, "proveedorChanged", async (sender, arg) =>
             {
                 var proveedor = arg;
                 var detalle = DetalleSelected;
                 detalle.IdProveedor = proveedor.IdProveedor;
                 detalle.Proveedor = proveedor.Proveedor;
+
+                ProductoItemDB ProductoDB = await ProductoItemDB.Instance;
+                ListProduct = new ObservableCollection<ProductoItem>(await ProductoDB.GetProductsIdProveedorAsync(proveedor.IdProveedor));
 
                 DetalleSelected = detalle;
             });

@@ -198,7 +198,7 @@ namespace ManageProd.ViewModels
                 var MontoTotal = await DetalleDB.GetSumaImporteAsync(Order.IdOrdenCompra);
                 Order.MontoTotal = MontoTotal.ToString("$0,0.00");
                 OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
-                await OrderDB.SaveOrdenVentaAsync(Order);
+                await OrderDB.SaveOrdenCompraAsync(Order);
 
                 MessagingCenter.Send<ComprasPageViewModel, OrdenCompraItem>(this, "MontoChanged", Order);
 
@@ -237,7 +237,7 @@ namespace ManageProd.ViewModels
                         {
                             Order.IdProveedor = ProveedorSelected.IdProveedor;
                             OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
-                            await OrderDB.SaveOrdenVentaAsync(Order);
+                            await OrderDB.SaveOrdenCompraAsync(Order);
                             Order = await OrderDB.GetOrdenCompraIdsAsync(Order.IdOrdenCompra);
                             await LoadProductsProveedor();
                             HayOrden = true;
