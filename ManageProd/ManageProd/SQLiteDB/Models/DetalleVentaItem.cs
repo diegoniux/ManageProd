@@ -15,6 +15,8 @@ namespace ManageProd.SQLiteDB.Models
             this.IdDetalleVenta = 0;
             this.IdOrdenVenta = 0;
             this.IdProducto = 0;
+            this.IdProveedor = 0;
+            this.Proveedor = "";
             this.Cantidad = 0;
             this.Precio = 0;
             this.Descuento = 0;
@@ -32,7 +34,7 @@ namespace ManageProd.SQLiteDB.Models
         public int IdProveedor { get; set; }
 
         [Column("Proveedor")]
-        public int Proveedor { get; set; }
+        public string Proveedor { get; set; }
 
         [ForeignKey(typeof(ProductoItem)), Column("IdProducto")]
         public int IdProducto { get; set; }

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Acr.UserDialogs;
 using ManageProd.SQLiteDB.Data;
 using ManageProd.SQLiteDB.Models;
+using ManageProd.Views;
 using Xamarin.Forms;
 
 namespace ManageProd.ViewModels
@@ -55,10 +56,28 @@ namespace ManageProd.ViewModels
             ProductoSelectionChanged = new Command(async () => await SelectChanged());
             NewProduct = new Command(async () => await NewProd());
 
-
-
-
             LoadCatalogs();
+
+            MessagingCenter.Subscribe<VentasPage, ProductoItem>(this, "productoChanged", (sender, arg) =>
+            {
+                var producto = arg;
+                var detalle = DetalleSelected;
+                detalle.IdProducto = producto.IdProducto;
+                detalle.Producto = producto.Producto;
+                detalle.Precio = producto.PrecioVenta;
+
+                DetalleSelected = detalle;
+            });
+
+            MessagingCenter.Subscribe<VentasPage, ProveedorItem>(this, "proveedorChanged", (sender, arg) =>
+            {
+                var proveedor = arg;
+                var detalle = DetalleSelected;
+                detalle.IdProveedor = proveedor.IdProveedor;
+                detalle.Proveedor = proveedor.Proveedor;
+
+                DetalleSelected = detalle;
+            });
         }
 
         private async Task LoadCatalogs()
