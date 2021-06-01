@@ -191,8 +191,9 @@
                                          Margin="10,0">
                                 <DatePicker
                                     Date="{Binding Order.FechaCompra, Mode=TwoWay}"
-                                    VerticalOptions="FillAndExpand"
-                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="CenterAndExpand"
+                                    
                                     Format="dd/MM/yyyy"
                                     Margin="0,0,0,-8"
                                     FontSize="Small">
@@ -619,35 +620,35 @@
                                     Command="{Binding NewProduct}"
                                     BackgroundColor="CadetBlue"
                                     CornerRadius="14"
-                                    Margin="5"
+                                    Margin="4"
                                     TextColor="#000"
                                     HorizontalOptions="FillAndExpand"
                                     FontAttributes="Bold"
                                     IsEnabled="{Binding IsSelected}"
-                                    FontSize="9">
+                                    FontSize="12">
                                 </Button>
                                 <Button
                                     Text="Eliminar"
                                     CornerRadius="14"
                                     Command="{Binding DeleteProduct}"
                                     BackgroundColor="Coral"
-                                    Margin="5"
+                                    Margin="4"
                                     TextColor="#000"
                                     HorizontalOptions="FillAndExpand"
                                     FontAttributes="Bold"
                                     IsEnabled="{Binding IsSelected}"
-                                    FontSize="9">
+                                    FontSize="12">
                                 </Button>
                                 <Button
                                     Text="Agregar"
                                     CornerRadius="14"
                                     Command="{Binding AddProduct}"
                                     BackgroundColor="#2DAD26"
-                                    Margin="5"
+                                    Margin="4"
                                     TextColor="#000"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand"
-                                    FontSize="9">
+                                    FontSize="12">
                                 </Button>
                             </StackLayout>
                         </Grid>

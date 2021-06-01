@@ -71,9 +71,9 @@
                         BackgroundColor="#FFF">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="70"></RowDefinition>
-                            <RowDefinition Height="70"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.8*"></ColumnDefinition>
@@ -335,9 +335,10 @@
                             CornerRadius="14"
                             Command="{Binding SaveOrder}"
                             BackgroundColor="#2877D5"
-                            Margin="5"
+                            Margin="0,0,0,0"
+                            FontAttributes="Bold"
                             TextColor="#FFF"
-                            FontSize="Small">
+                            FontSize="12">
                         </Button>
 
                     </Grid>
@@ -388,10 +389,10 @@
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
-                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -709,9 +710,9 @@
                             </Frame>
 
                             <StackLayout
-                                Grid.Column="4"
+                                Grid.Column="5"
                                 Grid.Row="3"
-                                Grid.ColumnSpan="4"
+                                Grid.ColumnSpan="7"
                                 VerticalOptions="FillAndExpand"
                                 HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal"
@@ -722,7 +723,8 @@
                                     Command="{Binding NewProduct}"
                                     BackgroundColor="CadetBlue"
                                     CornerRadius="14"
-                                    Margin="5"
+                                    Margin="4"
+                                    FontSize="12"
                                     TextColor="#000"
                                     HorizontalOptions="FillAndExpand"
                                     FontAttributes="Bold"
@@ -733,7 +735,8 @@
                                     Command="{Binding DeleteProduct}"
                                     CornerRadius="14"
                                     BackgroundColor="Coral"
-                                    Margin="5"
+                                    Margin="4"
+                                    FontSize="12"
                                     TextColor="#000"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand"
@@ -744,7 +747,8 @@
                                     Command="{Binding AddProduct}"
                                     CornerRadius="14"
                                     BackgroundColor="#2DAD26"
-                                    Margin="5"
+                                    Margin="4"
+                                    FontSize="12"
                                     TextColor="#000"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand">
