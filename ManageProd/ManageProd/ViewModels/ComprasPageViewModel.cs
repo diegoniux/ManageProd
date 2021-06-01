@@ -235,6 +235,15 @@ namespace ManageProd.ViewModels
                     {
                         if (ProveedorSelected != null)
                         {
+                            // en caso de que exista detalle con esta orden, eliminamos los productos
+                            if (Order.IdOrdenCompra > 0)
+                            {
+                                DetalleCompraItemDB detalleDB = await DetalleCompraItemDB.Instance;
+                                await detalleDB.DeleteAllDetalleComprasAsync(Order.IdOrdenCompra);
+                                Order.MontoTotal = "0";
+                                await LoadOrderDetail();
+                            }
+
                             Order.IdProveedor = ProveedorSelected.IdProveedor;
                             OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
                             await OrderDB.SaveOrdenCompraAsync(Order);
