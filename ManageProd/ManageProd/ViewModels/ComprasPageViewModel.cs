@@ -233,12 +233,17 @@ namespace ManageProd.ViewModels
                 {
                     if (Order != null)
                     {
-                        Order.IdProveedor = ProveedorSelected.IdProveedor;
-                        OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
-                        await OrderDB.SaveOrdenVentaAsync(Order);
-                        Order = await OrderDB.GetOrdenCompraIdsAsync(Order.IdOrdenCompra);
-                        await LoadProductsProveedor();
-                        HayOrden = true;
+                        if (ProveedorSelected != null)
+                        {
+                            Order.IdProveedor = ProveedorSelected.IdProveedor;
+                            OrdenCompraItemDB OrderDB = await OrdenCompraItemDB.Instance;
+                            await OrderDB.SaveOrdenVentaAsync(Order);
+                            Order = await OrderDB.GetOrdenCompraIdsAsync(Order.IdOrdenCompra);
+                            await LoadProductsProveedor();
+                            HayOrden = true;
+                        }
+                        else
+                            await UserDialogs.Instance.AlertAsync("Debe seleccionar un proveedor.", "Aviso", "Ok");
                     }
                 }
             }

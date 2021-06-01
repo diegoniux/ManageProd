@@ -40,7 +40,7 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>                       
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"></ColumnDefinition>
@@ -122,7 +122,7 @@
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Center"
                                     VerticalTextAlignment="Center"
-                                    Margin="0,0,0,-6"
+                                    Margin="0,0,0,-8"
                                     IsEnabled="False">
                                 </renderers:EntryIcon>
                             </StackLayout>
@@ -158,7 +158,7 @@
                                     VerticalOptions="FillAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     Format="dd/MM/yyyy"
-                                    Margin="0,0,0,-6"
+                                    Margin="0,0,0,-8"
                                     FontSize="12">
                                 </DatePicker>
                             </StackLayout>
@@ -195,7 +195,7 @@
                                     ItemsSource="{Binding ListClientes}"
                                     SelectedItem="{Binding ClienteSelected}"
                                     ItemDisplayBinding="{Binding Cliente}"
-                                    Margin="10,0,0,-6"
+                                    Margin="10,0,0,-8"
                                     VerticalTextAlignment="Center"
                                     FontSize="12">
                                 </Picker>
@@ -236,7 +236,7 @@
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Start"
-                                    Margin="0,0,0,-6"
+                                    Margin="0,0,0,-8"
                                     FontSize="12">
                                 </renderers:EntryIcon>
                             </StackLayout>
@@ -276,7 +276,7 @@
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Start"
-                                    Margin="0,0,0,-6"
+                                    Margin="0,0,0,-8"
                                     FontSize="Small">
                                 </renderers:EntryIcon>
                             </StackLayout>
@@ -318,7 +318,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6"
+                                        Margin="0,0,0,-8"
                                         >
                                     <renderers:EntryIcon.Behaviors>
                                         <renderers:LengthValidateBehavior MaxLength="10"/>
@@ -440,7 +440,7 @@
                                     ItemsSource="{Binding ListProveedores}"
                                     SelectedItem="{Binding ProveedorSelected}"
                                     ItemDisplayBinding="{Binding Proveedor}"
-                                    Margin="10,0,0,-6"
+                                    Margin="10,0,0,-8"
                                     VerticalTextAlignment="Center"
                                     FontSize="12">
                                     </Picker>
@@ -482,7 +482,7 @@
                                         SelectedItem="{Binding ProductoSelected, Mode=TwoWay}"
                                         ItemDisplayBinding="{Binding Producto}"  
                                         FontSize="12"
-                                        Margin="10,0,0,-6">
+                                        Margin="10,0,0,-8">
                                     </Picker>
                                 </StackLayout>
                             </Frame>
@@ -522,7 +522,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6"
+                                        Margin="0,0,0,-8"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
@@ -566,7 +566,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6"
+                                        Margin="0,0,0,-8"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="7"/>
@@ -611,7 +611,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6"
+                                        Margin="0,0,0,-8"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
@@ -655,7 +655,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6"
+                                        Margin="0,0,0,-8"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
@@ -699,7 +699,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Margin="0,0,0,-6"
+                                        Margin="0,0,0,-8"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
@@ -725,6 +725,7 @@
                                     Margin="5"
                                     TextColor="#000"
                                     HorizontalOptions="FillAndExpand"
+                                    FontAttributes="Bold"
                                     IsEnabled="{Binding IsSelected}">
                                 </Button>
                                 <Button
@@ -733,7 +734,8 @@
                                     CornerRadius="14"
                                     BackgroundColor="Coral"
                                     Margin="5"
-                                    TextColor="#FFF"
+                                    TextColor="#000"
+                                    FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand"
                                     IsEnabled="{Binding IsSelected}">
                                 </Button>
@@ -743,7 +745,8 @@
                                     CornerRadius="14"
                                     BackgroundColor="#2DAD26"
                                     Margin="5"
-                                    TextColor="#FFF"
+                                    TextColor="#000"
+                                    FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand">
                                 </Button>
                             </StackLayout>
@@ -797,7 +800,7 @@
                             FontAttributes="Bold"
                             TextColor="#353535"
                             FontFamily="Helvetica">
-                        </Label>                        
+                        </Label>
                         <Label
                             Text="Peso Neto"
                             Grid.Column="2"
@@ -873,7 +876,7 @@
                                         <!--Producto-->
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                         <!--Cantidad-->
-                                        <ColumnDefinition Width=".5*"></ColumnDefinition>                                       
+                                        <ColumnDefinition Width=".5*"></ColumnDefinition>
                                         <!--Peso Neto-->
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <!--Precio-->
@@ -929,7 +932,7 @@
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="Helvetica">
-                                    </Label>                                    
+                                    </Label>
                                     <Label
                                         Text="{Binding Importe, StringFormat='{0:C2}'}"
                                         Grid.Column="5"

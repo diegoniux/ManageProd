@@ -74,17 +74,21 @@
 
                     <Label Text="Bienvenido"
                            Grid.Column="2"
-                           Grid.ColumnSpan="2"
+                           Grid.ColumnSpan="3"
                            Grid.Row="2"
                            FontSize="40"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
                            TextColor="#FFFFFF">
                     </Label>
 
                     <Label Text="Ingresa tu usuario y contraseña para acceder a la aplicación"
                            Grid.Column="2"
-                           Grid.ColumnSpan="3"
+                           Grid.ColumnSpan="4"
                            Grid.Row="4"
-                           FontSize="18"
+                           FontSize="16"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
                            TextColor="#FFFFFF">
                     </Label>
 
