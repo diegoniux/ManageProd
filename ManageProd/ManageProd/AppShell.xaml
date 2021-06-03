@@ -56,15 +56,15 @@
                 FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Route="gestion"
                       Title="Gestión de Productos y precios"
-                      Icon="settings.png"
+                      Icon="listadeverificacion.png"
                       ContentTemplate="{DataTemplate views:GestionProductosPage}"/>
         <ShellContent Route="venta"
                       Title="Salida de Producto"
-                      Icon="truck.png"
+                      Icon="ventas.png"
                       ContentTemplate="{DataTemplate views:VentasPage}" />
         <ShellContent Route="compra"
                       Title="Entrada de Producto"
-                      Icon="cart.png"
+                      Icon="compras.png"
                       ContentTemplate="{DataTemplate views:ComprasPage}" />
     </FlyoutItem>
 

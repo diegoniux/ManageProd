@@ -47,16 +47,18 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="camion_title_page.png"
+                    <Image Source="ventas.png"
                             Grid.Row="0"
                             Grid.Column="0">
                     </Image>
                     <Label Text="Orden de Venta"
                             VerticalOptions="CenterAndExpand" 
-                            HorizontalOptions="StartAndExpand"
+                            HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Start"
+                            FontAttributes="Bold,Italic"
                             FontSize="Title"
-                            Margin="10,0"
+                            Margin="0,0"
+                            TextColor="Black"
                             Grid.Column="1"
                             Grid.Row="0"/>
 
@@ -158,6 +160,7 @@
                                     VerticalOptions="FillAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     Format="dd/MM/yyyy"
+                                    FontAttributes="Bold"
                                     Margin="0,0,0,-8"
                                     FontSize="12">
                                 </DatePicker>
@@ -334,8 +337,8 @@
                             Grid.ColumnSpan="3"
                             CornerRadius="14"
                             Command="{Binding SaveOrder}"
-                            BackgroundColor="#2877D5"
-                            Margin="0,0,0,0"
+                            BackgroundColor="#031255"
+                            Margin="4"
                             FontAttributes="Bold"
                             TextColor="#FFF"
                             FontSize="12">
@@ -721,7 +724,7 @@
                                 <Button
                                     Text="Nuevo"
                                     Command="{Binding NewProduct}"
-                                    BackgroundColor="CadetBlue"
+                                    BackgroundColor="Yellow"
                                     CornerRadius="14"
                                     Margin="4"
                                     FontSize="12"
@@ -734,10 +737,10 @@
                                     Text="Eliminar"
                                     Command="{Binding DeleteProduct}"
                                     CornerRadius="14"
-                                    BackgroundColor="Coral"
+                                    BackgroundColor="#2d572c"
                                     Margin="4"
                                     FontSize="12"
-                                    TextColor="#000"
+                                    TextColor="White"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand"
                                     IsEnabled="{Binding IsSelected}">
@@ -746,10 +749,10 @@
                                     Text="Agregar"
                                     Command="{Binding AddProduct}"
                                     CornerRadius="14"
-                                    BackgroundColor="#2DAD26"
+                                    BackgroundColor="#5a0309"
                                     Margin="4"
                                     FontSize="12"
-                                    TextColor="#000"
+                                    TextColor="White"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand">
                                 </Button>
@@ -860,7 +863,7 @@
                         SelectionMode="Single"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        BackgroundColor="Gray">
+                        BackgroundColor=" #e7eae8">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
                                 Orientation="Vertical"

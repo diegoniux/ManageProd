@@ -47,29 +47,33 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="config_title_page.png"
+                    <Image Source="listadeverificacion.png"
                             Grid.Row="0"
                             Grid.Column="0">
                     </Image>
                     <Label Text="Gestión de productos y precios"
                             VerticalOptions="CenterAndExpand" 
-                            HorizontalOptions="StartAndExpand"
+                            HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Start"
+                            FontAttributes="Bold,Italic"
                             FontSize="Title"
+                            Margin="0,0"
+                            TextColor="Black"
                             Grid.Column="1"
                             Grid.Row="0"/>
 
                     <Button
                         Command="{Binding LoadData}"
                         IsVisible="{Binding HayDatos}"
+                        CornerRadius="20"
                         Text="Importar archivo"
-                        BackgroundColor="#2877D5"
-                        TextColor="White"
+                        BackgroundColor="#089c2a"
+                        TextColor="Black"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand">
                     </Button>
 
                     <!--HEADER-->
@@ -77,7 +81,7 @@
                         Margin="1"
                         ColumnSpacing="0"
                         RowSpacing="0"
-                        BackgroundColor="#9AC5F9"
+                        BackgroundColor="#ed6405"
                         IsVisible="{Binding HayInfo}"
                         Grid.Row="2"
                         Grid.Column="0"
@@ -103,7 +107,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label
-                            Text="IdProduccto"
+                            Text="IdProducto"
                             Grid.Column="0"
                             FontSize="10"
                             Margin="5,0,0,0"
@@ -111,7 +115,8 @@
                             HorizontalTextAlignment="Center"
                             FontAttributes="Bold"
                             TextColor="#353535"
-                            FontFamily="Helvetica">
+                            FontFamily="Helvetica"
+                            IsVisible="True">
                         </Label>
                         <Label
                             Text="Producto"
@@ -229,7 +234,9 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="Helvetica">
+                                        
+                                        FontFamily="Helvetica"
+                                        IsVisible="True">
                                     </Label>
                                     <Label
                                         Text="{Binding Producto}"
@@ -308,8 +315,9 @@
                             Command="{Binding Cancel}"
                             IsVisible="{Binding HayInfo}"
                             Text="Cancelar"
-                            BackgroundColor="#FFF"
+                            BackgroundColor=" #b1b2b7 "
                             TextColor="Black"
+                            CornerRadius="14"
                             Grid.Column="0"
                             Grid.Row="0"
                             BorderColor="Black"
@@ -320,7 +328,8 @@
                             Command="{Binding SaveData}"
                             IsVisible="{Binding HayInfo}"
                             Text="Guardar información"
-                            BackgroundColor="#2877D5"
+                            CornerRadius="14"
+                            BackgroundColor=" #031255 "
                             TextColor="White"
                             Grid.Column="1"
                             Grid.Row="0"

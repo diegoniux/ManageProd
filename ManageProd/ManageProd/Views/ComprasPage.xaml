@@ -49,19 +49,21 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="camion_title_page.png"
+                    <Image Source="compras.png"
                             Grid.Row="0"
                             Grid.Column="0">
                     </Image>
                     <Label Text="Orden de Compra"
                             VerticalOptions="CenterAndExpand" 
-                            HorizontalOptions="StartAndExpand"
+                            HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Start"
+                            FontAttributes="Bold,Italic"
                             FontSize="Title"
-                           Margin="10,0"
+                            Margin="0,0"
+                            TextColor="Black"
                             Grid.Column="1"
                             Grid.Row="0"/>
-
+                   
                     <!--ORDEN-->
                     <Grid
                         Margin="1,10,1,1"
@@ -193,10 +195,10 @@
                                     Date="{Binding Order.FechaCompra, Mode=TwoWay}"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="CenterAndExpand"
-                                    
+                                    FontAttributes="Bold"
                                     Format="dd/MM/yyyy"
                                     Margin="0,0,0,-8"
-                                    FontSize="Small">
+                                    FontSize="12">
                                 </DatePicker>
                             </StackLayout>
                         </Frame>
@@ -288,11 +290,11 @@
                             Grid.Column="5"
                             CornerRadius="14"
                             Command="{Binding SaveOrder}"
-                            BackgroundColor="#2877D5"
-                            Margin="5"
+                            BackgroundColor="#031255"
+                            Margin="4"
                             TextColor="#FFF"
                             FontAttributes="Bold"
-                            FontSize="9">
+                            FontSize="12">
                         </Button>
                     </Grid>
                     <!--DETALLE DE LA ORDEN-->
@@ -618,10 +620,10 @@
                                 <Button
                                     Text="Nuevo"
                                     Command="{Binding NewProduct}"
-                                    BackgroundColor="CadetBlue"
+                                    BackgroundColor="Yellow"
                                     CornerRadius="14"
                                     Margin="4"
-                                    TextColor="#000"
+                                    TextColor="Black"
                                     HorizontalOptions="FillAndExpand"
                                     FontAttributes="Bold"
                                     IsEnabled="{Binding IsSelected}"
@@ -631,9 +633,9 @@
                                     Text="Eliminar"
                                     CornerRadius="14"
                                     Command="{Binding DeleteProduct}"
-                                    BackgroundColor="Coral"
+                                    BackgroundColor="#2d572c"
                                     Margin="4"
-                                    TextColor="#000"
+                                    TextColor="White"
                                     HorizontalOptions="FillAndExpand"
                                     FontAttributes="Bold"
                                     IsEnabled="{Binding IsSelected}"
@@ -643,9 +645,9 @@
                                     Text="Agregar"
                                     CornerRadius="14"
                                     Command="{Binding AddProduct}"
-                                    BackgroundColor="#2DAD26"
+                                    BackgroundColor="#5a0309"
                                     Margin="4"
-                                    TextColor="#000"
+                                    TextColor="White"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="12">
@@ -757,7 +759,7 @@
                         SelectionMode="Single"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        BackgroundColor="Gray">
+                        BackgroundColor=" #e7eae8 ">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
                                 Orientation="Vertical"
