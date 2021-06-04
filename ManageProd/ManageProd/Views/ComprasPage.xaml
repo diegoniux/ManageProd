@@ -301,7 +301,7 @@
                     <Grid
                         IsVisible="{Binding HayOrden, Mode=TwoWay}"
                         Margin="1,10,1,1"
-                        ColumnSpacing="0"
+                        ColumnSpacing="0"                        
                         RowSpacing="0"
                         Grid.Row="2"
                         Grid.Column="0"
@@ -325,7 +325,7 @@
                             HorizontalTextAlignment="Center"
                             BackgroundColor="#2877D5"
                             TextColor="#FFF"
-                            FontSize="Small"
+                            FontSize="14"
                             Grid.Column="0"
                             Grid.Row="0"
                             FontAttributes="Bold"
@@ -705,7 +705,7 @@
                             FontFamily="Helvetica">
                         </Label>
                         <Label
-                            Text="Pesoo Bruto"
+                            Text="Peso Bruto"
                             Grid.Column="2"
                             FontSize="10"
                             VerticalTextAlignment="Center"

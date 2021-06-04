@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ManageProd.Controls.FlyoutFooter"
              xmlns:sys="clr-namespace:System;assembly=netstandard">
-    <StackLayout Orientation="Vertical" Margin="20,10">
+    <StackLayout Orientation="Vertical" Margin="20,30">
         <Label Text="Comercializadora de productos"
                    TextColor="GhostWhite"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Start" />
+                   FontAttributes="Bold,Italic"
+                    FontSize="24"
+                   HorizontalOptions="CenterAndExpand" />
         <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd 'de' MMMM yyyy}'}"
                    TextColor="GhostWhite"
                    HorizontalOptions="StartAndExpand" />

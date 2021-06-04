@@ -56,21 +56,21 @@
                 FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Route="gestion"
                       Title="Gestión de Productos y precios"
-                      Icon="listadeverificacion.png"
+                      Icon="listadeverificacionInicio.png"
                       ContentTemplate="{DataTemplate views:GestionProductosPage}"/>
         <ShellContent Route="venta"
                       Title="Salida de Producto"
-                      Icon="ventas.png"
+                      Icon="ventasInicio.png"
                       ContentTemplate="{DataTemplate views:VentasPage}" />
         <ShellContent Route="compra"
                       Title="Entrada de Producto"
-                      Icon="compras.png"
+                      Icon="comprasInicio.png"
                       ContentTemplate="{DataTemplate views:ComprasPage}" />
     </FlyoutItem>
 
     <MenuItem Text="Cerrar Sesión"
               Command="{Binding ExecuteLogout}"
-              IconImageSource="exit.png"/>
+              IconImageSource="exitInicio.png"/>
 
 
 

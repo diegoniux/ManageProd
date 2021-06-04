@@ -374,7 +374,7 @@
                             HorizontalTextAlignment="Center"
                             BackgroundColor="#2877D5"
                             TextColor="#FFF"
-                            FontSize="Large"
+                            FontSize="14"
                             Grid.Column="0"
                             Grid.Row="0"
                             FontAttributes="Bold"
