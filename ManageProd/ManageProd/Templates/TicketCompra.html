@@ -4,55 +4,88 @@
 <head runat="server">
     <title></title>
 </head>
-<body>    
+<body>
+    <form id="form1" runat="server">
         <div>
             <style type="text/css">
                 .tg {
-                    border-collapse: collapse;
-                    border-spacing: 0;
+                    border: 0px none white;
+                    width: 250px;
+                    height: 100%;
+                    text-align: center;
                 }
 
                     .tg td {
-                        border-color: black;
-                        border-style: solid;
+                        border-color: white;
+                        border-style: none;
                         border-width: 1px;
-                        font-family: Arial, sans-serif;
-                        font-size: 14px;
+                        font-family: Century Gothic;
+                        font-size: 8px;
                         overflow: hidden;
-                        padding: 10px 5px;
+                        padding: 2px 2px;
                         word-break: normal;
                     }
 
                     .tg th {
-                        border-color: black;
-                        border-style: solid;
+                        border-color: white;
+                        border-style: none;
                         border-width: 1px;
-                        font-family: Arial, sans-serif;
-                        font-size: 14px;
+                        font-family: Century Gothic;
+                        font-size: 8px;
                         font-weight: normal;
                         overflow: hidden;
-                        padding: 10px 5px;
+                        padding: 2px 2px;
                         word-break: normal;
                     }
 
                     .tg .tg-c3ow {
-                        border-color: inherit;
+                        border-color: white;
+                        border-style: none;
                         text-align: center;
                         vertical-align: top;
                     }
 
                     .tg .tg-0pky {
-                        border-color: inherit;
+                        border-color: white;
+                        border-style: none;
                         text-align: left;
                         vertical-align: top;
+                        font-size: 7px;
+                    }
+
+                    .tg .tg-0pkyCenter {
+                        border-color: white;
+                        border-style: none;
+                        text-align: center;
+                        vertical-align: top;
+                        font-size: 7px;
+                    }
+
+                    .tg .tg-0pkyRight {
+                        border-color: white;
+                        border-style: none;
+                        text-align: right;
+                        vertical-align: top;
+                        font-size: 7px;
                     }
 
                     .tg .tg-7btt {
-                        border-color: inherit;
+                        border-color: white;
+                        border-style: none;
                         font-weight: bold;
                         text-align: center;
                         vertical-align: top;
+                        font-size: 7px;
                     }
+
+                .Existencias {
+                    border-color: white;
+                    border-style: none;
+                    text-align: justify;
+                    vertical-align: top;
+                    font-size: 7px;
+                    height: 30px;
+                }
             </style>
             <table class="tg">
                 <thead>
@@ -89,35 +122,35 @@
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="3">Panela Sello</td>
-                        <td class="tg-0pky">35</td>
-                        <td class="tg-0pky">157.5 </td>
-                        <td class="tg-0pky">137.34</td>
-                        <td class="tg-0pky">$132.50</td>
-                        <td class="tg-0pky">$18,197.55</td>
+                        <td class="tg-0pkyCenter">35</td>
+                        <td class="tg-0pkyCenter">157.5 </td>
+                        <td class="tg-0pkyCenter">137.34</td>
+                        <td class="tg-0pkyCenter">$132.50</td>
+                        <td class="tg-0pkyRight ">$18,197.55</td>
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="3">Doble crema ½</td>
-                        <td class="tg-0pky">12</td>
-                        <td class="tg-0pky">12</td>
-                        <td class="tg-0pky">12</td>
-                        <td class="tg-0pky">$63.00</td>
-                        <td class="tg-0pky">$756.00</td>
+                        <td class="tg-0pkyCenter">12</td>
+                        <td class="tg-0pkyCenter">12</td>
+                        <td class="tg-0pkyCenter">12</td>
+                        <td class="tg-0pkyCenter">$63.00</td>
+                        <td class="tg-0pkyRight ">$756.00</td>
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="3">Manchego</td>
-                        <td class="tg-0pky">50</td>
-                        <td class="tg-0pky">50</td>
-                        <td class="tg-0pky">50</td>
-                        <td class="tg-0pky">$204.99</td>
-                        <td class="tg-0pky">$10,249.50</td>
+                        <td class="tg-0pkyCenter">50</td>
+                        <td class="tg-0pkyCenter">50</td>
+                        <td class="tg-0pkyCenter">50</td>
+                        <td class="tg-0pkyCenter">$204.99</td>
+                        <td class="tg-0pkyRight ">$10,249.50</td>
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="3">Yoghurt 4litros</td>
-                        <td class="tg-0pky">10</td>
-                        <td class="tg-0pky">10</td>
-                        <td class="tg-0pky">10</td>
-                        <td class="tg-0pky">$99.00</td>
-                        <td class="tg-0pky">$990.00</td>
+                        <td class="tg-0pkyCenter">10</td>
+                        <td class="tg-0pkyCenter">10</td>
+                        <td class="tg-0pkyCenter">10</td>
+                        <td class="tg-0pkyCenter">$99.00</td>
+                        <td class="tg-0pkyRight ">$990.00</td>
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="8"></td>
@@ -134,6 +167,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>    
+        </div>
+    </form>
 </body>
 </html>
