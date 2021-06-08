@@ -437,6 +437,7 @@
                             BackgroundColor="#9AC5F9">
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <Picker
+                                        x:Name="picker"
                                     VerticalOptions="FillAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     Title="--Seleccione--"
@@ -446,6 +447,7 @@
                                     ItemDisplayBinding="{Binding Proveedor}"
                                     Margin="10,0,0,-8"
                                     VerticalTextAlignment="Center"
+                                        SelectedIndexChanged="Picker_SelectedIndexChanged"
                                     FontSize="12">
                                     </Picker>
                                 </StackLayout>
