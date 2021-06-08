@@ -487,6 +487,7 @@
                                         ItemsSource="{Binding ListProduct}"
                                         SelectedItem="{Binding ProductoSelected, Mode=TwoWay}"
                                         ItemDisplayBinding="{Binding Producto}"  
+                                        SelectedIndexChanged="pickerProducto_SelectedIndexChanged"
                                         FontSize="12"
                                         Margin="10,0,0,-8">
                                     </Picker>
