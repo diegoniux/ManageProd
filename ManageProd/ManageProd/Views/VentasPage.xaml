@@ -312,20 +312,16 @@
                             <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                 <renderers:EntryIcon
                                         x:Name="Monto"
-                                        Text="{Binding DetalleSelected.MontoTotal}"
-                                        Keyboard="Numeric"
+                                        Text="{Binding Order.MontoTotal, Mode=TwoWay}"
                                         CornerRadius="5"
-                                        FontAttributes="None"
+                                        FontAttributes="Bold"
                                         FontSize="14"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
-                                        >
-                                    <renderers:EntryIcon.Behaviors>
-                                        <renderers:LengthValidateBehavior MaxLength="10"/>
-                                    </renderers:EntryIcon.Behaviors>
+                                        IsReadOnly="True">
                                 </renderers:EntryIcon>
                             </StackLayout>
                         </Frame>
@@ -574,7 +570,7 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
-                                        >
+                                        TextChanged="TextChanged">
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="7"/>
                                         </renderers:EntryIcon.Behaviors>
@@ -663,7 +659,7 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
-                                        >
+                                        TextChanged="TextChanged">
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
                                         </renderers:EntryIcon.Behaviors>
@@ -927,7 +923,7 @@
                                     </Label>
                                     <Label
                                         Text="{Binding Precio, StringFormat='{0:C2}'}"
-                                        Grid.Column="4"
+                                        Grid.Column="3"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
@@ -936,7 +932,7 @@
                                     </Label>
                                     <Label
                                         Text="{Binding Descuento, StringFormat='{0:C2}'}"
-                                        Grid.Column="3"
+                                        Grid.Column="4"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"

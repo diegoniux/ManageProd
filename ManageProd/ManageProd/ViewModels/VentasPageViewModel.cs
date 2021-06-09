@@ -228,7 +228,7 @@ namespace ManageProd.ViewModels
         {
             try
             {
-                DetalleCompraItemDB DetalleDB = await DetalleCompraItemDB.Instance;
+                DetalleVentaItemDB DetalleDB = await DetalleVentaItemDB.Instance;
                 var MontoTotal = await DetalleDB.GetSumaImporteAsync(Order.IdOrdenVenta);
                 Order.MontoTotal = MontoTotal.ToString("$0,0.00");
                 OrdenVentaItemDB OrderDB = await OrdenVentaItemDB.Instance;

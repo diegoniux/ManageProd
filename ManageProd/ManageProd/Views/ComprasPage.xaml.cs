@@ -84,8 +84,6 @@ namespace ManageProd.Views
             {
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
             }
-
-
         }
     }
 }
