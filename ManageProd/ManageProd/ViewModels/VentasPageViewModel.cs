@@ -130,11 +130,14 @@ namespace ManageProd.ViewModels
                 var idProveedor = DetalleSelected.IdProveedor;
                 var idProducto = DetalleSelected.IdProducto;
 
-                var ProdItem = ListProduct.ToList().Find(x => x.IdProducto == idProducto);
-                ProductoSelected = ProdItem;
-
                 var provItem = ListProveedores.ToList().Find(x => x.IdProveedor == idProveedor);
                 ProveedorSelected = provItem;
+
+                ProductoItemDB ProductoDB = await ProductoItemDB.Instance;
+                ListProduct = new ObservableCollection<ProductoItem>(await ProductoDB.GetProductsIdProveedorAsync(provItem.IdProveedor));
+
+                var ProdItem = ListProduct.ToList().Find(x => x.IdProducto == idProducto);
+                ProductoSelected = ProdItem;
 
             }
             catch (Exception ex)
