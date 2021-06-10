@@ -16,6 +16,8 @@ namespace ManageProd.SQLiteDB.Models
             this.IdCliente = 0;
             this.FechaVenta = DateTime.Now;
             this.MontoTotal = "0";
+            this.CreditosAnteriores = string.Empty;
+            this.ExistenciasAnteriores = string.Empty;
         }
 
         [PrimaryKey, AutoIncrement, Column("IdOrdenCompra")]
