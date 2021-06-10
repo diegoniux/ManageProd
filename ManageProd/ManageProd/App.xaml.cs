@@ -88,17 +88,25 @@ namespace ManageProd
                 //incializamos la Bd con los usuario de la app
                 var Usuario = new UsuarioItem()
                 {
-                    Nombre = "Nombre de Usuario 01",
-                    Usuario = "Usuario01",
-                    Password = "Tqwerty1",
+                    Nombre = "Jorge Alberto Peréz Villeda",
+                    Usuario = "JPEREZ",
+                    Password = "Magochi04",
                     Remember = false
                 };
 
                 var Usuario2 = new UsuarioItem()
                 {
-                    Nombre = "Nombre de Usuario 02",
-                    Usuario = "Usuario02",
-                    Password = "Tqwerty1",
+                    Nombre = "Jorge Alberto Sánchez Molina",
+                    Usuario = "JSANCHEZ",
+                    Password = "Rosario14",
+                    Remember = false
+                };
+
+                var Usuario3 = new UsuarioItem()
+                {
+                    Nombre = "Jaime Castorena Villeda",
+                    Usuario = "JCASTORENA",
+                    Password = "Montevideo14",
                     Remember = false
                 };
 
