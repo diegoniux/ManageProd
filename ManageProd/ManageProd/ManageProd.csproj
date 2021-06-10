@@ -46,5 +46,17 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Routing\" />
     <Folder Include="Converters\" />
+    <Folder Include="Models\DTO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Templates\TicketCompra.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>TicketCompra.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Templates\TicketCompra.cs">
+      <DependentUpon>TicketCompra.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

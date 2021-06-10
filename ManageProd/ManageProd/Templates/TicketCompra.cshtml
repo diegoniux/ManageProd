@@ -1,0 +1,163 @@
+﻿@using ManageProd.Models.DTO
+
+@model OrdenCompraDTO
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <style type="text/css">
+                .tg {
+                    border: 0px none white;
+                    width: 250px;
+                    height: 100%;
+                    text-align: center;
+                }
+
+                    .tg td {
+                        border-color: white;
+                        border-style: none;
+                        border-width: 1px;
+                        font-family: Century Gothic;
+                        font-size: 8px;
+                        overflow: hidden;
+                        padding: 2px 2px;
+                        word-break: normal;
+                    }
+
+                    .tg th {
+                        border-color: white;
+                        border-style: none;
+                        border-width: 1px;
+                        font-family: Century Gothic;
+                        font-size: 8px;
+                        font-weight: normal;
+                        overflow: hidden;
+                        padding: 2px 2px;
+                        word-break: normal;
+                    }
+
+                    .tg .tg-c3ow {
+                        border-color: white;
+                        border-style: none;
+                        text-align: center;
+                        vertical-align: top;
+                    }
+
+                    .tg .tg-0pky {
+                        border-color: white;
+                        border-style: none;
+                        text-align: left;
+                        vertical-align: top;
+                        font-size: 7px;
+                    }
+
+                    .tg .tg-0pkyCenter {
+                        border-color: white;
+                        border-style: none;
+                        text-align: center;
+                        vertical-align: top;
+                        font-size: 7px;
+                    }
+
+                    .tg .tg-0pkyRight {
+                        border-color: white;
+                        border-style: none;
+                        text-align: right;
+                        vertical-align: top;
+                        font-size: 7px;
+                    }
+
+                    .tg .tg-7btt {
+                        border-color: white;
+                        border-style: none;
+                        font-weight: bold;
+                        text-align: center;
+                        vertical-align: top;
+                        font-size: 7px;
+                    }
+
+                .Existencias {
+                    border-color: white;
+                    border-style: none;
+                    text-align: justify;
+                    vertical-align: top;
+                    font-size: 7px;
+                    height: 30px;
+                }
+            </style>
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="tg-c3ow" colspan="8"><span style="font-weight: bold">Comercializadora de Carnes Frias</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tg-0pky" colspan="8">
+                            RFC: XXXX000000XXX<br>
+                            Sucursal: Rosario<br>
+                            Domicilio Fiscal:<br>
+                            @Model.FechaCompra<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-c3ow" colspan="8">
+                            <span style="font-weight: bold">Ticket de compra </span>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8">Generado por<span style="font-weight: bold">: </span>@Model.UsuarioCreacion</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Proveedor</span>:  @Model.Proveedor</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-7btt" colspan="3">Producto</td>
+                        <td class="tg-7btt">Cantidad</td>
+                        <td class="tg-7btt">Peso Bruto</td>
+                        <td class="tg-7btt">Peso Neto</td>
+                        <td class="tg-7btt">Precio Unitario</td>
+                        <td class="tg-7btt">Importe</td>
+                    </tr>
+                    @foreach (var item in Model.Productos)
+                    {
+                        <tr>
+                            <td class="tg-0pky" colspan="3">@item.Producto</td>
+                            <td class="tg-0pkyCenter">@item.Cantidad</td>
+                            <td class="tg-0pkyCenter">@item.PesoBruto</td>
+                            <td class="tg-0pkyCenter">@item.PesoNeto</td>
+                            <td class="tg-0pkyCenter">@item.Precio</td>
+                            <td class="tg-0pkyRight ">@item.Importe</td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td class="tg-0pky" colspan="8"></td>
+                    </tr>
+                    <tr>
+                        <td class="tg-7btt" colspan="5">Total a pagar</td>
+                        <td class="tg-7btt" colspan="3">@Model.MontoTotal</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8">@Model.MontoLetra</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+

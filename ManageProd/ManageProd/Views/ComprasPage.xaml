@@ -609,9 +609,9 @@
                             </Frame>
 
                             <StackLayout
-                                Grid.Column="3"
+                                Grid.Column="2"
                                 Grid.Row="2"
-                                Grid.ColumnSpan="5"
+                                Grid.ColumnSpan="6"
                                 VerticalOptions="FillAndExpand"
                                 HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal"
@@ -646,6 +646,18 @@
                                     CornerRadius="14"
                                     Command="{Binding AddProduct}"
                                     BackgroundColor="#5a0309"
+                                    Margin="4"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="12">
+                                </Button>
+                                <Button
+                                    IsVisible="{Binding HayProductos, Mode=TwoWay}"
+                                    Text="Finalizar"
+                                    CornerRadius="14"
+                                    Command="{Binding FinishOrder}"
+                                    BackgroundColor="Black"
                                     Margin="4"
                                     TextColor="White"
                                     FontAttributes="Bold"
@@ -851,43 +863,6 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                     <!--TERMINA DATOS-->
-
-                    <!--<Grid
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                             <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Button
-                            Command="{Binding Cancel}"
-                            IsVisible="{Binding HayInfo}"
-                            Text="Cancelar"
-                            BackgroundColor="#FFF"
-                            TextColor="Black"
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            BorderColor="Black"
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand">
-                        </Button>
-                        <Button
-                            Command="{Binding SaveData}"
-                            IsVisible="{Binding HayInfo}"
-                            Text="Guardar información"
-                            BackgroundColor="#2877D5"
-                            TextColor="White"
-                            Grid.Column="1"
-                            Grid.Row="0"
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand">
-                        </Button>
-                    </Grid>-->
                 </Grid>
             </StackLayout>
         </RelativeLayout>
