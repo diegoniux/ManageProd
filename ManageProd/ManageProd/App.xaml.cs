@@ -39,6 +39,7 @@ namespace ManageProd
             ///Clientes
             //////////////
             ClienteItemDB clientesDB = await ClienteItemDB.Instance;
+            await clientesDB.DeleteAllClientsAsync();
             var Clientes = await clientesDB.GetClientsAsync();
 
             if (Clientes == null || Clientes.Count == 0)
@@ -79,6 +80,7 @@ namespace ManageProd
 
 
             UsuarioItemDB database = await UsuarioItemDB.Instance;
+           await database.DeleteAllUserAsync();
             var Usuarios = await database.GetUsersAsync();
 
             if (Usuarios == null || Usuarios.Count == 0 )

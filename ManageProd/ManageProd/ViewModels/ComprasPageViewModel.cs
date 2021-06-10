@@ -8,8 +8,11 @@ using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using ManageProd.Models.DTO;
+using ManageProd.Shared;
 using ManageProd.SQLiteDB.Data;
 using ManageProd.SQLiteDB.Models;
+using ManageProd.Templates;
 using ManageProd.Views;
 using PropertyChanged;
 using Xamarin.Forms;
@@ -21,6 +24,7 @@ namespace ManageProd.ViewModels
         public bool IsBusy { get; set; }
         public bool HayOrden { get; set; }
         public bool IsSelected { get; set; }
+        public bool HayProductos { get; set; }
         public OrdenCompraItem Order { get; set; }
         public ObservableCollection<DetalleCompraItem> ListDetail { get; set; }
         public ObservableCollection<ProveedorItem> ListProveedores { get; set; }
@@ -37,6 +41,7 @@ namespace ManageProd.ViewModels
         public ICommand DeleteProduct { get; set; }
         public ICommand ProductoSelectionChanged { get; set; }
         public ICommand NewProduct { get; set; }
+        public ICommand FinishOrder { get; set; }
 
 
         public ComprasPageViewModel()
@@ -44,6 +49,7 @@ namespace ManageProd.ViewModels
             IsBusy = false;
             HayOrden = false;
             IsSelected = false;
+            HayProductos = false;
 
             Order = new OrdenCompraItem();
             ListDetail = new ObservableCollection<DetalleCompraItem>();
@@ -58,6 +64,7 @@ namespace ManageProd.ViewModels
             DeleteProduct = new Command(async () => await Delete());
             ProductoSelectionChanged = new Command(async () => await SelectChanged());
             NewProduct = new Command(async () =>  await NewProd());
+            FinishOrder = new Command(async () => await PrintOrder());
 
             LoadCatalogs();
 
@@ -72,6 +79,86 @@ namespace ManageProd.ViewModels
                 DetalleSelected = detalle;
             });
 
+        }
+
+        private async Task PrintOrder()
+        {
+            try
+            {
+                if (ListDetail.Count == 0)
+                {
+                    throw new Exception("Para finalizar la compra, debes agregar productos.");
+                }
+
+
+                var confirmaConf = new ConfirmConfig()
+                {
+                    Title = "Confirmación",
+                    Message = "¿Deseas finalizar la compra?",
+                    OkText = "Si",
+                    CancelText = "No"
+                };
+
+                bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
+                if (!resp)
+                {
+                    return;
+                }
+
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+
+                    if (Order?.IdOrdenCompra != 0)
+                    {
+                        OrdenCompraDTO orden = new OrdenCompraDTO();
+
+                        orden.Proveedor = ProveedorSelected.Proveedor;
+                        orden.FechaCompra = Order.FechaCompra.ToString("dd/MMMM/yyyy hh:mm");
+                        orden.UsuarioCreacion = App.UserLogin.Name;
+                        orden.MontoTotal = Order.MontoTotal;
+                        decimal.TryParse(Order.MontoTotal.Replace("$","").Replace(",",""), out var monto);
+                        orden.MontoLetra = new Funciones().ConvertirNumeroALetras(Order.MontoTotal.Replace("$", "").Replace(",", ""),true,"pesos");
+
+                        foreach (var item in ListDetail)
+                        {
+                            ProductoItemDB db = await ProductoItemDB.Instance;
+                            var productoItem = await db.GetProductsIdAsync(item.IdProducto);
+
+                            var prod = new OrdenCompraDTO.Producto()
+                            {
+                                ProductoDesc = productoItem.Producto,
+                                Cantidad = item.Cantidad.ToString(),
+                                PesoBruto = item.PesoBruto.ToString(),
+                                PesoNeto = item.PesoNeto.ToString(),
+                                Precio = item.Precio.ToString("$0,0.00"),
+                                Importe = item.Importe.ToString("$0,0.00")
+                            };
+                            
+                            orden.Productos.Add(prod);
+                        }
+
+                        // generamos el tmeplaste del html
+                        var ticket = new TicketCompra();
+                        ticket.Model = orden;
+                        var htmlString = ticket.GenerateString();
+
+
+                        //Creamos un html source
+                        var htmlSource = new HtmlWebViewSource();
+                        htmlSource.Html = htmlString;
+
+
+                        // cargamos el html en un webview
+                        var browser = new WebView();
+                        browser.Source = htmlSource;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
         }
 
         private async Task NewProd()
@@ -305,6 +392,7 @@ namespace ManageProd.ViewModels
                 {
                     DetalleCompraItemDB DetalleOrdenDB = await DetalleCompraItemDB.Instance;
                     ListDetail = new ObservableCollection<DetalleCompraItem>(await DetalleOrdenDB.GetDetalleCompraIdOrdenCompraAsync(Order.IdOrdenCompra));
+                    HayProductos = ListDetail.Count > 0;
                 }
             }
             catch (Exception ex)
