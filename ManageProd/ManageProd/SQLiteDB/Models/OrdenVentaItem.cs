@@ -30,5 +30,11 @@ namespace ManageProd.SQLiteDB.Models
         [Column("MontoTotal")]
         public string MontoTotal { get; set; }
 
+        [Column("CreditosAnteriores")]
+        public string CreditosAnteriores { get; set; }
+
+        [Column("ExistenciasAnteriores")]
+        public string ExistenciasAnteriores { get; set; }
+
     }
 }

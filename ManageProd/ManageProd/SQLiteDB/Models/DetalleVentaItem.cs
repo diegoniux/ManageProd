@@ -57,10 +57,6 @@ namespace ManageProd.SQLiteDB.Models
         [Column("Importe")]
         public decimal Importe { get; set; }
 
-        [Column("CreditosAnteriores")]
-        public string CreditosAnteriores { get; set; }
-
-        [Column("ExistenciasAnteriores")]
-        public string ExistenciasAnteriores { get; set; }
+        
     }
 }
