@@ -260,14 +260,29 @@ namespace ManageProd.ViewModels
 
                     if (DetalleSelected != null)
                     {
-                        DetalleSelected.IdOrdenCompra = Order.IdOrdenCompra;
-                        DetalleCompraItemDB DetalleDB = await DetalleCompraItemDB.Instance;
-                        await DetalleDB.SaveDetalleCompraAsync(DetalleSelected);
-                        await LoadOrderDetail();
-                        await ActualizarMontoTotal();
-                        IsSelected = false;
-                        DetalleSelected = new DetalleCompraItem();
-                        ProductoSelected = new ProductoItem();
+                        if (DetalleSelected.IdProducto > 0)
+                        {
+                            if (DetalleSelected.Cantidad > 0)
+                            {
+                                if (DetalleSelected.PesoBruto > 0)
+                                {
+                                    DetalleSelected.IdOrdenCompra = Order.IdOrdenCompra;
+                                    DetalleCompraItemDB DetalleDB = await DetalleCompraItemDB.Instance;
+                                    await DetalleDB.SaveDetalleCompraAsync(DetalleSelected);
+                                    await LoadOrderDetail();
+                                    await ActualizarMontoTotal();
+                                    IsSelected = false;
+                                    DetalleSelected = new DetalleCompraItem();
+                                    ProductoSelected = new ProductoItem();
+                                }
+                                else
+                                    await UserDialogs.Instance.AlertAsync("Debe ingresar el peso bruto (puede ser igual a la cantidad).", "Aviso", "Ok");
+                            }
+                            else
+                                await UserDialogs.Instance.AlertAsync("Debe ingresar la cantidad del producto.", "Aviso", "Ok");
+                        }
+                        else
+                            await UserDialogs.Instance.AlertAsync("Debe seleccionar un proveedor.", "Aviso", "Ok");
                     }
                 }
             }
