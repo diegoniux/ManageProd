@@ -89,31 +89,31 @@ namespace ManageProd
                 var Usuario = new UsuarioItem()
                 {
                     Nombre = "Jorge Alberto Peréz Villeda",
-                    Usuario = "JPEREZ",
-                    Password = "Magochi04",
+                    Usuario = "jperez",
+                    Password = "magochi04",
                     Remember = false
                 };
 
                 var Usuario2 = new UsuarioItem()
                 {
                     Nombre = "Jorge Alberto Sánchez Molina",
-                    Usuario = "JSANCHEZ",
-                    Password = "Rosario14",
+                    Usuario = "jsanchez",
+                    Password = "rosario14",
                     Remember = false
                 };
 
                 var Usuario3 = new UsuarioItem()
                 {
                     Nombre = "Jaime Castorena Villeda",
-                    Usuario = "JCASTORENA",
-                    Password = "Montevideo14",
+                    Usuario = "jcastorena",
+                    Password = "montevideo14",
                     Remember = false
                 };
 
 
                 await database.SaveUserAsync(Usuario);
                 await database.SaveUserAsync(Usuario2);
-
+                await database.SaveUserAsync(Usuario3);
             }
         }
 

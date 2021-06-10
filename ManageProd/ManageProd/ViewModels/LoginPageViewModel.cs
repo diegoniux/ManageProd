@@ -49,7 +49,7 @@ namespace ManageProd.ViewModels
 
                 UsuarioItemDB database = await UsuarioItemDB.Instance;
 
-                var usuario = await database.LoginUserdAsync(new UsuarioItem() { Usuario = User.User, Password = User.Password });
+                var usuario = await database.LoginUserdAsync(new UsuarioItem() { Usuario = User.User.ToLower(), Password = User.Password.ToLower() });
                 if (usuario == null)
                 {
                     throw new Exception("Clave y/o usuario incorrecto, favor de verificar.");
