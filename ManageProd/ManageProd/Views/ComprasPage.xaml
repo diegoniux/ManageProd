@@ -227,14 +227,14 @@
                             HasShadow="False"
                             BackgroundColor="#9AC5F9">
                             <StackLayout Orientation="Horizontal" Padding="0" Spacing="0"
-                                         Margin="10,0">
+                                         Margin="5,0">
                                 <renderers:EntryIcon
                                     x:Name="Monto"
                                     Text="{Binding Order.MontoTotal, Mode=TwoWay}"
-                                    MaxLength="10"
+                                    MaxLength="15"
                                     CornerRadius="5"
                                     FontAttributes="Bold"
-                                    FontSize="Small"
+                                    FontSize="11"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Center"
