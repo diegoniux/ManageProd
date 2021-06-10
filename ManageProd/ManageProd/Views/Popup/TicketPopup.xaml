@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<popup:PopupPage
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ManageProd.Views.Popup.TicketPopup">
+    <StackLayout
+        VerticalOptions="FillAndExpand">
+        <Frame Margin="240" Padding="10" VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <WebView
+                    x:Name="browser"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </WebView>
+                <Button
+                    Margin="20,0,20,0"
+                    Text="Imprimir"
+                    CornerRadius="14"
+                    BackgroundColor="#031255"
+                    TextColor="#FFF"
+                    FontAttributes="Bold"
+                    FontSize="12">
+                 </Button>
+            </StackLayout>
+        </Frame>
+        
+    </StackLayout>
+
+</popup:PopupPage>

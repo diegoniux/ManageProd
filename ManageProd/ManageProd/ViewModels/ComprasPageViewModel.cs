@@ -14,7 +14,9 @@ using ManageProd.SQLiteDB.Data;
 using ManageProd.SQLiteDB.Models;
 using ManageProd.Templates;
 using ManageProd.Views;
+using ManageProd.Views.Popup;
 using PropertyChanged;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace ManageProd.ViewModels
@@ -147,10 +149,15 @@ namespace ManageProd.ViewModels
                         var htmlSource = new HtmlWebViewSource();
                         htmlSource.Html = htmlString;
 
-
                         // cargamos el html en un webview
-                        var browser = new WebView();
-                        browser.Source = htmlSource;
+                        //var browser = new WebView();
+                        //browser.Source = htmlSource;
+
+                        await PopupNavigation.Instance.PushAsync(new TicketPopup());
+
+                        MessagingCenter.Send<ComprasPageViewModel, HtmlWebViewSource>(this, "ShowTicketCompra", htmlSource);
+
+
 
                     }
                 }

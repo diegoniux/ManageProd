@@ -9,11 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageProd.iOS", "ManagePro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageProd", "ManageProd\ManageProd\ManageProd.csproj", "{DF7835A3-659B-43A8-9B73-DB586B107AB7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{403E527C-75FC-456D-A282-A6653ED3361F}"
-	ProjectSection(SolutionItems) = preProject
-		OrdenCompraDTO.cs = OrdenCompraDTO.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
