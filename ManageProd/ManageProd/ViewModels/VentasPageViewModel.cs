@@ -209,15 +209,40 @@ namespace ManageProd.ViewModels
 
                     if (DetalleSelected != null)
                     {
-                        DetalleSelected.IdOrdenVenta = Order.IdOrdenVenta;
-                        DetalleVentaItemDB DetalleDB = await DetalleVentaItemDB.Instance;
-                        await DetalleDB.SaveDetalleVentaAsync(DetalleSelected);
-                        await LoadOrderDetail();
-                        await ActualizarMontoTotal();
-                        IsSelected = false;
-                        DetalleSelected = new DetalleVentaItem();
-                        ProductoSelected = new ProductoItem();
-                        ProveedorSelected = new ProveedorItem();
+                        if (DetalleSelected.IdProveedor > 0)
+                        {
+                            if (DetalleSelected.IdProducto > 0)
+                            {
+                                if (DetalleSelected.Cantidad > 0)
+                                {
+                                    if (DetalleSelected.PesoNeto > 0)
+                                    {
+                                        if (DetalleSelected.Descuento < 0)
+                                        {
+                                            await UserDialogs.Instance.AlertAsync("El descuento no puede ser negativo.", "Aviso", "Ok");
+                                            return;
+                                        }
+                                        DetalleSelected.IdOrdenVenta = Order.IdOrdenVenta;
+                                        DetalleVentaItemDB DetalleDB = await DetalleVentaItemDB.Instance;
+                                        await DetalleDB.SaveDetalleVentaAsync(DetalleSelected);
+                                        await LoadOrderDetail();
+                                        await ActualizarMontoTotal();
+                                        IsSelected = false;
+                                        DetalleSelected = new DetalleVentaItem();
+                                        ProductoSelected = new ProductoItem();
+                                        ProveedorSelected = new ProveedorItem();
+                                    }
+                                    else
+                                        await UserDialogs.Instance.AlertAsync("Debe ingresar el peso neto (puede ser igual a la cantidad).", "Aviso", "Ok");
+                                }
+                                else
+                                    await UserDialogs.Instance.AlertAsync("Debe ingresar la cantidad del producto.", "Aviso", "Ok");
+                            }
+                            else
+                                await UserDialogs.Instance.AlertAsync("Debe seleccionar un producto.", "Aviso", "Ok");
+                        }
+                        else
+                            await UserDialogs.Instance.AlertAsync("Debe seleccionar un proveedor.", "Aviso", "Ok");
                     }
                 }
             }
@@ -270,12 +295,17 @@ namespace ManageProd.ViewModels
                 {
                     if (Order != null)
                     {
-                        Order.IdCliente = ClienteSelected.IdCliente;
-                        OrdenVentaItemDB OrderDB = await OrdenVentaItemDB.Instance;
-                        await OrderDB.SaveOrdenVentaAsync(Order);
-                        Order = await OrderDB.GetOrdenVentaIdsAsync(Order.IdOrdenVenta);
-                        await LoadProductsProveedor();
-                        HayOrden = true;
+                        if (ClienteSelected != null)
+                        {
+                            Order.IdCliente = ClienteSelected.IdCliente;
+                            OrdenVentaItemDB OrderDB = await OrdenVentaItemDB.Instance;
+                            await OrderDB.SaveOrdenVentaAsync(Order);
+                            Order = await OrderDB.GetOrdenVentaIdsAsync(Order.IdOrdenVenta);
+                            await LoadProductsProveedor();
+                            HayOrden = true;
+                        }
+                        else
+                            await UserDialogs.Instance.AlertAsync("Debe de seleccionar un cliente.", "Aviso", "Ok");
                     }
                 }
             }
