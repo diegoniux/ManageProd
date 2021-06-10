@@ -41,12 +41,6 @@ namespace ManageProd.SQLiteDB.Data
         {
             return Database.QueryAsync<ProductoItem>("SELECT * FROM [ProductoItem] WHERE [IdProveedor] = " + request.IdProveedor + " AND [IdProducto] = " + request.IdProducto);
         }
-
-        public Task<List<ProductoItem>> GetProductIdAsync(ProductoItem request)
-        {
-            return Database.QueryAsync<ProductoItem>("SELECT * FROM [ProductoItem] WHERE [IdProducto] = " + request.IdProducto);
-        }
-
         public Task<int> SaveProductsAsync(ProductoItem request)
         {
             if (request.IdProducto != 0)
