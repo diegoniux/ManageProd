@@ -69,6 +69,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DependencyServices\ApplePrintService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\background_login.imageset\backgound_login.png">
@@ -314,5 +315,6 @@
     <Folder Include="Assets.xcassets\config_title_page.imageset\" />
     <Folder Include="Assets.xcassets\camioneta_title_page.imageset\" />
     <Folder Include="Assets.xcassets\camion_title_page.imageset\" />
+    <Folder Include="DependencyServices\" />
   </ItemGroup>
 </Project>

@@ -49,6 +49,10 @@
     <Folder Include="Converters\" />
     <Folder Include="Models\DTO\" />
     <Folder Include="Views\Popup\" />
+    <Folder Include="DependencyServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="DependencyServices\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Templates\TicketCompra.cshtml">

@@ -20,7 +20,8 @@
                     BackgroundColor="#031255"
                     TextColor="#FFF"
                     FontAttributes="Bold"
-                    FontSize="12">
+                    FontSize="12"
+                    Clicked="Button_Clicked">
                  </Button>
             </StackLayout>
         </Frame>
