@@ -6,7 +6,7 @@
     x:Class="ManageProd.Views.Popup.TicketPopup">
     <StackLayout
         VerticalOptions="FillAndExpand">
-        <Frame Margin="240" Padding="10" VerticalOptions="FillAndExpand">
+        <Frame Margin="80" Padding="10" VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <WebView
                     x:Name="browser"
