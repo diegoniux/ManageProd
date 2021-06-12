@@ -59,10 +59,24 @@
       <Generator>RazorTemplatePreprocessor</Generator>
       <LastGenOutput>TicketCompra.cs</LastGenOutput>
     </None>
+    <None Update="Templates\TicketVenta.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>TicketVenta.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TicketVentaDesc.cshtml">
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>TicketVentaDesc.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Templates\TicketCompra.cs">
       <DependentUpon>TicketCompra.cshtml</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TicketVenta.cs">
+      <DependentUpon>TicketVenta.cshtml</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TicketVentaDesc.cs">
+      <DependentUpon>TicketVentaDesc.cshtml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
