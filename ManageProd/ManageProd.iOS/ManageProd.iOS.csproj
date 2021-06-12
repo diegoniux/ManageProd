@@ -271,6 +271,10 @@
     <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page-2.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\view.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\view_raya.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\view.imageset\view.png" />
+    <ImageAsset Include="Assets.xcassets\view_raya.imageset\view_raya.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -316,5 +320,7 @@
     <Folder Include="Assets.xcassets\camioneta_title_page.imageset\" />
     <Folder Include="Assets.xcassets\camion_title_page.imageset\" />
     <Folder Include="DependencyServices\" />
+    <Folder Include="Assets.xcassets\view.imageset\" />
+    <Folder Include="Assets.xcassets\view_raya.imageset\" />
   </ItemGroup>
 </Project>

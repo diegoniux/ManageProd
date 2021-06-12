@@ -11,6 +11,9 @@ using ManageProd.Views;
 using Xamarin.Forms;
 using ManageProd.Models.DTO;
 using ManageProd.Shared;
+using ManageProd.Templates;
+using Rg.Plugins.Popup.Services;
+using ManageProd.Views.Popup;
 
 namespace ManageProd.ViewModels
 {    
@@ -412,7 +415,7 @@ namespace ManageProd.ViewModels
 
                         // generamos el tmeplaste del html
                         var ticket = new TicketCompra();
-                        ticket.Model = orden;
+                        // ticket.Model = orden;
                         var htmlString = ticket.GenerateString();
 
 
@@ -426,7 +429,7 @@ namespace ManageProd.ViewModels
 
                         await PopupNavigation.Instance.PushAsync(new TicketPopup());
 
-                        MessagingCenter.Send<ComprasPageViewModel, HtmlWebViewSource>(this, "ShowTicketCompra", htmlSource);
+                        // MessagingCenter.Send<ComprasPageViewModel, HtmlWebViewSource>(this, "ShowTicketCompra", htmlSource);
 
 
 

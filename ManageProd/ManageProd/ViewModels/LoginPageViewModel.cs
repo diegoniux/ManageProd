@@ -16,18 +16,38 @@ namespace ManageProd.ViewModels
     public class LoginPageViewModel : NotificationObject
     {
         public bool IsBusy { get; set; }
+        public bool HidePassord { get; set; }
+        public string ImgViewPassword { get; set; }
+
         public UserModel User { get; set; }
         public ICommand ExecuteLogin { get; set; }
         public ICommand ExecuteLoadRememberUser { get; set; }
+        public ICommand ImagePasswordClick { get; set; }
 
 
         public LoginPageViewModel()
         {
             User = new UserModel();
             IsBusy = false;
+            HidePassord = true;
+            ImgViewPassword = "view.png";
             ExecuteLogin = new Command(async () => await LoginAsync());
             ExecuteLoadRememberUser = new Command(async () => await LoadRememberUserAsync());
+            ImagePasswordClick = new Command(async () => await ShowHidePassword());
 
+        }
+
+        private async Task ShowHidePassword()
+        {
+            try
+            {
+                HidePassord = !HidePassord;
+                ImgViewPassword = HidePassord ? "view.png" : "view_raya.png";
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
         }
 
         private async Task LoginAsync()

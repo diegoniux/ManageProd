@@ -143,19 +143,22 @@
                                 CornerRadius="35"
                                 MaxLength="20"
                                 Placeholder="Ingresa tu contraseña"
-                                IsPassword="True"
+                                IsPassword="{Binding HidePassord}"
                                 PlaceholderColor="#C4C4C4"
                                 HorizontalOptions="FillAndExpand"
                                 Margin="0,0,0,-10">
                             </renderers:EntryIcon>
 
                             <Image 
-                                x:Name="ImgHidePassw"
-                                Source="view.png" 
+                                Source="{Binding ImgViewPassword}" 
                                 WidthRequest="28"
                                 HeightRequest="35"
                                 Margin="20,0,20,0"
                                 HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding ImagePasswordClick}"/>
+                                </Image.GestureRecognizers>
                             </Image>
 
                         </StackLayout>
