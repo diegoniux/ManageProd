@@ -9,6 +9,8 @@ using ManageProd.SQLiteDB.Data;
 using ManageProd.SQLiteDB.Models;
 using ManageProd.Views;
 using Xamarin.Forms;
+using ManageProd.Models.DTO;
+using ManageProd.Shared;
 
 namespace ManageProd.ViewModels
 {    
@@ -354,6 +356,87 @@ namespace ManageProd.ViewModels
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
             }
 
+        }
+
+        private async Task PrintOrder()
+        {
+            try
+            {
+                if (ListDetail.Count == 0)
+                {
+                    throw new Exception("Para finalizar la venta, debes agregar productos.");
+                }
+
+
+                var confirmaConf = new ConfirmConfig()
+                {
+                    Title = "Confirmación",
+                    Message = "¿Deseas finalizar la venta?",
+                    OkText = "Si",
+                    CancelText = "No"
+                };
+
+                bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
+                if (!resp)
+                {
+                    return;
+                }
+
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+
+                    if (Order?.IdOrdenVenta != 0)
+                    {
+                        OrdenVentaDTO orden = new OrdenVentaDTO();
+
+                        orden.Cliente = ClienteSelected.Nombre;
+                        orden.FechaVenta = Order.FechaVenta.ToString("dd/MMMM/yyyy hh:mm");
+                        orden.UsuarioCreacion = App.UserLogin.Name;
+                        orden.MontoTotal = Order.MontoTotal;
+                        decimal.TryParse(Order.MontoTotal.Replace("$", "").Replace(",", ""), out var monto);
+                        orden.MontoLetra = new Funciones().ConvertirNumeroALetras(Order.MontoTotal.Replace("$", "").Replace(",", ""), true, "pesos");
+
+                        foreach (var item in ListDetail)
+                        {
+                            ProductoItemDB db = await ProductoItemDB.Instance;
+                            var productoItem = await db.GetProductsIdAsync(item.IdProducto);
+                            var prod = new OrdenVentaDTO.ProductoVenta();
+                            prod.ProductoDesc = productoItem.Producto;
+                            prod.Cantidad = item.Cantidad.ToString();
+                            prod.Descuento = item.Descuento.ToString("$0,0.00");
+                            prod.Importe = item.Importe.ToString("$0,0.00");
+                            prod.PesoNeto = item.PesoNeto.ToString();
+                            prod.Precio = item.Precio.ToString("$0,0.00");  
+                            orden.Productos.Add(prod);
+                        }
+
+                        // generamos el tmeplaste del html
+                        var ticket = new TicketCompra();
+                        ticket.Model = orden;
+                        var htmlString = ticket.GenerateString();
+
+
+                        //Creamos un html source
+                        var htmlSource = new HtmlWebViewSource();
+                        htmlSource.Html = htmlString;
+
+                        // cargamos el html en un webview
+                        //var browser = new WebView();
+                        //browser.Source = htmlSource;
+
+                        await PopupNavigation.Instance.PushAsync(new TicketPopup());
+
+                        MessagingCenter.Send<ComprasPageViewModel, HtmlWebViewSource>(this, "ShowTicketCompra", htmlSource);
+
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
         }
 
     }

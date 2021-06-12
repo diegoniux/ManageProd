@@ -47,7 +47,6 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Routing\" />
     <Folder Include="Converters\" />
-    <Folder Include="Models\DTO\" />
     <Folder Include="Views\Popup\" />
     <Folder Include="DependencyServices\" />
   </ItemGroup>
