@@ -45,10 +45,11 @@ namespace ManageProd.ViewModels
                     if (file.FileName.EndsWith("csv", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await file.OpenReadAsync();
-                        using (var reader = new System.IO.StreamReader(stream, Encoding.GetEncoding("utf-8")))
+                        using (var reader = new System.IO.StreamReader(stream, Encoding.UTF8))
                         {
                             if (reader != null)
                             {
+
                                 using (var csvReader = new CsvReader(reader, CultureInfo.CurrentCulture))
                                 {
                                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))

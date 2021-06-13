@@ -415,7 +415,7 @@ namespace ManageProd.ViewModels
 
                         // generamos el tmeplaste del html
                         var ticket = new TicketCompra();
-                        // ticket.Model = orden;
+                        //ticket.Model = orden;
                         var htmlString = ticket.GenerateString();
 
 
