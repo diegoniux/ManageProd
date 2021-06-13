@@ -58,41 +58,46 @@ WriteLiteral(">\n            <style");
 
 WriteLiteral(" type=\"text/css\"");
 
-WriteLiteral(">\n                .tg {\n                    border: 0px none white;\n             " +
-"       width: 300px;\n                    height: 100%;\n                    text-" +
-"align: center;\n                }\n\n                    .tg td {\n                 " +
-"       border-color: white;\n                        border-style: none;\n        " +
-"                border-width: 1px;\n                        font-family: \'Lucida " +
-"Console\';\n                        font-size: 9px;\n                        overfl" +
-"ow: hidden;\n                        word-break: normal;\n                    }\n\n " +
-"                   .tg th {\n                        border-color: white;\n       " +
-"                 border-style: none;\n                        border-width: 1px;\n" +
-"                        font-family: \'Lucida Console\';\n                        f" +
-"ont-size: 9px;\n                        font-weight: normal;\n                    " +
-"    overflow: hidden;\n                        word-break: normal;\n              " +
-"      }\n\n                    .tg .tg-c3ow {\n                        border-color" +
-": white;\n                        border-style: none;\n                        tex" +
-"t-align: center;\n                        vertical-align: top;\n                  " +
-"      font-size: 11px;\n                    }\n\n                    .tg .tg-0pky {" +
-"\n                        border-color: white;\n                        border-sty" +
-"le: none;\n                        text-align: left;\n                        vert" +
-"ical-align: top;\n                        font-size: 8px;\n                    }\n\n" +
-"                    .tg .tg-0pkyCenter {\n                        border-color: w" +
-"hite;\n                        border-style: none;\n                        text-a" +
-"lign: center;\n                        vertical-align: top;\n                     " +
-"   font-size: 8px;\n                    }\n\n                    .tg .tg-0pkyRight " +
-"{\n                        border-color: white;\n                        border-st" +
-"yle: none;\n                        text-align: right;\n                        ve" +
-"rtical-align: top;\n                        font-size: 8px;\n                    }" +
-"\n\n                    .tg .tg-7btt {\n                        border-color: white" +
-";\n                        border-style: none;\n                        font-weigh" +
-"t: bold;\n                        text-align: center;\n                        ver" +
-"tical-align: top;\n                        font-size: 10px;\n                    }" +
-"\n\n                .Existencias {\n                    border-color: white;\n      " +
-"              border-style: none;\n                    text-align: justify;\n     " +
-"               vertical-align: top;\n                    font-size: 9px;\n        " +
-"            height: 30px;\n                }\n            </style>\n            <ta" +
-"ble");
+WriteLiteral(">\r\n                .tg {\r\n                    border: 0px none white;\r\n          " +
+"          width: 270px;\r\n                    height: 100%;\r\n                    " +
+"text-align: center;\r\n                }\r\n\r\n                    .tg td {\r\n        " +
+"                border-color: white;\r\n                        border-style: none" +
+";\r\n                        border-width: 1px;\r\n                        font-fami" +
+"ly: \'Lucida Console\';\r\n                        font-size: 7px;\r\n                " +
+"        overflow: hidden;\r\n                        word-break: normal;\r\n        " +
+"            }\r\n\r\n                    .tg th {\r\n                        border-co" +
+"lor: white;\r\n                        border-style: none;\r\n                      " +
+"  border-width: 1px;\r\n                        font-family: \'Lucida Console\';\r\n  " +
+"                      font-size: 7px;\r\n                        font-weight: norm" +
+"al;\r\n                        overflow: hidden;\r\n                        word-bre" +
+"ak: normal;\r\n                    }\r\n\r\n                    .tg .tg-c3ow {\r\n      " +
+"                  border-color: white;\r\n                        border-style: no" +
+"ne;\r\n                        text-align: center;\r\n                        vertic" +
+"al-align: top;\r\n                        font-family: \'Lucida Console\';\r\n        " +
+"                font-size: 9px;\r\n                    }\r\n\r\n                    .t" +
+"g .tg-0pky {\r\n                        border-color: white;\r\n                    " +
+"    border-style: none;\r\n                        text-align: left;\r\n            " +
+"            vertical-align: top;\r\n                        font-family: \'Lucida C" +
+"onsole\';\r\n                        font-size: 7px;\r\n                    }\r\n\r\n    " +
+"                .tg .tg-0pkyCenter {\r\n                        border-color: whit" +
+"e;\r\n                        border-style: none;\r\n                        text-al" +
+"ign: center;\r\n                        vertical-align: top;\r\n                    " +
+"    font-family: \'Lucida Console\';\r\n                        font-size: 8px;\r\n   " +
+"                 }\r\n\r\n                    .tg .tg-0pkyRight {\r\n                 " +
+"       border-color: white;\r\n                        border-style: none;\r\n      " +
+"                  text-align: right;\r\n                        vertical-align: to" +
+"p;\r\n                        font-family: \'Lucida Console\';\r\n                    " +
+"    font-size: 7px;\r\n                    }\r\n\r\n                    .tg .tg-7btt {" +
+"\r\n                        border-color: white;\r\n                        border-s" +
+"tyle: none;\r\n                        font-weight: bold;\r\n                       " +
+" text-align: center;\r\n                        vertical-align: top;\r\n            " +
+"            font-family: \'Lucida Console\';\r\n                        font-size: 7" +
+"px;\r\n                    }\r\n\r\n                .Existencias {\r\n                  " +
+"  border-color: white;\r\n                    border-style: none;\r\n               " +
+"     text-align: justify;\r\n                    vertical-align: top;\r\n           " +
+"         font-size: 7px;\r\n                    font-family: \'Lucida Console\';\r\n  " +
+"                  height: 30px;\r\n                }\r\n            </style>\r\n      " +
+"      <table");
 
 WriteLiteral(" class=\"tg\"");
 
@@ -121,7 +126,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Fecha de venta: </span> ");
 
 
-#line 101 "TicketVentaDesc.cshtml"
+#line 107 "TicketVentaDesc.cshtml"
                                                                                Write(Model.FechaVenta);
 
 
@@ -153,7 +158,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Generado por: </span>");
 
 
-#line 111 "TicketVentaDesc.cshtml"
+#line 117 "TicketVentaDesc.cshtml"
                                                                                                         Write(Model.UsuarioCreacion);
 
 
@@ -173,7 +178,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Cliente: </span>  ");
 
 
-#line 114 "TicketVentaDesc.cshtml"
+#line 120 "TicketVentaDesc.cshtml"
                                                                                                      Write(Model.Cliente);
 
 
@@ -197,7 +202,7 @@ WriteLiteral(">Producto</td>\n                        <td");
 
 WriteLiteral(" class=\"tg-7btt\"");
 
-WriteLiteral(">Cantidad</td>\n                        <td");
+WriteLiteral(">Cant.</td>\r\n                        <td");
 
 WriteLiteral(" class=\"tg-7btt\"");
 
@@ -216,13 +221,13 @@ WriteLiteral(" class=\"tg-7btt\"");
 WriteLiteral(">Importe</td>\n                    </tr>\n");
 
 
-#line 127 "TicketVentaDesc.cshtml"
+#line 133 "TicketVentaDesc.cshtml"
                     
 
 #line default
 #line hidden
 
-#line 127 "TicketVentaDesc.cshtml"
+#line 133 "TicketVentaDesc.cshtml"
                      foreach (var item in Model.Productos)
                     {
 
@@ -238,7 +243,7 @@ WriteLiteral(" colspan=\"3\"");
 WriteLiteral(">");
 
 
-#line 130 "TicketVentaDesc.cshtml"
+#line 136 "TicketVentaDesc.cshtml"
                                                        Write(item.ProductoDesc);
 
 
@@ -251,7 +256,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 131 "TicketVentaDesc.cshtml"
+#line 137 "TicketVentaDesc.cshtml"
                                                  Write(item.Cantidad);
 
 
@@ -264,7 +269,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 132 "TicketVentaDesc.cshtml"
+#line 138 "TicketVentaDesc.cshtml"
                                                  Write(item.PesoNeto);
 
 
@@ -277,7 +282,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 133 "TicketVentaDesc.cshtml"
+#line 139 "TicketVentaDesc.cshtml"
                                                  Write(item.Precio);
 
 
@@ -290,7 +295,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 134 "TicketVentaDesc.cshtml"
+#line 140 "TicketVentaDesc.cshtml"
                                                  Write(item.Descuento);
 
 
@@ -303,7 +308,7 @@ WriteLiteral(" class=\"tg-0pkyRight \"");
 WriteLiteral(">");
 
 
-#line 135 "TicketVentaDesc.cshtml"
+#line 141 "TicketVentaDesc.cshtml"
                                                  Write(item.Importe);
 
 
@@ -312,7 +317,7 @@ WriteLiteral(">");
 WriteLiteral("</td>\n                        </tr>\n");
 
 
-#line 137 "TicketVentaDesc.cshtml"
+#line 143 "TicketVentaDesc.cshtml"
                     }
 
 
@@ -327,20 +332,20 @@ WriteLiteral(" colspan=\"8\"");
 WriteLiteral("></td>\n                    </tr>\n                    <tr>\n                       " +
 " <td");
 
-WriteLiteral(" class=\"tg-7btt\"");
+WriteLiteral(" class=\"tg-0pky\"");
 
 WriteLiteral(" colspan=\"5\"");
 
 WriteLiteral(">Total a pagar</td>\n                        <td");
 
-WriteLiteral(" class=\"tg-7btt\"");
+WriteLiteral(" class=\"tg-0pky\"");
 
 WriteLiteral(" colspan=\"3\"");
 
 WriteLiteral(">");
 
 
-#line 143 "TicketVentaDesc.cshtml"
+#line 149 "TicketVentaDesc.cshtml"
                                                    Write(Model.MontoTotal);
 
 
@@ -363,7 +368,7 @@ WriteLiteral(" colspan=\"8\"");
 WriteLiteral(">");
 
 
-#line 149 "TicketVentaDesc.cshtml"
+#line 155 "TicketVentaDesc.cshtml"
                                                    Write(Model.MontoLetra);
 
 
