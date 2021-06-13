@@ -59,7 +59,7 @@ WriteLiteral(">\r\n        <style");
 WriteLiteral(" type=\"text/css\"");
 
 WriteLiteral(">\r\n            .tg {\r\n                border: 0px none white;\r\n                wi" +
-"dth: 320px;\r\n                height: 100%;\r\n                text-align: center;\r" +
+"dth: 300px;\r\n                height: 100%;\r\n                text-align: center;\r" +
 "\n            }\r\n\r\n                .tg td {\r\n                    border-color: wh" +
 "ite;\r\n                    border-style: none;\r\n                    border-width:" +
 " 1px;\r\n                    font-family: \'Lucida Console\';\r\n                    f" +
