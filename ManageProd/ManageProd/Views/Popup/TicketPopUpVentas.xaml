@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <popup:PopupPage
     xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ManageProd.Views.Popup.TicketPopup">
+    x:Class="ManageProd.Views.Popup.TicketPopUpVentas">
     <StackLayout
         VerticalOptions="FillAndExpand">
         <Frame Margin="80" Padding="5" VerticalOptions="FillAndExpand">
@@ -22,10 +22,10 @@
                     FontAttributes="Bold"
                     FontSize="12"
                     Clicked="Button_Clicked">
-                 </Button>
+                </Button>
             </StackLayout>
         </Frame>
-        
+
     </StackLayout>
 
 </popup:PopupPage>

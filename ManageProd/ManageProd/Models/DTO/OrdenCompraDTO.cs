@@ -8,6 +8,7 @@ namespace ManageProd.Models.DTO
     {
         public string UsuarioCreacion { get; set; }
         public string Proveedor { get; set; }
+        public string Notas { get; set; }
         public string FechaCompra { get; set; }
         public string MontoTotal { get; set; }
         public string Cantidad { get; set; }
@@ -22,6 +23,7 @@ namespace ManageProd.Models.DTO
             this.FechaCompra = DateTime.Now.ToString("dd/MMMM/yyyy");
             this.MontoTotal = "$0.00";
             this.MontoLetra = "Cero pesos 00/100 MN";
+            this.Notas = string.Empty;
             this.Productos = new List<Producto>();
         }
 
