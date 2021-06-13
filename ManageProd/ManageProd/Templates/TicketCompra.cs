@@ -61,44 +61,45 @@ WriteLiteral(" type=\"text/css\"");
 
 WriteLiteral(">\r\n                .tg {\r\n                    border: 0px none white;\r\n          " +
 "          width: 270px;\r\n                    height: 100%;\r\n                    " +
-"text-align: center;\r\n                }\r\n\r\n                    .tg td {\r\n        " +
-"                border-color: white;\r\n                        border-style: none" +
-";\r\n                        border-width: 1px;\r\n                        font-fami" +
-"ly: \'Lucida Console\';\r\n                        font-size: 7px;\r\n                " +
-"        overflow: hidden;\r\n                        word-break: normal;\r\n        " +
-"            }\r\n\r\n                    .tg th {\r\n                        border-co" +
-"lor: white;\r\n                        border-style: none;\r\n                      " +
-"  border-width: 1px;\r\n                        font-family: \'Lucida Console\';\r\n  " +
-"                      font-size: 7px;\r\n                        font-weight: norm" +
-"al;\r\n                        overflow: hidden;\r\n                        word-bre" +
-"ak: normal;\r\n                    }\r\n\r\n                    .tg .tg-c3ow {\r\n      " +
-"                  border-color: white;\r\n                        border-style: no" +
-"ne;\r\n                        text-align: center;\r\n                        vertic" +
-"al-align: top;\r\n                        font-family: \'Lucida Console\';\r\n        " +
-"                font-size: 9px;\r\n                    }\r\n\r\n                    .t" +
-"g .tg-0pky {\r\n                        border-color: white;\r\n                    " +
-"    border-style: none;\r\n                        text-align: left;\r\n            " +
-"            vertical-align: top;\r\n                        font-family: \'Lucida C" +
-"onsole\';\r\n                        font-size: 7px;\r\n                    }\r\n\r\n    " +
-"                .tg .tg-0pkyCenter {\r\n                        border-color: whit" +
-"e;\r\n                        border-style: none;\r\n                        text-al" +
-"ign: center;\r\n                        vertical-align: top;\r\n                    " +
-"    font-family: \'Lucida Console\';\r\n                        font-size: 8px;\r\n   " +
-"                 }\r\n\r\n                    .tg .tg-0pkyRight {\r\n                 " +
-"       border-color: white;\r\n                        border-style: none;\r\n      " +
-"                  text-align: right;\r\n                        vertical-align: to" +
-"p;\r\n                        font-family: \'Lucida Console\';\r\n                    " +
-"    font-size: 7px;\r\n                    }\r\n\r\n                    .tg .tg-7btt {" +
-"\r\n                        border-color: white;\r\n                        border-s" +
-"tyle: none;\r\n                        font-weight: bold;\r\n                       " +
-" text-align: center;\r\n                        vertical-align: top;\r\n            " +
-"            font-family: \'Lucida Console\';\r\n                        font-size: 7" +
-"px;\r\n                    }\r\n\r\n                .Existencias {\r\n                  " +
-"  border-color: white;\r\n                    border-style: none;\r\n               " +
-"     text-align: justify;\r\n                    vertical-align: top;\r\n           " +
-"         font-size: 7px;\r\n                    font-family: \'Lucida Console\';\r\n  " +
-"                  height: 30px;\r\n                }\r\n            </style>\r\n      " +
-"      <table");
+"text-align: left;\r\n                }\r\n\r\n                    .tg td {\r\n          " +
+"              border-color: white;\r\n                        border-style: none;\r" +
+"\n                        border-width: 1px;\r\n                        font-family" +
+": Arial, Helvetica, sans-serif;\r\n                        font-size: 8px;\r\n      " +
+"                  overflow: hidden;\r\n                        word-break: normal;" +
+"\r\n                    }\r\n\r\n                    .tg th {\r\n                       " +
+" border-color: white;\r\n                        border-style: none;\r\n            " +
+"            border-width: 1px;\r\n                        font-family: Arial, Helv" +
+"etica, sans-serif;\r\n                        font-size: 8px;\r\n                   " +
+"     font-weight: normal;\r\n                        overflow: hidden;\r\n          " +
+"              word-break: normal;\r\n                    }\r\n\r\n                    " +
+".tg .tg-c3ow {\r\n                        border-color: white;\r\n                  " +
+"      border-style: none;\r\n                        text-align: center;\r\n        " +
+"                vertical-align: top;\r\n                        font-family: Arial" +
+", Helvetica, sans-serif;\r\n                        font-size: 10px;\r\n            " +
+"        }\r\n\r\n                    .tg .tg-0pky {\r\n                        border-" +
+"color: white;\r\n                        border-style: none;\r\n                    " +
+"    text-align: left;\r\n                        vertical-align: top;\r\n           " +
+"             font-family: Arial, Helvetica, sans-serif;\r\n                       " +
+" font-size: 8px;\r\n                    }\r\n\r\n                    .tg .tg-0pkyCente" +
+"r {\r\n                        border-color: white;\r\n                        borde" +
+"r-style: none;\r\n                        text-align: center;\r\n                   " +
+"     vertical-align: top;\r\n                        font-family: Arial, Helvetica" +
+", sans-serif;\r\n                        font-size: 9px;\r\n                    }\r\n\r" +
+"\n                    .tg .tg-0pkyRight {\r\n                        border-color: " +
+"white;\r\n                        border-style: none;\r\n                        tex" +
+"t-align: right;\r\n                        vertical-align: top;\r\n                 " +
+"       font-family: Arial, Helvetica, sans-serif;\r\n                        font-" +
+"size: 8px;\r\n                    }\r\n\r\n                    .tg .tg-7btt {\r\n       " +
+"                 border-color: white;\r\n                        border-style: non" +
+"e;\r\n                        font-weight: bold;\r\n                        text-ali" +
+"gn: center;\r\n                        vertical-align: top;\r\n                     " +
+"   font-family: Arial, Helvetica, sans-serif;\r\n                        font-size" +
+": 8px;\r\n                    }\r\n\r\n                .Existencias {\r\n               " +
+"     border-color: white;\r\n                    border-style: none;\r\n            " +
+"        text-align: justify;\r\n                    vertical-align: top;\r\n        " +
+"            font-family: Arial, Helvetica, sans-serif;\r\n                    font" +
+"-size: 8px;\r\n                    height: 30px;\r\n                }\r\n            <" +
+"/style>\r\n            <table");
 
 WriteLiteral(" class=\"tg\"");
 

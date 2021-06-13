@@ -59,41 +59,42 @@ WriteLiteral(">\r\n        <style");
 WriteLiteral(" type=\"text/css\"");
 
 WriteLiteral(">\r\n            .tg {\r\n                border: 0px none white;\r\n                wi" +
-"dth: 270px;\r\n                height: 100%;\r\n                text-align: center;\r" +
-"\n            }\r\n\r\n                .tg td {\r\n                    border-color: wh" +
-"ite;\r\n                    border-style: none;\r\n                    border-width:" +
-" 1px;\r\n                    font-family: \'Lucida Console\';\r\n                    f" +
-"ont-size: 7px;\r\n                    overflow: hidden;\r\n                    word-" +
-"break: normal;\r\n                }\r\n\r\n                .tg th {\r\n                 " +
-"   border-color: white;\r\n                    border-style: none;\r\n              " +
-"      border-width: 1px;\r\n                    font-family: \'Lucida Console\';\r\n  " +
-"                  font-size: 7px;\r\n                    font-weight: normal;\r\n   " +
-"                 overflow: hidden;\r\n                    word-break: normal;\r\n   " +
-"             }\r\n\r\n                .tg .tg-c3ow {\r\n                    border-col" +
-"or: white;\r\n                    border-style: none;\r\n                    text-al" +
-"ign: center;\r\n                    vertical-align: top;\r\n                    font" +
-"-family: \'Lucida Console\';\r\n                    font-size: 9px;\r\n               " +
-" }\r\n\r\n                .tg .tg-0pky {\r\n                    border-color: white;\r\n" +
-"                    border-style: none;\r\n                    text-align: left;\r\n" +
-"                    vertical-align: top;\r\n                    font-family: \'Luci" +
-"da Console\';\r\n                    font-size: 7px;\r\n                }\r\n\r\n        " +
-"        .tg .tg-0pkyCenter {\r\n                    border-color: white;\r\n        " +
-"            border-style: none;\r\n                    text-align: center;\r\n      " +
-"              vertical-align: top;\r\n                    font-family: \'Lucida Con" +
-"sole\';\r\n                    font-size: 8px;\r\n                }\r\n\r\n              " +
-"  .tg .tg-0pkyRight {\r\n                    border-color: white;\r\n               " +
-"     border-style: none;\r\n                    text-align: right;\r\n              " +
-"      vertical-align: top;\r\n                    font-family: \'Lucida Console\';\r\n" +
-"                    font-size: 7px;\r\n                }\r\n\r\n                .tg .t" +
-"g-7btt {\r\n                    border-color: white;\r\n                    border-s" +
-"tyle: none;\r\n                    font-weight: bold;\r\n                    text-al" +
-"ign: center;\r\n                    vertical-align: top;\r\n                    font" +
-"-family: \'Lucida Console\';\r\n                    font-size: 7px;\r\n               " +
-" }\r\n\r\n            .Existencias {\r\n                border-color: white;\r\n        " +
-"        border-style: none;\r\n                text-align: justify;\r\n             " +
-"   vertical-align: top;\r\n                font-size: 7px;\r\n                font-f" +
-"amily: \'Lucida Console\';\r\n                height: 30px;\r\n            }\r\n        " +
-"</style>\r\n        <table");
+"dth: 270px;\r\n                height: 100%;\r\n                text-align: left;\r\n " +
+"           }\r\n\r\n                .tg td {\r\n                    border-color: whit" +
+"e;\r\n                    border-style: none;\r\n                    border-width: 1" +
+"px;\r\n                    font-family: Arial, Helvetica, sans-serif;\r\n           " +
+"         font-size: 8px;\r\n                    overflow: hidden;\r\n               " +
+"     word-break: normal;\r\n                }\r\n\r\n                .tg th {\r\n       " +
+"             border-color: white;\r\n                    border-style: none;\r\n    " +
+"                border-width: 1px;\r\n                    font-family: Arial, Helv" +
+"etica, sans-serif;\r\n                    font-size: 8px;\r\n                    fon" +
+"t-weight: normal;\r\n                    overflow: hidden;\r\n                    wo" +
+"rd-break: normal;\r\n                }\r\n\r\n                .tg .tg-c3ow {\r\n        " +
+"            border-color: white;\r\n                    border-style: none;\r\n     " +
+"               text-align: center;\r\n                    vertical-align: top;\r\n  " +
+"                  font-family: Arial, Helvetica, sans-serif;\r\n                  " +
+"  font-size: 10px;\r\n                }\r\n\r\n                .tg .tg-0pky {\r\n       " +
+"             border-color: white;\r\n                    border-style: none;\r\n    " +
+"                text-align: left;\r\n                    vertical-align: top;\r\n   " +
+"                 font-family: Arial, Helvetica, sans-serif;\r\n                   " +
+" font-size: 8px;\r\n                }\r\n\r\n                .tg .tg-0pkyCenter {\r\n   " +
+"                 border-color: white;\r\n                    border-style: none;\r\n" +
+"                    text-align: center;\r\n                    vertical-align: top" +
+";\r\n                    font-family: Arial, Helvetica, sans-serif;\r\n             " +
+"       font-size: 9px;\r\n                }\r\n\r\n                .tg .tg-0pkyRight {" +
+"\r\n                    border-color: white;\r\n                    border-style: no" +
+"ne;\r\n                    text-align: right;\r\n                    vertical-align:" +
+" top;\r\n                    font-family: Arial, Helvetica, sans-serif;\r\n         " +
+"           font-size: 8px;\r\n                }\r\n\r\n                .tg .tg-7btt {\r" +
+"\n                    border-color: white;\r\n                    border-style: non" +
+"e;\r\n                    font-weight: bold;\r\n                    text-align: cent" +
+"er;\r\n                    vertical-align: top;\r\n                    font-family: " +
+"Arial, Helvetica, sans-serif;\r\n                    font-size: 8px;\r\n            " +
+"    }\r\n\r\n            .Existencias {\r\n                border-color: white;\r\n     " +
+"           border-style: none;\r\n                text-align: justify;\r\n          " +
+"      vertical-align: top;\r\n                font-family: Arial, Helvetica, sans-" +
+"serif;\r\n                font-size: 8px;\r\n                height: 30px;\r\n        " +
+"    }\r\n        </style>\r\n        <table");
 
 WriteLiteral(" class=\"tg\"");
 
