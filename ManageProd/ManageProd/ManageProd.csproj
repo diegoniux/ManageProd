@@ -70,12 +70,18 @@
   <ItemGroup>
     <Compile Update="Templates\TicketCompra.cs">
       <DependentUpon>TicketCompra.cshtml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Templates\TicketVenta.cs">
       <DependentUpon>TicketVenta.cshtml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Templates\TicketVentaDesc.cs">
       <DependentUpon>TicketVentaDesc.cshtml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
 </Project>
