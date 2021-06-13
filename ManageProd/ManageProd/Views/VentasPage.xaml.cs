@@ -3,6 +3,7 @@ using Acr.UserDialogs;
 using ManageProd.Renderers;
 using ManageProd.SQLiteDB.Models;
 using ManageProd.ViewModels;
+using ManageProd.Views.Popup;
 using Xamarin.Forms;
 
 namespace ManageProd.Views
@@ -22,6 +23,12 @@ namespace ManageProd.Views
             {
                 var orden = arg;
                 this.Monto.Text = orden.MontoTotal;
+            });
+
+            MessagingCenter.Subscribe<TicketPopUpVentas, bool>(this, "FinishPrint", (sender, arg) =>
+            {
+                ViewModel = new VentasPageViewModel();
+                BindingContext = ViewModel;
             });
 
         }
