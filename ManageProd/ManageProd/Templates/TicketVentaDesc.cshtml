@@ -97,20 +97,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="tg-amwm" colspan="8"><span style="font-weight: bold">Ticket de venta</span></td>
-                    </tr>
-                    <tr>
                         <td class="tg-0pky" colspan="8">
-                            @Model.FechaVenta<br>
+                            <span style="font-weight: bold">Fecha de venta: </span> @Model.FechaVenta<br>
                         </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax" style="text-align: justify" colspan="8">Generado por<span style="font-weight: bold">: </span>@Model.UsuarioCreacion</td>
+                        <td class="tg-c3ow" colspan="8">
+                            <span style="font-weight: bold">Ticket de venta </span>
+                            <br />
+                        </td>
                     </tr>
                     <tr>
-                        <td class="tg-0lax" style="text-align: justify" colspan="8">
-                            <span style="font-weight: bold">Cliente</span>:  @Model.Cliente
-                        </td>
+                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Generado por: </span>@Model.UsuarioCreacion</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Cliente: </span>  @Model.Cliente</td>
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="8"></td>
@@ -125,27 +126,30 @@
                     </tr>
                     @foreach (var item in Model.Productos)
                     {
-                <tr>
-                    <td class="tg-0pky" colspan="3">@item.ProductoDesc</td>
-                    <td class="tg-0pkyCenter">@item.Cantidad</td>
-                    <td class="tg-0pkyCenter">@item.PesoNeto</td>
-                    <td class="tg-0pkyCenter">@item.Precio</td>
-                    <td class="tg-0pkyCenter">@item.Descuento</td>
-                    <td class="tg-0pkyRight ">@item.Importe</td>
-                </tr>
+                        <tr>
+                            <td class="tg-0pky" colspan="3">@item.ProductoDesc</td>
+                            <td class="tg-0pkyCenter">@item.Cantidad</td>
+                            <td class="tg-0pkyCenter">@item.PesoNeto</td>
+                            <td class="tg-0pkyCenter">@item.Precio</td>
+                            <td class="tg-0pkyCenter">@item.Descuento</td>
+                            <td class="tg-0pkyRight ">@item.Importe</td>
+                        </tr>
                     }
                     <tr>
-                        <td class="tg-0pky" colspan="7"></td>
+                        <td class="tg-0pky" colspan="8"></td>
                     </tr>
                     <tr>
-                        <td class="tg-7btt" colspan="4">Total a pagar</td>
+                        <td class="tg-7btt" colspan="5">Total a pagar</td>
                         <td class="tg-7btt" colspan="3">@Model.MontoTotal</td>
                     </tr>
                     <tr>
-                        <td class="tg-c3ow" colspan="7">@Model.MontoLetra</td>
+                        <td class="tg-0pky" colspan="8"></td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="7" rowspan="2"></td>
+                        <td class="tg-0pky" colspan="8">@Model.MontoLetra</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8"></td>
                     </tr>
                 </tbody>
             </table>

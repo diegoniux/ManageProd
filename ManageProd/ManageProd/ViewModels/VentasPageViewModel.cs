@@ -397,7 +397,7 @@ namespace ManageProd.ViewModels
                         OrdenVentaDTO orden = new OrdenVentaDTO();
 
                         orden.Cliente = ClienteSelected.Nombre;
-                        orden.FechaVenta = Order.FechaVenta.ToString("dd/MMMM/yyyy hh:mm");
+                        orden.FechaVenta = Order.FechaVenta.ToString("dd/MMMM/yyyy hh:mm:s tt");
                         orden.UsuarioCreacion = App.UserLogin.Name;
                         orden.MontoTotal = Order.MontoTotal;
                         decimal.TryParse(Order.MontoTotal.Replace("$", "").Replace(",", ""), out var monto);

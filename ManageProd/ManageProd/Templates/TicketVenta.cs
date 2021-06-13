@@ -106,17 +106,6 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Comercializadora de Carnes Frias</span></th>\r\n                </tr>\r\n           " +
 " </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <td");
 
-WriteLiteral(" class=\"tg-c3ow\"");
-
-WriteLiteral(" colspan=\"8\"");
-
-WriteLiteral("><span");
-
-WriteLiteral(" style=\"font-weight: bold\"");
-
-WriteLiteral(">Ticket de venta </span></td>\r\n                </tr>\r\n                <tr>\r\n     " +
-"               <td");
-
 WriteLiteral(" class=\"tg-0pky\"");
 
 WriteLiteral(" colspan=\"8\"");
@@ -128,7 +117,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Fecha de venta: </span> ");
 
 
-#line 104 "TicketVenta.cshtml"
+#line 101 "TicketVenta.cshtml"
                                                                            Write(Model.FechaVenta);
 
 
@@ -136,6 +125,17 @@ WriteLiteral(">Fecha de venta: </span> ");
 #line hidden
 WriteLiteral("<br>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n   " +
 "                 <td");
+
+WriteLiteral(" class=\"tg-c3ow\"");
+
+WriteLiteral(" colspan=\"8\"");
+
+WriteLiteral(">\r\n                        <span");
+
+WriteLiteral(" style=\"font-weight: bold\"");
+
+WriteLiteral(">Ticket de venta </span>\r\n                        <br />\r\n                    </t" +
+"d>\r\n                </tr>\r\n                <tr>\r\n                    <td");
 
 WriteLiteral(" class=\"tg-0pky\"");
 
@@ -148,7 +148,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Generado por: </span>");
 
 
-#line 108 "TicketVenta.cshtml"
+#line 111 "TicketVenta.cshtml"
                                                                                                     Write(Model.UsuarioCreacion);
 
 
@@ -167,14 +167,13 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Cliente: </span>  ");
 
 
-#line 111 "TicketVenta.cshtml"
+#line 114 "TicketVenta.cshtml"
                                                                                                  Write(Model.Cliente);
 
 
 #line default
 #line hidden
-WriteLiteral("</td>\r\n                </tr>                \r\n                <tr>\r\n             " +
-"       <td");
+WriteLiteral("</td>\r\n                </tr>\r\n                <tr>\r\n                    <td");
 
 WriteLiteral(" class=\"Existencias\"");
 
@@ -187,7 +186,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Existencias Anteriores:</span> ");
 
 
-#line 115 "TicketVenta.cshtml"
+#line 118 "TicketVenta.cshtml"
                                                                                   Write(Model.CreditosAnteriores);
 
 
@@ -207,7 +206,7 @@ WriteLiteral(" style=\"font-weight: bold\"");
 WriteLiteral(">Existencias Anteriores:</span> ");
 
 
-#line 120 "TicketVenta.cshtml"
+#line 123 "TicketVenta.cshtml"
                                                                                   Write(Model.ExistenciasAnteriores);
 
 
@@ -245,13 +244,13 @@ WriteLiteral(" class=\"tg-7btt\"");
 WriteLiteral(">Importe</td>\r\n                </tr>\r\n");
 
 
-#line 133 "TicketVenta.cshtml"
+#line 136 "TicketVenta.cshtml"
                 
 
 #line default
 #line hidden
 
-#line 133 "TicketVenta.cshtml"
+#line 136 "TicketVenta.cshtml"
                  foreach (var item in Model.Productos)
                 {
 
@@ -267,7 +266,7 @@ WriteLiteral(" colspan=\"3\"");
 WriteLiteral(">");
 
 
-#line 136 "TicketVenta.cshtml"
+#line 139 "TicketVenta.cshtml"
                                                    Write(item.ProductoDesc);
 
 
@@ -280,7 +279,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 137 "TicketVenta.cshtml"
+#line 140 "TicketVenta.cshtml"
                                              Write(item.Cantidad);
 
 
@@ -293,7 +292,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 138 "TicketVenta.cshtml"
+#line 141 "TicketVenta.cshtml"
                                              Write(item.PesoNeto);
 
 
@@ -306,7 +305,7 @@ WriteLiteral(" class=\"tg-0pkyCenter\"");
 WriteLiteral(">");
 
 
-#line 139 "TicketVenta.cshtml"
+#line 142 "TicketVenta.cshtml"
                                              Write(item.Precio);
 
 
@@ -319,7 +318,7 @@ WriteLiteral(" class=\"tg-0pkyRight \"");
 WriteLiteral(">");
 
 
-#line 140 "TicketVenta.cshtml"
+#line 143 "TicketVenta.cshtml"
                                              Write(item.Importe);
 
 
@@ -328,7 +327,7 @@ WriteLiteral(">");
 WriteLiteral("</td>\r\n                    </tr>\r\n");
 
 
-#line 142 "TicketVenta.cshtml"
+#line 145 "TicketVenta.cshtml"
                 }
 
 
@@ -338,13 +337,13 @@ WriteLiteral("                <tr>\r\n                    <td");
 
 WriteLiteral(" class=\"tg-0pky\"");
 
-WriteLiteral(" colspan=\"7\"");
+WriteLiteral(" colspan=\"8\"");
 
 WriteLiteral("></td>\r\n                </tr>\r\n                <tr>\r\n                    <td");
 
 WriteLiteral(" class=\"tg-7btt\"");
 
-WriteLiteral(" colspan=\"4\"");
+WriteLiteral(" colspan=\"5\"");
 
 WriteLiteral(">Total a pagar</td>\r\n                    <td");
 
@@ -355,7 +354,7 @@ WriteLiteral(" colspan=\"3\"");
 WriteLiteral(">");
 
 
-#line 148 "TicketVenta.cshtml"
+#line 151 "TicketVenta.cshtml"
                                                Write(Model.MontoTotal);
 
 
@@ -363,14 +362,20 @@ WriteLiteral(">");
 #line hidden
 WriteLiteral("</td>\r\n                </tr>\r\n                <tr>\r\n                    <td");
 
-WriteLiteral(" class=\"tg-c3ow\"");
+WriteLiteral(" class=\"tg-0pky\"");
 
-WriteLiteral(" colspan=\"7\"");
+WriteLiteral(" colspan=\"8\"");
+
+WriteLiteral("></td>\r\n                </tr>\r\n                <tr>\r\n                    <td");
+
+WriteLiteral(" class=\"tg-0pky\"");
+
+WriteLiteral(" colspan=\"8\"");
 
 WriteLiteral(">");
 
 
-#line 151 "TicketVenta.cshtml"
+#line 157 "TicketVenta.cshtml"
                                                Write(Model.MontoLetra);
 
 
@@ -380,9 +385,7 @@ WriteLiteral("</td>\r\n                </tr>\r\n                <tr>\r\n        
 
 WriteLiteral(" class=\"tg-0pky\"");
 
-WriteLiteral(" colspan=\"7\"");
-
-WriteLiteral(" rowspan=\"2\"");
+WriteLiteral(" colspan=\"8\"");
 
 WriteLiteral("></td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </form" +
 ">\r\n</body>\r\n</html>\r\n");

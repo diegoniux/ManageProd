@@ -616,9 +616,10 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
+                                        IsReadOnly="True"
                                         >
                                         <renderers:EntryIcon.Behaviors>
-                                            <renderers:LengthValidateBehavior MaxLength="10"/>
+                                            <renderers:LengthValidateBehavior MaxLength="15"/>
                                         </renderers:EntryIcon.Behaviors>
                                     </renderers:EntryIcon>
                                 </StackLayout>
@@ -704,6 +705,7 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
+                                        IsReadOnly="True"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
