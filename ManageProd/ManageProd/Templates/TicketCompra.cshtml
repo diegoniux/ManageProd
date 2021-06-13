@@ -14,7 +14,7 @@
             <style type="text/css">
                 .tg {
                     border: 0px none white;
-                    width: 250px;
+                    width: 400px;
                     height: 100%;
                     text-align: center;
                 }
@@ -23,10 +23,9 @@
                         border-color: white;
                         border-style: none;
                         border-width: 1px;
-                        font-family: Century Gothic;
-                        font-size: 8px;
+                        font-family: 'Lucida Console';
+                        font-size: 10px;
                         overflow: hidden;
-                        padding: 2px 2px;
                         word-break: normal;
                     }
 
@@ -34,11 +33,10 @@
                         border-color: white;
                         border-style: none;
                         border-width: 1px;
-                        font-family: Century Gothic;
-                        font-size: 8px;
+                        font-family: 'Lucida Console';
+                        font-size: 10px;
                         font-weight: normal;
                         overflow: hidden;
-                        padding: 2px 2px;
                         word-break: normal;
                     }
 
@@ -47,6 +45,7 @@
                         border-style: none;
                         text-align: center;
                         vertical-align: top;
+                        font-size: 13px;
                     }
 
                     .tg .tg-0pky {
@@ -54,7 +53,7 @@
                         border-style: none;
                         text-align: left;
                         vertical-align: top;
-                        font-size: 7px;
+                        font-size: 11px;
                     }
 
                     .tg .tg-0pkyCenter {
@@ -62,7 +61,7 @@
                         border-style: none;
                         text-align: center;
                         vertical-align: top;
-                        font-size: 7px;
+                        font-size: 10px;
                     }
 
                     .tg .tg-0pkyRight {
@@ -70,7 +69,7 @@
                         border-style: none;
                         text-align: right;
                         vertical-align: top;
-                        font-size: 7px;
+                        font-size: 10px;
                     }
 
                     .tg .tg-7btt {
@@ -79,7 +78,7 @@
                         font-weight: bold;
                         text-align: center;
                         vertical-align: top;
-                        font-size: 7px;
+                        font-size: 12px;
                     }
 
                 .Existencias {
@@ -87,7 +86,7 @@
                     border-style: none;
                     text-align: justify;
                     vertical-align: top;
-                    font-size: 7px;
+                    font-size: 10px;
                     height: 30px;
                 }
             </style>
@@ -100,36 +99,39 @@
                 <tbody>
                     <tr>
                         <td class="tg-0pky" colspan="8">
-                            RFC: XXXX000000XXX<br>
-                            Sucursal: Rosario<br>
-                            Domicilio Fiscal:<br>
-                            @Model.FechaCompra<br>
+                            <span style="font-weight: bold">Fecha de compra: </span> @Model.FechaCompra<br />
                         </td>
                     </tr>
                     <tr>
                         <td class="tg-c3ow" colspan="8">
                             <span style="font-weight: bold">Ticket de compra </span>
-                            <br>
+                            <br />
                         </td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="8">Generado por<span style="font-weight: bold">: </span>@Model.UsuarioCreacion</td>
+                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Generado por: </span>@Model.UsuarioCreacion</td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Proveedor</span>:  @Model.Proveedor</td>
+                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Proveedor: </span>  @Model.Proveedor</td>
                     </tr>
+                    @if (@Model.Notas != string.Empty)
+                    {
+                        <tr>
+                            <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Notas: </span>  @Model.Notas</td>
+                        </tr>
+                    }
                     <tr>
                         <td class="tg-7btt" colspan="3">Producto</td>
                         <td class="tg-7btt">Cantidad</td>
-                        <td class="tg-7btt">Peso Bruto</td>
-                        <td class="tg-7btt">Peso Neto</td>
-                        <td class="tg-7btt">Precio Unitario</td>
+                        <td class="tg-7btt">Peso B.</td>
+                        <td class="tg-7btt">Peso N.</td>
+                        <td class="tg-7btt">Precio</td>
                         <td class="tg-7btt">Importe</td>
                     </tr>
                     @foreach (var item in Model.Productos)
                     {
                         <tr>
-                            <td class="tg-0pky" colspan="3">@item.Producto</td>
+                            <td class="tg-0pky" colspan="3">@item.ProductoDesc</td>
                             <td class="tg-0pkyCenter">@item.Cantidad</td>
                             <td class="tg-0pkyCenter">@item.PesoBruto</td>
                             <td class="tg-0pkyCenter">@item.PesoNeto</td>
@@ -144,6 +146,9 @@
                     <tr>
                         <td class="tg-7btt" colspan="5">Total a pagar</td>
                         <td class="tg-7btt" colspan="3">@Model.MontoTotal</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0pky" colspan="8"></td>
                     </tr>
                     <tr>
                         <td class="tg-0pky" colspan="8">@Model.MontoLetra</td>

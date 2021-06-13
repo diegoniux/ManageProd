@@ -280,7 +280,7 @@
                                     HorizontalTextAlignment="Start"
                                     VerticalTextAlignment="Start"
                                     Margin="0,0,0,-8"
-                                    FontSize="Small">
+                                    FontSize="12">
                                 </renderers:EntryIcon>
                             </StackLayout>
                         </Frame>
@@ -616,9 +616,10 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
+                                        IsReadOnly="True"
                                         >
                                         <renderers:EntryIcon.Behaviors>
-                                            <renderers:LengthValidateBehavior MaxLength="10"/>
+                                            <renderers:LengthValidateBehavior MaxLength="15"/>
                                         </renderers:EntryIcon.Behaviors>
                                     </renderers:EntryIcon>
                                 </StackLayout>
@@ -704,6 +705,7 @@
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
+                                        IsReadOnly="True"
                                         >
                                         <renderers:EntryIcon.Behaviors>
                                             <renderers:LengthValidateBehavior MaxLength="10"/>
@@ -713,11 +715,11 @@
                             </Frame>
 
                             <StackLayout
-                                Grid.Column="5"
+                                Grid.Column="3"
                                 Grid.Row="3"
-                                Grid.ColumnSpan="7"
-                                VerticalOptions="FillAndExpand"
-                                HorizontalOptions="FillAndExpand"
+                                Grid.ColumnSpan="9"
+                                VerticalOptions="End"
+                                HorizontalOptions="End"
                                 Orientation="Horizontal"
                                 Spacing="5">
 
@@ -755,6 +757,18 @@
                                     TextColor="White"
                                     FontAttributes="Bold"
                                     HorizontalOptions="FillAndExpand">
+                                </Button>
+                                <Button
+                                    IsVisible="{Binding HayProductos, Mode=TwoWay}"
+                                    Text="Finalizar"
+                                    CornerRadius="14"
+                                    Command="{Binding FinishOrder}"
+                                    BackgroundColor="Black"
+                                    Margin="4"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="12">
                                 </Button>
                             </StackLayout>
                         </Grid>

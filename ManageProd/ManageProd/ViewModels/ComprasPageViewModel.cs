@@ -115,8 +115,9 @@ namespace ManageProd.ViewModels
                         OrdenCompraDTO orden = new OrdenCompraDTO();
 
                         orden.Proveedor = ProveedorSelected.Proveedor;
-                        orden.FechaCompra = Order.FechaCompra.ToString("dd/MMMM/yyyy hh:mm");
+                        orden.FechaCompra = Order.FechaCompra.ToString("dd/MMMM/yyyy hh:mm:s tt");
                         orden.UsuarioCreacion = App.UserLogin.Name;
+                        orden.Notas = Order.Notas;
                         orden.MontoTotal = Order.MontoTotal;
                         decimal.TryParse(Order.MontoTotal.Replace("$","").Replace(",",""), out var monto);
                         orden.MontoLetra = new Funciones().ConvertirNumeroALetras(Order.MontoTotal.Replace("$", "").Replace(",", ""),true,"pesos");
@@ -248,19 +249,19 @@ namespace ManageProd.ViewModels
         {
             try
             {
-                var confirmaConf = new ConfirmConfig()
-                {
-                    Title = "Confirmación",
-                    Message = "¿Deseas agregar este producto en la lista?",
-                    OkText = "Si",
-                    CancelText = "No"
-                };
+                //var confirmaConf = new ConfirmConfig()
+                //{
+                //    Title = "Confirmación",
+                //    Message = "¿Deseas agregar este producto en la lista?",
+                //    OkText = "Si",
+                //    CancelText = "No"
+                //};
 
-                bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
-                if (!resp)
-                {
-                    return;
-                }
+                //bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
+                //if (!resp)
+                //{
+                //    return;
+                //}
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {

@@ -40,6 +40,8 @@ namespace ManageProd.ViewModels
         public ICommand ProductoSelectionChanged { get; set; }
         public ICommand NewProduct { get; set; }
 
+        public ICommand FinishOrder { get; set; }
+
         public VentasPageViewModel()
         {
             IsBusy = false;
@@ -61,6 +63,7 @@ namespace ManageProd.ViewModels
             DeleteProduct = new Command(async () => await Delete());
             ProductoSelectionChanged = new Command(async () => await SelectChanged());
             NewProduct = new Command(async () => await NewProd());
+            FinishOrder = new Command(async () => await PrintOrder());
 
             LoadCatalogs();
 
@@ -195,19 +198,19 @@ namespace ManageProd.ViewModels
         {
             try
             {
-                var confirmaConf = new ConfirmConfig()
-                {
-                    Title = "Confirmación",
-                    Message = "¿Deseas agregar este producto en la lista?",
-                    OkText = "Si",
-                    CancelText = "No"
-                };
+                //var confirmaConf = new ConfirmConfig()
+                //{
+                //    Title = "Confirmación",
+                //    Message = "¿Deseas agregar este producto en la lista?",
+                //    OkText = "Si",
+                //    CancelText = "No"
+                //};
 
-                bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
-                if (!resp)
-                {
-                    return;
-                }
+                //bool resp = await UserDialogs.Instance.ConfirmAsync(confirmaConf);
+                //if (!resp)
+                //{
+                //    return;
+                //}
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
@@ -363,6 +366,7 @@ namespace ManageProd.ViewModels
 
         private async Task PrintOrder()
         {
+            bool ExisteDescuento = false;
             try
             {
                 if (ListDetail.Count == 0)
@@ -393,11 +397,13 @@ namespace ManageProd.ViewModels
                         OrdenVentaDTO orden = new OrdenVentaDTO();
 
                         orden.Cliente = ClienteSelected.Nombre;
-                        orden.FechaVenta = Order.FechaVenta.ToString("dd/MMMM/yyyy hh:mm");
+                        orden.FechaVenta = Order.FechaVenta.ToString("dd/MMMM/yyyy hh:mm:s tt");
                         orden.UsuarioCreacion = App.UserLogin.Name;
                         orden.MontoTotal = Order.MontoTotal;
                         decimal.TryParse(Order.MontoTotal.Replace("$", "").Replace(",", ""), out var monto);
                         orden.MontoLetra = new Funciones().ConvertirNumeroALetras(Order.MontoTotal.Replace("$", "").Replace(",", ""), true, "pesos");
+                        orden.CreditosAnteriores = Order.CreditosAnteriores;
+                        orden.ExistenciasAnteriores = Order.ExistenciasAnteriores;
 
                         foreach (var item in ListDetail)
                         {
@@ -413,26 +419,38 @@ namespace ManageProd.ViewModels
                             orden.Productos.Add(prod);
                         }
 
-                        // generamos el tmeplaste del html
-                        var ticket = new TicketCompra();
-                        //ticket.Model = orden;
-                        var htmlString = ticket.GenerateString();
+                        foreach (var item in ListDetail)
+                        {
+                            if (item.Descuento > 0)
+                                ExisteDescuento = true;
+                        }
 
+                        if (!ExisteDescuento)
+                        {
+                            var ticket = new TicketVenta();
+                            ticket.Model = orden;
+                            var htmlString = ticket.GenerateString();
 
-                        //Creamos un html source
-                        var htmlSource = new HtmlWebViewSource();
-                        htmlSource.Html = htmlString;
+                            var htmlSource = new HtmlWebViewSource();
+                            htmlSource.Html = htmlString;
 
-                        // cargamos el html en un webview
-                        //var browser = new WebView();
-                        //browser.Source = htmlSource;
+                            await PopupNavigation.Instance.PushAsync(new TicketPopUpVentas());
 
-                        await PopupNavigation.Instance.PushAsync(new TicketPopup());
+                            MessagingCenter.Send<VentasPageViewModel, HtmlWebViewSource>(this, "ShowTicketVenta", htmlSource);
+                        }
+                        else
+                        {
+                            var ticket = new TicketVentaDesc();
+                            ticket.Model = orden;
+                            var htmlString = ticket.GenerateString();
 
-                        // MessagingCenter.Send<ComprasPageViewModel, HtmlWebViewSource>(this, "ShowTicketCompra", htmlSource);
+                            var htmlSource = new HtmlWebViewSource();
+                            htmlSource.Html = htmlString;
 
+                            await PopupNavigation.Instance.PushAsync(new TicketPopUpVentas());
 
-
+                            MessagingCenter.Send<VentasPageViewModel, HtmlWebViewSource>(this, "ShowTicketVenta", htmlSource);
+                        }
                     }
                 }
             }

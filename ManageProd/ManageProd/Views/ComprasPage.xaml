@@ -554,7 +554,7 @@
                                         x:Name="Precio"
                                         Text="{Binding DetalleSelected.Precio, Mode=TwoWay}"
                                         Keyboard="Numeric"
-                                        MaxLength="12"
+                                        MaxLength="15"
                                         CornerRadius="5"
                                         FontAttributes="None"
                                         FontSize="12"

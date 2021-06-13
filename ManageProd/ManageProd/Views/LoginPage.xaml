@@ -37,7 +37,7 @@
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
                         <ColumnDefinition Width="0.20*"></ColumnDefinition>
                         <ColumnDefinition Width="0.20*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.60*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
                         <ColumnDefinition Width="0.10*"></ColumnDefinition>
                         <ColumnDefinition Width="0.20*"></ColumnDefinition>
                         <ColumnDefinition Width="0.20*"></ColumnDefinition>

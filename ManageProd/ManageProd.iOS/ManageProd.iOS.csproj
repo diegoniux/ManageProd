@@ -271,10 +271,18 @@
     <ImageAsset Include="Assets.xcassets\camion_title_page.imageset\camion_title_page-2.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\view.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\view_raya.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\view.imageset\view.png" />
-    <ImageAsset Include="Assets.xcassets\view_raya.imageset\view_raya.png" />
+    <ImageAsset Include="Assets.xcassets\view.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\view_raya.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\view.imageset\view.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\view_raya.imageset\view_raya.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
