@@ -413,7 +413,7 @@
                             </Label>
 
                             <Frame
-                                Padding="0"
+                               Padding="0"
                                 CornerRadius="26"
                                 Grid.Row="0"
                                 Grid.Column="7"
@@ -423,20 +423,20 @@
                                 <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                                     <renderers:EntryIcon
                                         x:Name="Cantidad"
-                                        Text="{Binding DetalleSelected.Cantidad, Mode=TwoWay}"
+                                        Text="{Binding DetalleSelected.Cantidad}"
                                         Keyboard="Numeric"
-                                        MaxLength="5"
                                         CornerRadius="5"
                                         FontAttributes="None"
+                                        FontSize="14"                                       
                                         HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"  
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
                                         Margin="0,0,0,-8"
                                         TextChanged="TextChanged"
-                                        FontSize="Small">
+                                        >
                                         <renderers:EntryIcon.Behaviors>
-                                            <renderers:NumericValidationBehavior />
+                                            <renderers:LengthValidateBehavior MaxLength="12"/>
                                         </renderers:EntryIcon.Behaviors>
                                     </renderers:EntryIcon>
                                 </StackLayout>

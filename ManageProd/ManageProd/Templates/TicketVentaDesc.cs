@@ -128,11 +128,11 @@ WriteLiteral(">\r\n                            <span");
 
 WriteLiteral(" style=\"font-weight: bold\"");
 
-WriteLiteral(">Fecha de venta: </span> ");
+WriteLiteral(">Fecha: </span> ");
 
 
 #line 114 "TicketVentaDesc.cshtml"
-                                                                               Write(Model.FechaVenta);
+                                                                      Write(Model.FechaVenta);
 
 
 #line default
