@@ -23,8 +23,8 @@
                         border-color: white;
                         border-style: none;
                         border-width: 1px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 8px;
+                        font-family: Century Gothic;
+                        font-size: 9px;
                         overflow: hidden;
                         word-break: normal;
                     }
@@ -33,20 +33,29 @@
                         border-color: white;
                         border-style: none;
                         border-width: 1px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 8px;
+                        font-family: Century Gothic;
+                        font-size: 9px;
                         font-weight: normal;
                         overflow: hidden;
                         word-break: normal;
                     }
 
-                    .tg .tg-c3ow {
+                    .tg .tg-c3owCenter {
                         border-color: white;
                         border-style: none;
                         text-align: center;
                         vertical-align: top;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 10px;
+                        font-family: Century Gothic;
+                        font-size: 13px;
+                    }
+
+                    .tg .tg-c3owLeft {
+                        border-color: white;
+                        border-style: none;
+                        text-align: left;
+                        vertical-align: top;
+                        font-family: Century Gothic;
+                        font-size: 13px;
                     }
 
                     .tg .tg-0pky {
@@ -54,8 +63,8 @@
                         border-style: none;
                         text-align: left;
                         vertical-align: top;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 8px;
+                        font-family: Century Gothic;
+                        font-size: 10px;
                     }
 
                     .tg .tg-0pkyCenter {
@@ -63,8 +72,8 @@
                         border-style: none;
                         text-align: center;
                         vertical-align: top;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 9px;
+                        font-family: Century Gothic;
+                        font-size: 10px;
                     }
 
                     .tg .tg-0pkyRight {
@@ -72,8 +81,8 @@
                         border-style: none;
                         text-align: right;
                         vertical-align: top;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 8px;
+                        font-family: Century Gothic;
+                        font-size: 10px;
                     }
 
                     .tg .tg-7btt {
@@ -82,8 +91,8 @@
                         font-weight: bold;
                         text-align: center;
                         vertical-align: top;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-size: 8px;
+                        font-family: Century Gothic;
+                        font-size: 10px;
                     }
 
                 .Existencias {
@@ -91,34 +100,33 @@
                     border-style: none;
                     text-align: justify;
                     vertical-align: top;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 8px;
+                    font-family: Century Gothic;
+                    font-size: 9px;
                     height: 30px;
                 }
             </style>
             <table class="tg">
                 <thead>
                     <tr>
-                        <th class="tg-c3ow" colspan="8"><span style="font-weight: bold">Comercializadora de Carnes Frias</span></th>
+                        <th class="tg-c3owCenter" colspan="8"><span style="font-weight: bold">Comercializadora de Carnes Frias</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="tg-0pky" colspan="8">
+                        <td class="tg-c3owLeft" colspan="8">
                             <span style="font-weight: bold">Fecha de compra: </span> @Model.FechaCompra<br />
                         </td>
                     </tr>
                     <tr>
-                        <td class="tg-c3ow" colspan="8">
-                            <span style="font-weight: bold">Ticket de compra </span>
-                            <br />
+                        <td class="tg-c3owCenter" colspan="8">
+                            <span style="font-weight: bold">Ticket de compra </span>                            
                         </td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Generado por: </span>@Model.UsuarioCreacion</td>
+                        <td class="tg-c3owLeft" colspan="8"><span style="font-weight: bold">Generado por: </span>@Model.UsuarioCreacion</td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="8"><span style="font-weight: bold">Proveedor: </span>  @Model.Proveedor</td>
+                        <td class="tg-c3owLeft" colspan="8"><span style="font-weight: bold">Proveedor: </span>  @Model.Proveedor</td>
                     </tr>
                     @if (@Model.Notas != string.Empty)
                     {
@@ -147,21 +155,18 @@
                     }
 
                     <tr>
-                        <td class="tg-0pky" colspan="8"></td>
+                        <td colspan="8"></td>
                     </tr>
                     <tr>
-                        <td class="tg-7btt" colspan="5">Total a pagar</td>
-                        <td class="tg-7btt" colspan="3">@Model.MontoTotal</td>
+                        <td class="tg-c3owCenter" colspan="8"><span style="font-weight: bold">Total a pagar: @Model.MontoTotal</span></td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="8"></td>
+                        <td colspan="8"></td>
                     </tr>
                     <tr>
-                        <td class="tg-0pky" colspan="8">@Model.MontoLetra</td>
+                        <td class="tg-c3owLeft" colspan="8">@Model.MontoLetra</td>
                     </tr>
-                    <tr>
-                        <td class="tg-0pky" colspan="8"></td>
-                    </tr>
+                   
                 </tbody>
             </table>
         </div>
