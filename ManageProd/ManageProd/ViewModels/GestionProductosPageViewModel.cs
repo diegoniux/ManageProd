@@ -68,7 +68,7 @@ namespace ManageProd.ViewModels
                                                 ListProduct.Add(new LayoutModel
                                                 {
                                                     IdProducto = csvReader.GetField<string>(0),
-                                                    Producto = csvReader.GetField<string>(1),
+                                                    Producto = csvReader.GetField<string>(1).ToString().Replace("�o", "ño").Replace("s�", "só"),
                                                     ProveedorId = csvReader.GetField<string>(2),
                                                     Proveedor = csvReader.GetField<string>(3),
                                                     PrecioCompra = csvReader.GetField<string>(4),
