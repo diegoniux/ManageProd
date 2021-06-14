@@ -59,7 +59,7 @@ WriteLiteral(">\r\n        <style");
 WriteLiteral(" type=\"text/css\"");
 
 WriteLiteral(">\r\n            .tg {\r\n                border: 0px none white;\r\n                wi" +
-"dth: 270px;\r\n                height: 100%;\r\n                text-align: left;\r\n " +
+"dth: 275px;\r\n                height: 100%;\r\n                text-align: left;\r\n " +
 "           }\r\n\r\n                .tg td {\r\n                    border-color: whit" +
 "e;\r\n                    border-style: none;\r\n                    border-width: 1" +
 "px;\r\n                    font-family: Century Gothic;\r\n                    font-" +
