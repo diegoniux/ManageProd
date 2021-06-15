@@ -189,11 +189,11 @@ WriteLiteral(">\n                        <span");
 
 WriteLiteral(" style=\"font-weight: bold\"");
 
-WriteLiteral(">Existencias Anteriores:</span> ");
+WriteLiteral(">Creditos Anteriores:</span> ");
 
 
 #line 132 "TicketVenta.cshtml"
-                                                                                  Write(Model.CreditosAnteriores);
+                                                                               Write(Model.CreditosAnteriores);
 
 
 #line default
