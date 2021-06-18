@@ -96,9 +96,9 @@ namespace ManageProd
 
                 var Usuario2 = new UsuarioItem()
                 {
-                    Nombre = "Jorge Alberto Sánchez Molina",
-                    Usuario = "jsanchez",
-                    Password = "rosario14",
+                    Nombre = "Omalley Olivares",
+                    Usuario = "oolivares",
+                    Password = "Omalley2021",
                     Remember = false
                 };
 
