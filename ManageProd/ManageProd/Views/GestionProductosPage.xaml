@@ -318,17 +318,6 @@
                                         BackgroundColor="#F7F6F3"
                                         FontFamily="Helvetica">
                                     </Label>
-                                    <Label
-                                        Text="{Binding Existencia}"
-                                        Grid.Column="7"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#333333"
-                                        Background="#F7F6F3"
-                                        BackgroundColor="#F7F6F3"
-                                        FontFamily="Helvetica">
-                                    </Label>
                                     <!--TERMINA DATOS-->
                                 </Grid>
                             </DataTemplate>
