@@ -13,6 +13,6 @@ namespace ManageProd.Models
         public string PrecioVenta { get; set; }
         public string Tara { get; set; }
 
-        public string Existencias { get; set; }
+        public string Existencia { get; set; }
     }
 }
