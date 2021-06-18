@@ -157,6 +157,7 @@ namespace ManageProd.ViewModels
                         decimal.TryParse(item.PrecioCompra, out decimal precioCompra);
                         decimal.TryParse(item.PrecioVenta, out decimal precioVenta);
                         decimal.TryParse(item.Tara, out decimal tara);
+                        decimal.TryParse(item.Existencia, out decimal existencia);
 
                         ProductoItem productoItem = new ProductoItem()
                         {
@@ -165,7 +166,8 @@ namespace ManageProd.ViewModels
                             Producto = item.Producto,
                             PrecioCompra = precioCompra,
                             PrecioVenta = precioVenta,
-                            Tara = tara
+                            Tara = tara,
+                            Existencia = existencia
                         };
 
                         await productoDB.InsertProductsAsync(productoItem);
