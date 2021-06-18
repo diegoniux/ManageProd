@@ -73,7 +73,8 @@ namespace ManageProd.ViewModels
                                                     Proveedor = csvReader.GetField<string>(3),
                                                     PrecioCompra = csvReader.GetField<string>(4),
                                                     PrecioVenta = csvReader.GetField<string>(5),
-                                                    Tara = csvReader.GetField<string>(6)
+                                                    Tara = csvReader.GetField<string>(6),
+                                                    Existencia = csvReader.GetField<string>(7)
                                                 });
                                             }
 
