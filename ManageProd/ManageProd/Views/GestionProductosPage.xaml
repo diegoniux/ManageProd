@@ -320,7 +320,7 @@
                                     </Label>
                                     <Label
                                         Text="{Binding Existencia}"
-                                        Grid.Column="6"
+                                        Grid.Column="7"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
