@@ -29,5 +29,8 @@ namespace ManageProd.SQLiteDB.Models
         [Column("Tara")]
         public decimal Tara { get; set; }
 
+        [Column("Existencia")]
+        public decimal Existencia { get; set; }
+
     }
 }

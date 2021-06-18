@@ -104,6 +104,8 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <!--Tara-->
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!--Existencia-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
                         <Label
@@ -178,7 +180,16 @@
                             TextColor="White"
                             FontFamily="Helvetica">
                         </Label>
-
+                        <Label
+                            Text="Existencia"
+                            Grid.Column="7"
+                            FontSize="11"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            FontFamily="Helvetica">
+                        </Label>
                     </Grid>
 
                     <!--DATOS-->
@@ -223,6 +234,8 @@
                                         <!--Precio Venta-->
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <!--Tara-->
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <!--Existencia-->
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <!--DATOS-->
@@ -297,6 +310,17 @@
                                     <Label
                                         Text="{Binding Tara}"
                                         Grid.Column="6"
+                                        FontSize="10"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#333333"
+                                        Background="#F7F6F3"
+                                        BackgroundColor="#F7F6F3"
+                                        FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Existencia}"
+                                        Grid.Column="7"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
