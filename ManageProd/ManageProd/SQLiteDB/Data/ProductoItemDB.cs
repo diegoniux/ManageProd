@@ -58,14 +58,24 @@ namespace ManageProd.SQLiteDB.Data
             return Database.InsertAsync(request);
         }
 
-        public Task<int> DeleteProductAsync(ProductoItem request)
+        public async Task<int> DeleteProductAsync(ProductoItem request)
         {
-            return Database.DeleteAsync(request);
+            return await Database.DeleteAsync(request);
         }
 
-        public Task<int> DeleteAllProductsAsync()
+        public async Task<int> DeleteAllProductsAsync()
         {
-            return Database.ExecuteAsync("DELETE FROM [ProductoItem]");
+            try
+            {
+                await Database.ExecuteAsync("DELETE FROM [ProductoItem]");
+                await Database.ExecuteAsync("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'ProductoItem'");
+
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }

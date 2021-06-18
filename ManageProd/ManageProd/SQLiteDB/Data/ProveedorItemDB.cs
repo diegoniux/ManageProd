@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using ManageProd.SQLiteDB.Models;
 using SQLite;
@@ -27,9 +28,9 @@ namespace ManageProd.SQLiteDB.Data
             return Database.Table<ProveedorItem>().ToListAsync();
         }        
 
-        public Task<ProveedorItem> GetProveedoresAsync(int id)
+        public async Task<ProveedorItem> GetProveedoresAsync(int id)
         {
-            return Database.Table<ProveedorItem>().Where(i => i.IdProveedor == id).FirstOrDefaultAsync();
+            return await Database.Table<ProveedorItem>().Where(i => i.IdProveedor == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveProveedoresAsync(ProveedorItem item)
@@ -40,19 +41,29 @@ namespace ManageProd.SQLiteDB.Data
                 return Database.InsertAsync(item);           
         }
 
-        public Task<int> InsertProveedoresAsync(ProveedorItem item)
+        public async Task<int> InsertProveedoresAsync(ProveedorItem item)
         {
-            return Database.InsertAsync(item);
+            return await Database.InsertAsync(item);
         }
 
-        public Task<int> DeleteProveedoresAsync(ProveedorItem item)
+        public async Task<int> DeleteProveedoresAsync(ProveedorItem item)
         {
-            return Database.DeleteAsync(item);
+            return await Database.DeleteAsync(item);
         }
 
-        public Task<int> DeleteAllProveedoresAsync()
+        public async Task<int> DeleteAllProveedoresAsync()
         {
-            return Database.ExecuteAsync("DELETE FROM [ProveedorItem]");
+            try
+            {
+                await Database.ExecuteAsync("DELETE FROM [ProveedorItem]");
+                await Database.ExecuteAsync("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'ProveedorItem'");
+
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }        
         }
     }
 }

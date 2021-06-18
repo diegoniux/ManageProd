@@ -53,8 +53,11 @@ namespace ManageProd.Views
             {
                 var picker = sender as Picker;
                 ProductoItem producto = picker.SelectedItem as ProductoItem;
-                this.Precio.Text = producto.PrecioVenta.ToString();
-                MessagingCenter.Send<VentasPage, ProductoItem>(this, "productoChanged", producto);
+                if (producto != null)
+                {
+                    this.Precio.Text = producto.PrecioVenta.ToString();
+                    MessagingCenter.Send<VentasPage, ProductoItem>(this, "productoChanged", producto);
+                }
             }
             catch (Exception ex)
             {

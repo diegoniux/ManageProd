@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -79,6 +80,12 @@ namespace ManageProd.ViewModels
                 detalle.Precio = producto.PrecioCompra;
 
                 DetalleSelected = detalle;
+            });
+
+            MessagingCenter.Subscribe<GestionProductosPageViewModel, ObservableCollection<ProductoItem>>(this, "loadProductsCompra", (sender, arg) =>
+            {
+                var productos = arg;
+                ListProduct = productos;
             });
 
         }

@@ -131,7 +131,6 @@ namespace ManageProd.ViewModels
                     await productoDB.DeleteAllProductsAsync();
                     await proveedorDB.DeleteAllProveedoresAsync();
 
-
                     //////////////////////////////////
                     // Guaradar información en SQLite//
                     /////////////////////////////////
@@ -172,6 +171,15 @@ namespace ManageProd.ViewModels
                         HayInfo = false;
 
                     }
+
+                    // para actualizaciòn de catálogos en las vistas
+                    ObservableCollection<ProveedorItem> proveedores = new ObservableCollection<ProveedorItem>(await proveedorDB.GetProveedoresAsync());
+                    ObservableCollection<ProductoItem> productos = new ObservableCollection<ProductoItem>(await productoDB.GetProductsAsync());
+
+                    MessagingCenter.Send<GestionProductosPageViewModel, ObservableCollection<ProveedorItem>>(this, "loadProveedoresVenta", proveedores);
+                    MessagingCenter.Send<GestionProductosPageViewModel, ObservableCollection<ProductoItem>>(this, "loadProductsVenta", productos);
+                    MessagingCenter.Send<GestionProductosPageViewModel, ObservableCollection<ProductoItem>>(this, "loadProductsCompra", productos);
+
                     await UserDialogs.Instance.AlertAsync("Información guardada con éxito", "Aviso", "Ok");
 
                     ListProduct = new ObservableCollection<LayoutModel>();

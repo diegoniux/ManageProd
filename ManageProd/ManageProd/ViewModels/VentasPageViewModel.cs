@@ -90,6 +90,18 @@ namespace ManageProd.ViewModels
 
                 DetalleSelected = detalle;
             });
+
+            MessagingCenter.Subscribe<GestionProductosPageViewModel, ObservableCollection<ProductoItem>>(this, "loadProductsVenta", (sender, arg) =>
+            {
+                var productos = arg;
+                ListProduct = productos;
+            });
+
+            MessagingCenter.Subscribe<GestionProductosPageViewModel, ObservableCollection<ProveedorItem>>(this, "loadProveedoresVenta", (sender, arg) =>
+            {
+                var proveedores = arg;
+                ListProveedores = proveedores;
+            });
         }
 
         private async Task LoadCatalogs()
@@ -135,8 +147,8 @@ namespace ManageProd.ViewModels
                     return;
                 }
 
-                var idProveedor = DetalleSelected.IdProveedor;
-                var idProducto = DetalleSelected.IdProducto;
+                var idProveedor = DetalleSelected?.IdProveedor;
+                var idProducto = DetalleSelected?.IdProducto;
 
                 var provItem = ListProveedores.ToList().Find(x => x.IdProveedor == idProveedor);
                 ProveedorSelected = provItem;
@@ -144,9 +156,11 @@ namespace ManageProd.ViewModels
                 ProductoItemDB ProductoDB = await ProductoItemDB.Instance;
                 ListProduct = new ObservableCollection<ProductoItem>(await ProductoDB.GetProductsIdProveedorAsync(provItem.IdProveedor));
 
-                var ProdItem = ListProduct.ToList().Find(x => x.IdProducto == idProducto);
-                ProductoSelected = ProdItem;
-
+                if (idProducto > 0)
+                {
+                    var ProdItem = ListProduct.ToList().Find(x => x.IdProducto == idProducto);
+                    ProductoSelected = ProdItem;
+                }
             }
             catch (Exception ex)
             {
@@ -336,7 +350,15 @@ namespace ManageProd.ViewModels
                 if (ProveedorSelected.IdProveedor != 0)
                 {
                     ProductoItemDB ProductoDB = await ProductoItemDB.Instance;
-                    ListProduct = new ObservableCollection<ProductoItem>(await ProductoDB.GetProductsIdProveedorAsync(ProveedorSelected.IdProveedor));
+                    var products = new ObservableCollection<ProductoItem>(await ProductoDB.GetProductsIdProveedorAsync(ProveedorSelected.IdProveedor));
+                    if (products?.Count > 0)
+                    {
+                        ListProduct = products;
+                    }
+                    else
+                    {
+                        ListProveedores = new ObservableCollection<ProveedorItem>();
+                    }
                 }
             }
             catch (Exception ex)
