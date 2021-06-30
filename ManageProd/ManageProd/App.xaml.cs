@@ -79,7 +79,7 @@ namespace ManageProd
 
 
 
-            UsuarioItemDB database = await UsuarioItemDB.Instance;
+           UsuarioItemDB database = await UsuarioItemDB.Instance;
            await database.DeleteAllUserAsync();
             var Usuarios = await database.GetUsersAsync();
 
@@ -115,6 +115,7 @@ namespace ManageProd
                 await database.SaveUserAsync(Usuario2);
                 await database.SaveUserAsync(Usuario3);
             }
+            var Usuarios2 = await database.GetUsersAsync();
         }
 
         protected override void OnSleep()

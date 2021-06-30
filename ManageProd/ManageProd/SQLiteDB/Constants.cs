@@ -19,7 +19,7 @@ namespace ManageProd.SQLiteDB
         {
             get
             {
-                var basePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                var basePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 return Path.Combine(basePath, DatabaseFilename);
             }
         }
