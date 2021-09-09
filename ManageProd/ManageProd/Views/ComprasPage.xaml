@@ -46,7 +46,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>                        
                     </Grid.ColumnDefinitions>
 
                     <Image Source="compras.png"
@@ -63,7 +63,22 @@
                             TextColor="Black"
                             Grid.Column="1"
                             Grid.Row="0"/>
-                   
+
+                    <Button
+                        Text="Nueva Compra"                       
+                        BackgroundColor="PowderBlue"
+                        VerticalOptions="EndAndExpand" 
+                        HorizontalOptions="EndAndExpand"
+                        CornerRadius="15"
+                        Margin="4"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Clicked="Button_Clicked">
+                    </Button>
+
                     <!--ORDEN-->
                     <Grid
                         Margin="1,10,1,1"

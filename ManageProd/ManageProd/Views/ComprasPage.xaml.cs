@@ -29,7 +29,6 @@ namespace ManageProd.Views
                 ViewModel = new ComprasPageViewModel();
                 BindingContext = ViewModel;
             });
-
         }
 
         async void Picker_SelectedIndexChanged(System.Object sender, System.EventArgs e)
@@ -86,6 +85,19 @@ namespace ManageProd.Views
                 var importe = pesoNeto * precio;
                 Importe.Text = importe.ToString();
 
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
+        }
+
+        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {                
+                ViewModel = new ComprasPageViewModel();
+                BindingContext = ViewModel;
             }
             catch (Exception ex)
             {

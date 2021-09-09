@@ -105,5 +105,18 @@ namespace ManageProd.Views
             }
         }
 
+        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                ViewModel = new VentasPageViewModel();
+                BindingContext = ViewModel;
+            }
+            catch (Exception ex)
+            {
+                await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
+            }
+        }
+
     }
 }

@@ -44,8 +44,7 @@ namespace ManageProd.ViewModels
         public ICommand DeleteProduct { get; set; }
         public ICommand ProductoSelectionChanged { get; set; }
         public ICommand NewProduct { get; set; }
-        public ICommand FinishOrder { get; set; }
-
+        public ICommand FinishOrder { get; set; }   
 
         public ComprasPageViewModel()
         {
@@ -67,7 +66,7 @@ namespace ManageProd.ViewModels
             DeleteProduct = new Command(async () => await Delete());
             ProductoSelectionChanged = new Command(async () => await SelectChanged());
             NewProduct = new Command(async () =>  await NewProd());
-            FinishOrder = new Command(async () => await PrintOrder());
+            FinishOrder = new Command(async () => await PrintOrder());           
 
             LoadCatalogs();
 
@@ -175,7 +174,7 @@ namespace ManageProd.ViewModels
                 await UserDialogs.Instance.AlertAsync(ex.Message, "Aviso", "Ok");
             }
         }
-
+              
         private async Task NewProd()
         {
             try
