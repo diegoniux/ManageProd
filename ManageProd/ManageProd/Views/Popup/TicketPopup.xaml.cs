@@ -44,7 +44,7 @@ namespace ManageProd.Views.Popup
 
                     var printService = DependencyService.Get<IPrintService>();
                     printService.Print(browser);
-                    MessagingCenter.Send<TicketPopup, bool>(this, "FinishPrint", true);
+                    // MessagingCenter.Send<TicketPopup, bool>(this, "FinishPrint", true);
                 }
             }
             catch (Exception ex)
